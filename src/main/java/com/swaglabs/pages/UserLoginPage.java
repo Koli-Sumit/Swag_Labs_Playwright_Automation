@@ -2,15 +2,20 @@ package com.swaglabs.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.swaglabs.utils.Log;
 import com.swaglabs.utils.configReader;
+import org.slf4j.Logger;
+
 import java.io.IOException;
 
 
-public class userLogin {
+public class UserLoginPage {
 
     //Variables
     protected Page page;
     configReader cr;
+    private static final Logger logger =
+            Log.getLogger(UserLoginPage.class);
 
     // Locators
     private final Locator usernameInput;
@@ -20,7 +25,7 @@ public class userLogin {
     private final Locator wrongPasswordError;
 
     //Constructor
-    public userLogin(Page page) {
+    public UserLoginPage(Page page) {
         this.page = page;
 
         //Selectors
@@ -35,16 +40,16 @@ public class userLogin {
     public void lockedUser() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getLockUesr());
-        System.out.println("Entered UserName : " + cr.getLockUesr());
+        logger.info("👤 Entered locked user username");
         passwordInput.fill(cr.getPassword());
-        System.out.println("Entered Password : " + cr.getPassword());
+        logger.info("🔒 Entered password");
         loginButton.click();
-        System.out.println("Clicked on Login button");
+        logger.info("🖱️ Clicked Login button with Locked credentials");
 
         if (lockedUserError.isVisible()){
             System.out.println(lockedUserError.textContent());
         }else {
-            System.out.println("Error Message Is Not Displayed!");
+            logger.error("❌ Expected error message is not displayed ");
         }
     }
 
@@ -52,37 +57,37 @@ public class userLogin {
     public void invalidPassword() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getUsername());
-        System.out.println("Entered UserName : " + cr.getUsername());
+        logger.info("❌ Entered invalid username");
         passwordInput.fill(cr.getInvalidPassword());
-        System.out.println("Entered Password : " + cr.getInvalidPassword());
+        logger.info("🔒 Entered password ");
         loginButton.click();
-        System.out.println("Clicked on Login button");
+        logger.info("🖱️ Clicked Login button with invalid credentials");
 
         if (wrongPasswordError.isVisible()){
             System.out.println(wrongPasswordError.textContent());
         }
         else {
-            System.out.println("Error Message Is Not Displayed!");
+            logger.error("❌ Expected error message is not displayed");
         }
 
     }
 
     //Login with valid credentials
-    public void login() throws IOException {
+    public void validLogin() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getUsername());
-        System.out.println("Entered UserName : " + cr.getUsername());
+        logger.info("👤 Entered valid username");
         passwordInput.fill(cr.getPassword());
-        System.out.println("Entered Password : " + cr.getPassword());
+        logger.info("🔒 Entered valid password");
         loginButton.click();
-        System.out.println("Clicked on Login button");
+        logger.info("🖱️ Clicked Login button with valid credentials");
 
         String products = page.locator(".title").textContent();
         if (products.equals("Products")) {
             System.out.println("Expected Title on Dashboard : " + products);
-            System.out.println("User Logged In Successfully");
+            logger.info("🔐 Login successful");
         }else  {
-            System.out.println("Not landed on Product page");
+            logger.info("🚫 User is not Logged In Successfully");
         }
     }
 
