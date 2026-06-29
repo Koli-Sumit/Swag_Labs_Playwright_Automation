@@ -1,44 +1,26 @@
-2026-06-26 15:34:41,572 INFO  [main] org.testng.internal.Utils - [TestNG] Running:
-  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\src\test\resources\testng.xml
-
-2026-06-26 15:34:45,708 INFO  [main] com.swaglabs.base.BaseTest - Chromium browser launched
-2026-06-26 15:34:48,990 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered locked username
-2026-06-26 15:34:50,016 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered locked password
-2026-06-26 15:34:51,085 INFO  [main] com.swaglabs.pages.UserLoginPage - Locked User --> Clicked login-button
-2026-06-26 15:34:52,310 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered invalid username
-2026-06-26 15:34:53,325 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered valid password 
-2026-06-26 15:34:54,353 INFO  [main] com.swaglabs.pages.UserLoginPage - Invalid User --> Clicked login-button
-2026-06-26 15:34:55,401 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered valid username
-2026-06-26 15:34:56,425 INFO  [main] com.swaglabs.pages.UserLoginPage - Entered valid password
-2026-06-26 15:34:57,513 INFO  [main] com.swaglabs.pages.UserLoginPage - Valid User --> Clicked login-button
-2026-06-26 15:34:57,522 INFO  [main] com.swaglabs.pages.UserLoginPage - User Logged in Successfully
-2026-06-26 15:34:57,540 INFO  [main] com.swaglabs.pages.InventoryPage - Inventory page has been verified : Products
-2026-06-26 15:34:58,591 INFO  [main] com.swaglabs.pages.InventoryPage - Adding Sauce Labs Backpack product to cart
-2026-06-26 15:34:59,630 INFO  [main] com.swaglabs.pages.InventoryPage - Adding Sauce Labs Bike Light product to cart
-2026-06-26 15:35:00,674 INFO  [main] com.swaglabs.pages.InventoryPage - Removed Sauce Labs Bike Light product from cart
-2026-06-26 15:35:02,762 INFO  [main] com.swaglabs.pages.InventoryPage - Sorted Products to Price (low to high) 
-2026-06-26 15:35:03,815 INFO  [main] com.swaglabs.pages.InventoryPage - Product Name : Sauce Labs Backpack
-2026-06-26 15:35:03,819 INFO  [main] com.swaglabs.pages.InventoryPage - Product Price : $29.99
-2026-06-26 15:35:03,822 INFO  [main] com.swaglabs.pages.InventoryPage - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
-2026-06-26 15:58:43,882 INFO  [main] org.testng.internal.Utils - [TestNG] Running:
-  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\src\test\resources\testng.xml
-
-2026-06-26 15:58:47,389 INFO  [main] com.swaglabs.base.BaseTest - 🌐 Chromium browser launched
-2026-06-26 15:58:50,559 INFO  [main] com.swaglabs.pages.UserLoginPage - 👤 Entered locked user username
-2026-06-26 15:58:51,576 INFO  [main] com.swaglabs.pages.UserLoginPage - 🔒 Entered password
-2026-06-26 15:58:52,646 INFO  [main] com.swaglabs.pages.UserLoginPage - 🖱️ Clicked Login button with Locked credentials
-2026-06-26 15:58:53,958 INFO  [main] com.swaglabs.pages.UserLoginPage - ❌ Entered invalid username
-2026-06-26 15:58:54,977 INFO  [main] com.swaglabs.pages.UserLoginPage - 🔒 Entered password 
-2026-06-26 15:58:56,003 INFO  [main] com.swaglabs.pages.UserLoginPage - 🖱️ Clicked Login button with invalid credentials
-2026-06-26 15:58:57,043 INFO  [main] com.swaglabs.pages.UserLoginPage - 👤 Entered valid username
-2026-06-26 15:58:58,068 INFO  [main] com.swaglabs.pages.UserLoginPage - 🔒 Entered valid password
-2026-06-26 15:58:59,144 INFO  [main] com.swaglabs.pages.UserLoginPage - 🖱️ Clicked Login button with valid credentials
-2026-06-26 15:58:59,153 INFO  [main] com.swaglabs.pages.UserLoginPage - 🔐 Login successful
-2026-06-26 15:58:59,179 INFO  [main] com.swaglabs.pages.InventoryPage - 🔍 Inventory page verification passed. Page title: Products
-2026-06-26 15:59:00,221 INFO  [main] com.swaglabs.pages.InventoryPage - 🛒 Sauce Labs Backpack Product added to cart
-2026-06-26 15:59:01,252 INFO  [main] com.swaglabs.pages.InventoryPage - 🛒 Sauce Labs Bike Light Product added to cart
-2026-06-26 15:59:02,318 INFO  [main] com.swaglabs.pages.InventoryPage - 🛒 Removed product from cart: Sauce Labs Bike Light
-2026-06-26 15:59:04,392 INFO  [main] com.swaglabs.pages.InventoryPage - Sorted Products to Price (low to high) 
-2026-06-26 15:59:05,463 INFO  [main] com.swaglabs.pages.InventoryPage - Product Name : Sauce Labs Backpack
-2026-06-26 15:59:05,468 INFO  [main] com.swaglabs.pages.InventoryPage - Product Price : $29.99
-2026-06-26 15:59:05,472 INFO  [main] com.swaglabs.pages.InventoryPage - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:22:02 INFO  BaseTest         - 🌐 Chromium browser launched
+13:22:06 INFO  UserLoginPage    - 👤 Entered valid username
+13:22:07 INFO  UserLoginPage    - 🔒 Entered valid password
+13:22:08 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+13:22:08 INFO  UserLoginPage    - 🔐 Login successful
+13:22:08 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+13:22:10 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+13:22:11 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+13:22:12 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+13:22:14 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+13:22:15 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+13:22:15 INFO  InventoryPage    - Product Price : $29.99
+13:22:15 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+13:22:17 INFO  CartPage         - 🛍️ Opened Product Cart
+13:22:17 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+13:22:18 INFO  CartPage         - 💳 Opened Checkout Page
+13:22:18 INFO  Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+13:22:19 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+13:22:22 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+13:22:24 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+13:22:26 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+13:22:27 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button

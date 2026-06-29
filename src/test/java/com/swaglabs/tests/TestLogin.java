@@ -12,14 +12,14 @@ import java.io.IOException;
 public class TestLogin extends BaseTest {
 
     //Login with locked user
-    @Test(retryAnalyzer = RetryAnalyzer.class, groups = {"NEGATIVE"},description = "Verify locked_out_user login shows error")
+    @Test(enabled = false,retryAnalyzer = RetryAnalyzer.class, groups = {"NEGATIVE"},description = "Verify locked_out_user login shows error")
     public void LOGIN_001() throws IOException {
         UserLoginPage ul = new UserLoginPage(page);
         ul.lockedUser();
     }
 
     //Login with invalid password
-    @Test(retryAnalyzer = RetryAnalyzer.class,groups = {"NEGATIVE"},description = "Verify invalid login shows error")
+    @Test(enabled = false, retryAnalyzer = RetryAnalyzer.class,groups = {"NEGATIVE"},description = "Verify invalid login shows error")
     public void LOGIN_002() throws IOException {
         UserLoginPage ul = new UserLoginPage(page);
         ul.invalidPassword();

@@ -43,4 +43,19 @@ public class configReader {
         return prop.getProperty("BROWSER");
     }
 
+    public String getFirstName() {
+
+        return prop.getProperty("FIRST_NAME");
+    }
+
+    public String getLastName() {
+
+        return prop.getProperty("LAST_NAME");
+    }
+
+    public String getPostalCode() {
+
+        return prop.getProperty("POSTAL_CODE");
+    }
+
 }

@@ -87,7 +87,7 @@ public class UserLoginPage {
             System.out.println("Expected Title on Dashboard : " + products);
             logger.info("🔐 Login successful");
         }else  {
-            logger.info("🚫 User is not Logged In Successfully");
+            logger.error("🚫 User is not Logged In Successfully");
         }
     }
 
