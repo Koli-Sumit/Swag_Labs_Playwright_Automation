@@ -11,6 +11,8 @@
             <class name="com.swaglabs.tests.TestInventory"/>
             <class name="com.swaglabs.tests.TestCart"/>
             <class name="com.swaglabs.tests.TestCheckoutYourInformation"/>
+            <class name="com.swaglabs.tests.TestCheckoutOverview"/>
+            <class name="com.swaglabs.tests.TestCheckoutComplete"/>
         </classes>
     </test>
 </suite>

@@ -1,0 +1,136 @@
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:21:58 WARN  TestNG           - Ignoring duplicate listener : io.qameta.allure.testng.AllureTestNg
+13:22:02 INFO  BaseTest         - 🌐 Chromium browser launched
+13:22:06 INFO  UserLoginPage    - 👤 Entered valid username
+13:22:07 INFO  UserLoginPage    - 🔒 Entered valid password
+13:22:08 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+13:22:08 INFO  UserLoginPage    - 🔐 Login successful
+13:22:08 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+13:22:10 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+13:22:11 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+13:22:12 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+13:22:14 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+13:22:15 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+13:22:15 INFO  InventoryPage    - Product Price : $29.99
+13:22:15 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+13:22:17 INFO  CartPage         - 🛍️ Opened Product Cart
+13:22:17 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+13:22:18 INFO  CartPage         - 💳 Opened Checkout Page
+13:22:18 INFO  Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+13:22:19 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+13:22:22 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+13:22:24 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+13:22:26 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+13:22:27 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+16:50:20 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testng.xml
+
+16:50:24 INFO  BaseTest         - 🌐 Chromium browser launched
+16:50:28 INFO  UserLoginPage    - 👤 Entered valid username
+16:50:29 INFO  UserLoginPage    - 🔒 Entered valid password
+16:50:30 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+16:50:30 INFO  UserLoginPage    - 🔐 Login successful
+16:50:30 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+16:50:31 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+16:50:32 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+16:50:33 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+16:50:35 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+16:50:36 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+16:50:36 INFO  InventoryPage    - Product Price : $29.99
+16:50:36 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+16:50:38 INFO  CartPage         - 🛍️ Opened Product Cart
+16:50:38 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+16:50:39 INFO  CartPage         - 💳 Opened Checkout Page
+16:50:39 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+16:50:40 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+16:50:43 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+16:50:46 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+16:50:48 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+16:50:49 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+16:50:49 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+16:50:49 INFO  Checkout_OverviewPage  - QTYDescription1Sauce Labs Backpackcarry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.$29.99
+16:50:49 INFO  Checkout_OverviewPage  - Payment Information:SauceCard #31337Shipping Information:Free Pony Express Delivery!Price TotalItem total: $29.99Tax: $2.40Total: $32.39CancelFinish
+17:01:49 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testng.xml
+
+17:01:52 INFO  BaseTest         - 🌐 Chromium browser launched
+17:01:56 INFO  UserLoginPage    - 👤 Entered valid username
+17:01:57 INFO  UserLoginPage    - 🔒 Entered valid password
+17:01:58 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+17:01:58 INFO  UserLoginPage    - 🔐 Login successful
+17:01:58 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+17:01:59 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+17:02:00 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+17:02:01 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+17:02:03 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+17:02:04 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+17:02:04 INFO  InventoryPage    - Product Price : $29.99
+17:02:04 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+17:02:07 INFO  CartPage         - 🛍️ Opened Product Cart
+17:02:07 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+17:02:08 INFO  CartPage         - 💳 Opened Checkout Page
+17:02:08 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+17:02:09 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+17:02:12 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+17:02:14 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+17:02:16 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+17:02:17 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+17:02:17 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+17:02:17 INFO  Checkout_OverviewPage  - QTYDescription1Sauce Labs Backpackcarry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.$29.99
+17:19:52 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testng.xml
+
+17:19:56 INFO  BaseTest         - 🌐 Chromium browser launched
+17:20:00 INFO  UserLoginPage    - 👤 Entered valid username
+17:20:01 INFO  UserLoginPage    - 🔒 Entered valid password
+17:20:02 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+17:20:02 INFO  UserLoginPage    - 🔐 Login successful
+17:20:02 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+17:20:03 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+17:20:04 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+17:20:05 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+17:20:07 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+17:20:08 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+17:20:08 INFO  InventoryPage    - Product Price : $29.99
+17:20:08 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+17:20:10 INFO  CartPage         - 🛍️ Opened Product Cart
+17:20:10 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+17:20:11 INFO  CartPage         - 💳 Opened Checkout Page
+17:20:11 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+17:20:12 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+17:20:16 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+17:20:18 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+17:20:20 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+17:20:21 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+17:20:21 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+17:20:21 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+17:22:53 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testng.xml
+
+17:22:56 INFO  BaseTest         - 🌐 Chromium browser launched
+17:23:00 INFO  UserLoginPage    - 👤 Entered valid username
+17:23:01 INFO  UserLoginPage    - 🔒 Entered valid password
+17:23:02 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+17:23:02 INFO  UserLoginPage    - 🔐 Login successful
+17:23:02 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+17:23:03 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+17:23:04 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+17:23:05 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+17:23:07 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+17:23:08 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+17:23:08 INFO  InventoryPage    - Product Price : $29.99
+17:23:08 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+17:23:10 INFO  CartPage         - 🛍️ Opened Product Cart
+17:23:10 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+17:23:11 INFO  CartPage         - 💳 Opened Checkout Page
+17:23:11 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+17:23:12 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+17:23:16 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+17:23:18 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+17:23:20 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+17:23:21 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+17:23:21 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+17:23:21 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+17:23:21 INFO  Checkout_OverviewPage  - ☑️ Payment Verified

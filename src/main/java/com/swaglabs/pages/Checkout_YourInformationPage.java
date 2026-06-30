@@ -63,10 +63,10 @@ public class Checkout_YourInformationPage {
         cr = new configReader();
         firstNameInput.clear();
         firstNameInput.fill(cr.getFirstName());
-        logger.info("📝 Entered First Name on Information Page: {}", firstNameInput.textContent());
+        logger.info("📝 Entered First Name on Information Page: {}", firstNameInput.inputValue());
         lastNameInput.clear();
         lastNameInput.fill(cr.getLastName());
-        logger.info("📝 Entered Last Name on Information Page: {}", lastNameInput.textContent());
+        logger.info("📝 Entered Last Name on Information Page: {}", lastNameInput.inputValue());
         postalCodeInput.clear();
         postalCodeInput.fill(cr.getPostalCode());
         logger.info("📮 Entered ZIP/Postal Code on Information Page: {}", postalCodeInput.inputValue());
