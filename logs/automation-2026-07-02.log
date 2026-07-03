@@ -1,0 +1,169 @@
+08:44:46 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:44:50 INFO  BaseTest         - 🌐 Chromium browser launched
+08:53:58 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:54:01 INFO  BaseTest         - 🌐 Chromium browser launched
+08:58:13 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:58:17 INFO  BaseTest         - 🌐 Chromium browser launched
+10:04:55 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:04:59 INFO  BaseTest         - 🌐 Chromium browser launched
+10:06:31 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:06:35 INFO  BaseTest         - 🌐 Chromium browser launched
+10:07:17 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:07:21 INFO  BaseTest         - 🌐 Chromium browser launched
+10:07:24 INFO  UserLoginPage    - 👤 Entered valid username
+10:07:25 INFO  UserLoginPage    - 🔒 Entered valid password
+10:07:26 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+10:07:26 INFO  UserLoginPage    - 🔐 Login successful
+10:22:13 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:22:17 INFO  BaseTest         - 🌐 Chromium browser launched
+10:22:20 INFO  UserLoginPage    - 👤 Entered valid username
+10:22:21 INFO  UserLoginPage    - 🔒 Entered valid password
+10:22:22 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+10:22:22 INFO  UserLoginPage    - 🔐 Login successful
+11:23:44 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+11:23:49 INFO  BaseTest         - 🌐 Chromium browser launched
+11:23:53 INFO  UserLoginPage    - 👤 Entered valid username
+11:23:54 INFO  UserLoginPage    - 🔒 Entered valid password
+11:23:55 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+11:23:55 INFO  UserLoginPage    - 🔐 Login successful
+11:23:55 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+11:23:56 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+11:23:57 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+11:23:58 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+11:24:00 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+11:24:01 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+11:24:01 INFO  InventoryPage    - Product Price : $29.99
+11:24:01 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+11:24:03 INFO  CartPage         - 🛍️ Opened Product Cart
+11:24:03 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+11:24:04 INFO  CartPage         - 💳 Opened Checkout Page
+11:24:04 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+11:24:05 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+11:24:08 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: John
+11:24:10 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: Test
+11:24:13 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+11:24:14 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+11:24:14 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+11:24:14 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+11:24:14 INFO  Checkout_OverviewPage  - ☑️ Payment Verified
+11:24:15 INFO  Checkout_CompletePage  - 🏷️ Page Title  : Checkout: Complete!
+11:24:15 INFO  Checkout_CompletePage  - ✅ Order Placed Successfully : Thank you for your order!
+11:24:15 INFO  Checkout_CompletePage  - 📦 Order Information: Your order has been dispatched, and will arrive just as fast as the pony can get there!
+15:50:47 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+15:50:51 INFO  BaseTest         - 🌐 Chromium browser launched
+15:50:58 INFO  UserLoginPage    - 👤 Entered valid username
+15:50:59 INFO  UserLoginPage    - 🔒 Entered valid password
+15:51:00 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+15:51:00 INFO  UserLoginPage    - 🔐 Login successful
+15:51:00 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+15:51:01 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+15:51:02 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+15:51:03 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+15:51:05 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+15:51:06 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+15:51:06 INFO  InventoryPage    - Product Price : $29.99
+15:51:06 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+15:51:08 INFO  CartPage         - 🛍️ Opened Product Cart
+15:51:08 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+15:51:09 INFO  CartPage         - 💳 Opened Checkout Page
+15:51:09 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+15:51:10 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+15:51:13 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: John
+15:51:15 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: Test
+15:51:17 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+15:51:18 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+15:51:18 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+15:51:18 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+15:51:18 INFO  Checkout_OverviewPage  - ☑️ Payment Verified
+15:51:19 INFO  Checkout_CompletePage  - 🏷️ Page Title  : Checkout: Complete!
+15:51:19 INFO  Checkout_CompletePage  - ✅ Order Placed Successfully : Thank you for your order!
+15:51:19 INFO  Checkout_CompletePage  - 📦 Order Information: Your order has been dispatched, and will arrive just as fast as the pony can get there!
+16:05:21 INFO  BaseTest         - 🌐 Chromium browser launched
+16:13:06 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+16:13:09 INFO  BaseTest         - 🌐 Chromium browser launched
+16:14:04 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+16:14:08 INFO  BaseTest         - 🌐 Chromium browser launched
+16:22:20 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+16:22:25 INFO  BaseTest         - 🌐 Chromium browser launched
+16:22:33 INFO  UserLoginPage    - 👤 Entered locked user username
+16:22:34 INFO  UserLoginPage    - 🔒 Entered password
+16:22:35 INFO  UserLoginPage    - 🖱️ Clicked Login button with Locked credentials
+16:22:36 INFO  UserLoginPage    - ❌ Entered invalid username
+16:22:37 INFO  UserLoginPage    - 🔒 Entered password 
+16:22:38 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+16:22:39 INFO  UserLoginPage    - 👤 Entered valid username
+16:22:41 INFO  UserLoginPage    - 🔒 Entered valid password
+16:22:42 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+16:22:42 INFO  UserLoginPage    - 🔐 Login successful
+16:23:54 INFO  BaseTest         - 🌐 Chromium browser launched
+16:24:08 INFO  UserLoginPage    - 👤 Entered locked user username
+16:24:09 INFO  UserLoginPage    - 🔒 Entered password
+16:24:10 INFO  UserLoginPage    - 🖱️ Clicked Login button with Locked credentials
+16:24:11 INFO  UserLoginPage    - ❌ Entered invalid username
+16:24:12 INFO  UserLoginPage    - 🔒 Entered password 
+16:24:13 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+16:24:14 INFO  UserLoginPage    - 👤 Entered valid username
+16:24:15 INFO  UserLoginPage    - 🔒 Entered valid password
+16:24:16 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+16:24:16 INFO  UserLoginPage    - 🔐 Login successful
+16:24:16 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+16:24:17 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+16:24:18 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+16:24:19 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+16:24:21 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+16:24:23 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+16:24:23 INFO  InventoryPage    - Product Price : $29.99
+16:24:23 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+16:24:25 INFO  CartPage         - 🛍️ Opened Product Cart
+16:24:25 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+16:24:26 INFO  CartPage         - 💳 Opened Checkout Page
+16:24:26 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+16:24:27 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+16:24:30 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: John
+16:24:32 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: Test
+16:24:34 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+16:24:35 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+16:24:35 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+16:24:35 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+16:24:35 INFO  Checkout_OverviewPage  - ☑️ Payment Verified
+16:24:36 INFO  Checkout_CompletePage  - 🏷️ Page Title  : Checkout: Complete!
+16:24:36 INFO  Checkout_CompletePage  - ✅ Order Placed Successfully : Thank you for your order!
+16:24:36 INFO  Checkout_CompletePage  - 📦 Order Information: Your order has been dispatched, and will arrive just as fast as the pony can get there!
+17:04:01 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+17:04:05 INFO  BaseTest         - 🌐 Chromium browser launched
+17:04:09 INFO  UserLoginPage    - 👤 Entered locked user username
+17:04:10 INFO  UserLoginPage    - 🔒 Entered password
+17:04:11 INFO  UserLoginPage    - 🖱️ Clicked Login button with Locked credentials
+17:04:12 INFO  UserLoginPage    - ❌ Entered invalid username
+17:04:13 INFO  UserLoginPage    - 🔒 Entered password 
+17:04:15 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+17:04:16 INFO  UserLoginPage    - 👤 Entered valid username
+17:04:17 INFO  UserLoginPage    - 🔒 Entered valid password
+17:04:18 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+17:04:18 INFO  UserLoginPage    - 🔐 Login successful

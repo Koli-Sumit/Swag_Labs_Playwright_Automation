@@ -28,7 +28,7 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.12.0</version>
+            <version>7.11.0</version>
         </dependency>
 
 <!--        &lt;!&ndash; Source: https://mvnrepository.com/artifact/io.qameta.allure/allure-testng &ndash;&gt;-->
@@ -37,6 +37,13 @@
 <!--            <artifactId>allure-testng</artifactId>-->
 <!--            <version>2.35.2</version>-->
 <!--        </dependency>-->
+
+        <!-- Gson for JSON serialization -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.11.0</version>
+        </dependency>
 
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -82,39 +89,39 @@
 
                     <!-- TestNG Suite -->
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
+                        <suiteXmlFile>testngnew.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
-                    <!-- Allure Listener -->
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>io.qameta.allure.testng.AllureTestNg</value>
-                        </property>
-                    </properties>
+<!--                    &lt;!&ndash; Allure Listener &ndash;&gt;-->
+<!--                    <properties>-->
+<!--                        <property>-->
+<!--                            <name>listener</name>-->
+<!--                            <value>io.qameta.allure.testng.AllureTestNg</value>-->
+<!--                        </property>-->
+<!--                    </properties>-->
 
                     <!-- AspectJ for Allure Annotations -->
-                    <argLine>
-                        -javaagent:${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar
-                    </argLine>
+<!--                    <argLine>-->
+<!--                        -javaagent:${settings.localRepository}\org\aspectj\aspectjweaver\${aspectj.version}\aspectjweaver-${aspectj.version}.jar-->
+<!--                    </argLine>-->
 
                 </configuration>
 
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+<!--                <dependencies>-->
+<!--                    <dependency>-->
+<!--                        <groupId>org.aspectj</groupId>-->
+<!--                        <artifactId>aspectjweaver</artifactId>-->
+<!--                        <version>${aspectj.version}</version>-->
+<!--                    </dependency>-->
+<!--                </dependencies>-->
             </plugin>
 
-            <!-- Allure Report Plugin -->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.12.0</version>
-            </plugin>
+<!--            &lt;!&ndash; Allure Report Plugin &ndash;&gt;-->
+<!--            <plugin>-->
+<!--                <groupId>io.qameta.allure</groupId>-->
+<!--                <artifactId>allure-maven</artifactId>-->
+<!--                <version>2.12.0</version>-->
+<!--            </plugin>-->
 
         </plugins>
     </build>

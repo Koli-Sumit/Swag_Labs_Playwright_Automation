@@ -1,0 +1,71 @@
+12:33:41 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testng.xml
+
+12:33:46 INFO  BaseTest         - 🌐 Chromium browser launched
+12:33:49 INFO  UserLoginPage    - 👤 Entered valid username
+12:33:50 INFO  UserLoginPage    - 🔒 Entered valid password
+12:33:51 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+12:33:51 INFO  UserLoginPage    - 🔐 Login successful
+12:33:51 INFO  InventoryPage    - 🔍 Inventory page verification passed. Page title: Products
+12:33:52 INFO  InventoryPage    - 🛒 Sauce Labs Backpack Product added to cart
+12:33:54 INFO  InventoryPage    - 🛒 Sauce Labs Bike Light Product added to cart
+12:33:55 INFO  InventoryPage    - 🛒 Removed product from cart: Sauce Labs Bike Light
+12:33:57 INFO  InventoryPage    - Sorted Products to Price (low to high) 
+12:33:58 INFO  InventoryPage    - Product Name : Sauce Labs Backpack
+12:33:58 INFO  InventoryPage    - Product Price : $29.99
+12:33:58 INFO  InventoryPage    - Product Description : carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+12:34:00 INFO  CartPage         - 🛍️ Opened Product Cart
+12:34:00 INFO  CartPage         - 🛒 Product is added in cart : Sauce Labs Backpack
+12:34:01 INFO  CartPage         - 💳 Opened Checkout Page
+12:34:01 ERROR Checkout_YourInformationPage  - 🏷️ Page Title : Checkout: Your Information
+12:34:02 INFO  Checkout_YourInformationPage  - ❌ Error Message is displayed  : Error: First Name is required
+12:34:05 INFO  Checkout_YourInformationPage  - 📝 Entered First Name on Information Page: 
+12:34:07 INFO  Checkout_YourInformationPage  - 📝 Entered Last Name on Information Page: 
+12:34:09 INFO  Checkout_YourInformationPage  - 📮 Entered ZIP/Postal Code on Information Page: 123456
+12:34:10 INFO  Checkout_YourInformationPage  - ▶️ Clicked on Continue Button
+12:34:10 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Overview
+12:34:10 INFO  Checkout_OverviewPage  - ☑️ Product Verified
+12:34:10 INFO  Checkout_OverviewPage  - ☑️ Payment Verified
+12:34:11 INFO  Checkout_OverviewPage  - 🏷️ Page Title  : Checkout: Complete!
+12:34:11 INFO  Checkout_OverviewPage  - ✅ Order Placed Successfully : Thank you for your order!
+12:34:11 INFO  Checkout_OverviewPage  - 📦 Order Information: Your order has been dispatched, and will arrive just as fast as the pony can get there!
+18:29:39 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+18:29:43 INFO  BaseTest         - 🌐 Chromium browser launched
+18:29:46 INFO  UserLoginPage    - 👤 Entered valid username
+18:29:48 INFO  UserLoginPage    - 🔒 Entered valid password
+18:29:49 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+18:29:49 INFO  UserLoginPage    - 🔐 Login successful
+18:35:52 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+18:35:56 INFO  BaseTest         - 🌐 Chromium browser launched
+18:35:59 INFO  UserLoginPage    - 👤 Entered valid username
+18:36:00 INFO  UserLoginPage    - 🔒 Entered valid password
+18:36:01 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+18:36:01 INFO  UserLoginPage    - 🔐 Login successful
+18:53:16 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+18:53:20 INFO  BaseTest         - 🌐 Chromium browser launched
+18:53:23 INFO  UserLoginPage    - 👤 Entered valid username
+18:53:24 INFO  UserLoginPage    - 🔒 Entered valid password
+18:53:26 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+18:53:26 INFO  UserLoginPage    - 🔐 Login successful
+22:10:55 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+22:11:01 INFO  BaseTest         - 🌐 Chromium browser launched
+22:11:05 INFO  UserLoginPage    - 👤 Entered valid username
+22:11:06 INFO  UserLoginPage    - 🔒 Entered valid password
+22:11:07 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+22:11:07 INFO  UserLoginPage    - 🔐 Login successful
+22:17:24 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\testngnew.xml
+
+22:17:29 INFO  BaseTest         - 🌐 Chromium browser launched
+22:17:32 INFO  UserLoginPage    - 👤 Entered valid username
+22:17:33 INFO  UserLoginPage    - 🔒 Entered valid password
+22:17:34 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+22:17:34 INFO  UserLoginPage    - 🔐 Login successful

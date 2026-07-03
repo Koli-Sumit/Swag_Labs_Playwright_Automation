@@ -1,0 +1,3489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automation Report Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-primary: #0a0f1a;
+            --bg-secondary: #111827;
+            --bg-card: #1a2236;
+            --bg-card-hover: #1f2a40;
+            --border: #2a3654;
+            --text-primary: #e8ecf4;
+            --text-secondary: #8896b3;
+            --text-muted: #5a6a8a;
+            --accent: #00e5a0;
+            --accent-dim: rgba(0, 229, 160, 0.15);
+            --danger: #ff4d6a;
+            --danger-dim: rgba(255, 77, 106, 0.15);
+            --warning: #ffb545;
+            --warning-dim: rgba(255, 181, 69, 0.15);
+            --skip: #6b7fff;
+            --skip-dim: rgba(107, 127, 255, 0.15);
+            --harmony: #00ccff;
+            --harmony-dim: rgba(0, 102, 153);
+            --chart-grid: rgba(42,54,84,0.5);
+            --chart-text: #8896b3;
+            --sidebar-overlay-bg: rgba(0, 0, 0, 0.5);
+            --table-hover: rgba(255, 255, 255, 0.02);
+            --progress-bg: rgba(255, 255, 255, 0.06);
+            --topbar-bg: rgba(10, 15, 26, 0.85);
+            --nav-hover: rgba(255, 255, 255, 0.03);
+            --logo-text: #fff;
+            --scrollbar-track: #0a0f1a;
+        }
+
+        [data-theme="light"] {
+            --bg-primary: #f0f2f5;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f8f9fb;
+            --border: #e2e5ea;
+            --text-primary: #1a1d23;
+            --text-secondary: #5a6270;
+            --text-muted: #8c919a;
+            --accent: #00a870;
+            --accent-dim: rgba(0, 168, 112, 0.1);
+            --danger: #d63050;
+            --danger-dim: rgba(214, 48, 80, 0.1);
+            --warning: #c88500;
+            --warning-dim: rgba(200, 133, 0, 0.1);
+            --skip: #4f60e0;
+            --skip-dim: rgba(79, 96, 224, 0.1);
+            --harmony: #0099bb;
+            --harmony-dim: rgba(0, 153, 187, 0.1);
+            --chart-grid: rgba(0, 0, 0, 0.08);
+            --chart-text: #5a6270;
+            --sidebar-overlay-bg: rgba(0, 0, 0, 0.25);
+            --table-hover: rgba(0, 0, 0, 0.02);
+            --progress-bg: rgba(0, 0, 0, 0.06);
+            --topbar-bg: rgba(255, 255, 255, 0.85);
+            --nav-hover: rgba(0, 0, 0, 0.03);
+            --logo-text: #1a1d23;
+            --scrollbar-track: #f0f2f5;
+        }
+
+        [data-theme="light"] .bg-mesh {
+            background: radial-gradient(ellipse 600px 400px at 10% 20%, rgba(0, 168, 112, 0.06) 0%, transparent 70%),
+            radial-gradient(ellipse 500px 500px at 85% 80%, rgba(79, 96, 224, 0.04) 0%, transparent 70%),
+            radial-gradient(ellipse 400px 300px at 50% 50%, rgba(214, 48, 80, 0.02) 0%, transparent 70%);
+        }
+
+        [data-theme="light"] .logo-icon {
+            color: #fff !important;
+        }
+
+        [data-theme="light"] .sidebar-overlay {
+            background: var(--sidebar-overlay-bg);
+        }
+
+        [data-theme="light"] .kpi-card:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        [data-theme="light"] .chart-card:hover {
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        [data-theme="light"] .report-table tbody tr:hover {
+            background: var(--table-hover);
+        }
+
+        [data-theme="light"] .toast {
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .theme-toggle-btn {
+            position: relative;
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            color: var(--text-secondary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .theme-toggle-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: rotate(15deg);
+        }
+
+        .theme-toggle-btn .icon-sun,
+        .theme-toggle-btn .icon-moon {
+            position: absolute;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .theme-toggle-btn .icon-sun {
+            opacity: 0;
+            transform: rotate(-90deg) scale(0.5);
+        }
+
+        .theme-toggle-btn .icon-moon {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .theme-toggle-btn .icon-sun {
+            opacity: 1;
+            transform: rotate(0deg) scale(1);
+        }
+
+        [data-theme="light"] .theme-toggle-btn .icon-moon {
+            opacity: 0;
+            transform: rotate(90deg) scale(0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .bg-mesh {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: radial-gradient(ellipse 600px 400px at 10% 20%, rgba(0, 229, 160, 0.06) 0%, transparent 70%),
+            radial-gradient(ellipse 500px 500px at 85% 80%, rgba(107, 127, 255, 0.05) 0%, transparent 70%),
+            radial-gradient(ellipse 400px 300px at 50% 50%, rgba(255, 77, 106, 0.03) 0%, transparent 70%);
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--scrollbar-track);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--text-muted);
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 260px;
+            background: var(--bg-secondary);
+            border-right: 1px solid var(--border);
+            z-index: 50;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+        .sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background: var(--sidebar-overlay-bg);
+            z-index: 45;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar-overlay.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .sidebar-logo {
+            padding: 24px 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(var(--text-secondary));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: #0a0f1a;
+            font-weight: 700;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 20px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+            font-size: 16px;
+        }
+
+        .nav-item:hover {
+            color: var(--text-primary);
+            background: var(--nav-hover);
+        }
+
+        .nav-item.active {
+            color: var(--logo-text);
+            background: var(--border);
+            border-left-color: var(--chart-text);
+        }
+
+        .nav-item i {
+            width: 20px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+        .nav-section-title {
+            padding: 20px 20px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+        }
+
+        .main-content {
+            margin-left: 0;
+            min-height: 100vh;
+            position: relative;
+            z-index: 1;
+            transition: margin-left 0.3s ease;
+        }
+
+        .main-content.shifted {
+            margin-left: 260px;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background: var(--topbar-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .kpi-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .kpi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 14px 14px 0 0;
+        }
+
+
+        .kpi-card.harmony::before {
+            background: linear-gradient(90deg, var(--harmony), #00ffff);
+        }
+
+        .kpi-card.green::before {
+            background: linear-gradient(90deg, var(--accent), #00b87a);
+        }
+
+        .kpi-card.red::before {
+            background: linear-gradient(90deg, var(--danger), #e0365a);
+        }
+
+        .kpi-card.yellow::before {
+            background: linear-gradient(90deg, var(--warning), #e09800);
+        }
+
+        .kpi-card.blue::before {
+            background: linear-gradient(90deg, var(--skip), #4f60e0);
+        }
+
+        .kpi-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .kpi-icon.harmony {
+            background: var(--border);
+            color: var(--text-primary);
+        }
+
+        .kpi-icon.green {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .kpi-icon.red {
+            background: var(--danger-dim);
+            color: var(--danger);
+        }
+
+        .kpi-icon.yellow {
+            background: var(--warning-dim);
+            color: var(--warning);
+        }
+
+        .kpi-icon.blue {
+            background: var(--skip-dim);
+            color: var(--skip);
+        }
+
+        .kpi-value {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1;
+            margin: 12px 0 4px;
+        }
+
+        .kpi-trend {
+            font-size: 12px;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 2px 8px;
+            border-radius: 6px;
+        }
+
+        .kpi-trend.up {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .kpi-trend.down {
+            background: var(--danger-dim);
+            color: var(--danger);
+        }
+
+        .chart-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .chart-card:hover {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .chart-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .chart-card-sub {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .filter-pill {
+            padding: 6px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 500;
+            cursor: pointer;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-secondary);
+            transition: all 0.2s;
+        }
+
+        .filter-pill:hover {
+            border-color: var(--text-muted);
+            color: var(--text-primary);
+        }
+
+        .filter-pill.active {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .report-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .report-table thead th {
+            text-align: left;
+            padding: 12px 16px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .report-table tbody tr {
+            border-bottom: 1px solid rgba(42, 54, 84, 0.5);
+            transition: background 0.15s;
+        }
+
+        .report-table tbody tr:hover {
+            background: var(--table-hover);
+        }
+
+        .report-table tbody td {
+            padding: 14px 16px;
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge.passed {
+            background: var(--accent-dim);
+            color: var(--accent);
+        }
+
+        .status-badge.failed {
+            background: var(--danger-dim);
+            color: var(--danger);
+        }
+
+        .status-badge.skipped {
+            background: var(--skip-dim);
+            color: var(--skip);
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--progress-bg);
+            border-radius: 4px;
+            overflow: hidden;
+            display: flex;
+        }
+
+        .progress-segment {
+            height: 100%;
+            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .suite-item {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(42, 54, 84, 0.4);
+        }
+
+        .suite-item:last-child {
+            border-bottom: none;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anim-fade-up {
+            opacity: 0;
+            animation: fadeUp 0.6s ease forwards;
+        }
+
+        .anim-delay-1 {
+            animation-delay: 0.05s;
+        }
+
+        .anim-delay-2 {
+            animation-delay: 0.1s;
+        }
+
+        .anim-delay-3 {
+            animation-delay: 0.15s;
+        }
+
+        .anim-delay-4 {
+            animation-delay: 0.2s;
+        }
+
+        .anim-delay-5 {
+            animation-delay: 0.25s;
+        }
+
+        .anim-delay-6 {
+            animation-delay: 0.3s;
+        }
+
+        .anim-delay-7 {
+            animation-delay: 0.35s;
+        }
+
+        .anim-delay-8 {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes pulse-dot {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.4;
+            }
+        }
+
+        .pulse-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--accent);
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+
+        .toast-container {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .toast {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 14px 20px;
+            font-size: 13px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            animation: fadeUp 0.3s ease;
+            max-width: 360px;
+        }
+
+        .no-data-banner {
+            text-align: center;
+            padding: 48px 24px;
+            color: var(--text-muted);
+            font-size: 14px;
+            border: 1px dashed var(--border);
+            border-radius: 14px;
+            margin-bottom: 28px;
+        }
+
+        .no-data-banner i {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+            color: var(--danger);
+        }
+
+        @media (max-width: 1024px) {
+            .main-content.shifted {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .topbar {
+                padding: 12px 16px;
+            }
+
+            .content-area {
+                padding: 16px !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .pdf-export-mode {
+            overflow: visible !important;
+            height: auto !important;
+            min-height: auto !important;
+        }
+
+        .pdf-export-mode .main-content {
+            overflow: visible !important;
+            height: auto !important;
+            min-height: 100vh !important;
+            max-height: none !important;
+            position: relative !important;
+            transform: none !important;
+        }
+
+        .pdf-export-mode header,
+        .pdf-export-mode .header,
+        .pdf-export-mode .top-bar {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 1 !important;
+        }
+
+        .pdf-export-mode footer,
+        .pdf-export-mode .footer {
+            position: relative !important;
+            bottom: auto !important;
+            z-index: 1 !important;
+        }
+
+        .pdf-export-mode .sidebar,
+        .pdf-export-mode nav {
+            display: none !important;
+        }
+
+        .pdf-export-mode .sidebar-overlay {
+            display: none !important;
+        }
+
+        .pdf-export-mode * {
+            -webkit-transform: none !important;
+            transform: none !important;
+            animation: none !important;
+            transition: none !important;
+        }
+
+        .pdf-export-mode .main-content > * {
+            flex: none !important;
+            min-height: auto !important;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="bg-mesh"></div>
+
+<script>
+    const DEFAULT_REPORT_DATA = {
+
+        buildNumber: 2847,
+        branch: 'Main Branch',
+        runAgo: '12 min ago',
+        environment: 'Staging',
+        reportId: 'RPT-2024-2847-A3F8',
+        frameworkVersion: 'v3.2.1',
+        frameworkName: 'TestPulse Automation Framework',
+        projectName: 'Test Swag Labs',
+        userName: 'Sumit K',
+        userRole: 'QA Lead',
+        userInitials: 'SK',
+
+        passed: 847,
+        failed: 23,
+        skipped: 12,
+
+        trendBuilds: ['#2834', '#2835', '#2836', '#2837', '#2838', '#2839', '#2840', '#2841', '#2842', '#2843', '#2844', '#2845', '#2846', '#2847'],
+        trendPassed: [810, 815, 820, 812, 825, 830, 828, 835, 840, 838, 842, 845, 843, 847],
+        trendFailed: [35, 32, 30, 38, 28, 25, 27, 22, 20, 24, 21, 19, 22, 23],
+        trendSkipped: [15, 14, 14, 14, 15, 15, 15, 15, 14, 14, 15, 14, 13, 12],
+
+        trendPassedDelta: 3.2,
+        trendFailedDelta: -1.8,
+        trendSkippedDelta: 0.5,
+        trendDurationDelta: -8.4,
+
+        durationSeconds: 272,
+
+        suites: [
+            {name: 'Smoke Tests', total: 45, passed: 44, failed: 1, skipped: 0, durationSeconds: 42},
+            {name: 'Regression - Auth', total: 122, passed: 120, failed: 2, skipped: 0, durationSeconds: 68},
+            {name: 'Regression - Payments', total: 103, passed: 98, failed: 5, skipped: 0, durationSeconds: 62},
+            {name: 'Regression - Profile', total: 106, passed: 105, failed: 1, skipped: 0, durationSeconds: 28},
+            {name: 'Regression - Search', total: 92, passed: 88, failed: 4, skipped: 0, durationSeconds: 45},
+            {name: 'API Integration', total: 112, passed: 110, failed: 2, skipped: 0, durationSeconds: 51},
+            {name: 'E2E Critical Path', total: 134, passed: 130, failed: 3, skipped: 1, durationSeconds: 94},
+            {name: 'Performance Baseline', total: 68, passed: 52, failed: 5, skipped: 11, durationSeconds: 138},
+        ],
+
+        recentTests: [
+            {
+                name: 'Login with valid credentials',
+                module: 'Authentication',
+                status: 'passed',
+                durationMs: 1200,
+                retries: 0,
+                timestamp: '14:32:08'
+            },
+            {
+                name: 'Process credit card payment',
+                module: 'Payments',
+                status: 'failed',
+                durationMs: 3800,
+                retries: 2,
+                timestamp: '14:31:55'
+            },
+            {
+                name: 'Update user avatar',
+                module: 'User Profile',
+                status: 'passed',
+                durationMs: 900,
+                retries: 0,
+                timestamp: '14:31:42'
+            },
+            {
+                name: 'Search with filters applied',
+                module: 'Search',
+                status: 'passed',
+                durationMs: 2100,
+                retries: 0,
+                timestamp: '14:31:30'
+            },
+            {
+                name: 'Push notification delivery',
+                module: 'Notifications',
+                status: 'failed',
+                durationMs: 5200,
+                retries: 3,
+                timestamp: '14:31:18'
+            },
+            {
+                name: 'API rate limiting check',
+                module: 'API Gateway',
+                status: 'passed',
+                durationMs: 1500,
+                retries: 0,
+                timestamp: '14:31:05'
+            },
+            {
+                name: 'Dashboard widget rendering',
+                module: 'Dashboard',
+                status: 'passed',
+                durationMs: 700,
+                retries: 0,
+                timestamp: '14:30:52'
+            },
+            {
+                name: 'Theme toggle persistence',
+                module: 'Settings',
+                status: 'skipped',
+                durationMs: 0,
+                retries: 0,
+                timestamp: '14:30:40'
+            },
+            {
+                name: 'OAuth2 token refresh flow',
+                module: 'Authentication',
+                status: 'passed',
+                durationMs: 2300,
+                retries: 1,
+                timestamp: '14:30:28'
+            },
+            {
+                name: 'Refund processing endpoint',
+                module: 'Payments',
+                status: 'failed',
+                durationMs: 4100,
+                retries: 2,
+                timestamp: '14:30:15'
+            },
+        ],
+    };
+
+    window.REPORT_DATA = window.REPORT_DATA || {};
+    const RD = Object.assign({}, DEFAULT_REPORT_DATA, window.REPORT_DATA || {});
+
+    console.log("%c[REPORT DATA SOURCE]", "color:#00e5a0;font-weight:bold;font-size:14px;",
+        window.REPORT_DATA ? "✅ Using INJECTED data from test framework" : "❌ Using DEFAULT fallback data");
+
+    const RD_TOTAL = RD.passed + RD.failed + RD.skipped;
+    const RD_PASS_RATE = RD_TOTAL > 0 ? ((RD.passed / RD_TOTAL) * 100) : 0;
+    const RD_PASS_PCT = RD_TOTAL > 0 ? ((RD.passed / RD_TOTAL) * 100).toFixed(0) : '0.00';
+    const RD_FAIL_PCT = RD_TOTAL > 0 ? ((RD.failed / RD_TOTAL) * 100).toFixed(0) : '0.00';
+    const RD_SKIP_PCT = RD_TOTAL > 0 ? ((RD.skipped / RD_TOTAL) * 100).toFixed(0) : '0.00';
+    const RD_DUR_MIN = Math.floor(RD.durationSeconds / 60);
+    const RD_DUR_SEC = RD.durationSeconds % 60;
+
+    function fmtDuration(sec) {
+        const m = Math.floor(sec / 60);
+        const s = sec % 60;
+        return m > 0 ? `${m}m ${s}s` : `${s}s`;
+    }
+
+    function fmtDurationMs(ms) {
+        if (ms === 0) return '0.0s';
+        return (ms / 1000).toFixed(0) + 's';
+    }
+
+    const PIPELINE_PASSED = RD.failed === 0;
+</script>
+
+<script>
+    (function() {
+        var saved = localStorage.getItem('report-theme');
+        if (saved === 'light') {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else if (saved === 'dark') {
+            document.documentElement.removeAttribute('data-theme');
+        }
+    })();
+</script>
+
+<!-- Sidebar -->
+<aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">
+    <div class="sidebar-logo">
+        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+        <div>
+            <div style="font-weight:700; font-size:16px;" id="sidebarProjectName"></div>
+            <div style="font-size:11px; color:var(--text-muted);">Automation Hub</div>
+        </div>
+    </div>
+
+    <nav style="flex:1; padding:8px 0; overflow-y:auto;">
+        <div class="nav-section-title">Overview</div>
+        <div class="nav-item active" data-page="dashboard" tabindex="0" role="button">
+            <i class="fas fa-chart-pie"></i> Dashboard
+        </div>
+
+        <div class="nav-item"
+             tabindex="0"
+             role="button"
+             onclick="window.location.href='failures.html'">
+            <i class="fas fa-bug"></i> Failures
+        </div>
+
+<!--        <div class="nav-item" data-page="failures" tabindex="0" role="button">-->
+<!--            <i class="fas fa-bug"></i> Failures-->
+<!--        </div>-->
+        <div class="nav-item" data-page="coverage" tabindex="0" role="button">
+            <i class="fas fa-shield-halved"></i> Coverage
+        </div>
+
+        <div class="nav-section-title">Settings</div>
+        <div class="nav-item" data-page="config" tabindex="0" role="button">
+            <i class="fas fa-cog"></i> Configuration
+        </div>
+        <div class="nav-item" data-page="integrations" tabindex="0" role="button">
+            <i class="fas fa-plug"></i> Integrations
+        </div>
+    </nav>
+
+    <div style="padding:16px 20px; border-top:1px solid var(--border);">
+        <div style="display:flex; align-items:center; gap:10px;">
+            <div id="userAvatar"
+                 style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#ff6b6b,#ffa36b);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;"></div>
+            <div>
+                <div id="userName" style="font-size:13px;font-weight:600;"></div>
+                <div id="userRole" style="font-size:11px;color:var(--text-muted);"></div>
+            </div>
+        </div>
+    </div>
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="main-content" id="mainContent">
+    <header class="topbar">
+        <div style="display:flex;align-items:center;gap:16px;">
+            <button class="mobile-toggle" id="mobileToggle"
+                    style="display:flex;background:none;border:1px solid var(--border);color:var(--text-secondary);width:36px;height:36px;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;"
+                    aria-label="Toggle sidebar">
+                <i class="fas fa-bars" id="toggleIcon"></i>
+            </button>
+            <div>
+                <h1 style="font-size:18px;font-weight:700;">Automation Report</h1>
+                <p style="font-size:12px;color:var(--logo-text);margin-top:2px;" id="topbarMeta"></p>
+            </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:12px;">
+            <div id="pipelineBadge"
+                 style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;padding-top: 9px;padding-bottom: 9px;">
+                <div class="pulse-dot" id="pipelineDot"></div>
+                <span id="pipelineLabel" style="font-size:12px;font-weight:600;"></span>
+            </div>
+
+            <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light theme" title="Toggle theme">
+                <i class="fas fa-moon icon-moon"></i>
+                <i class="fas fa-sun icon-sun"></i>
+            </button>
+
+            <button id="exportBtn"
+                    style="padding:8px 16px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:inherit;"
+                    aria-label="Export report">
+                <i class="fas fa-download" style="font-size:12px;"></i> Export
+            </button>
+            <button id="refreshBtn"
+                    style="padding:8px 12px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all 0.2s;"
+                    aria-label="Refresh data">
+                <i class="fas fa-sync-alt" style="font-size:13px;"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="content-area" style="padding:28px 32px;">
+
+        <div class="no-data-banner" id="noDataBanner" style="display:none;">
+            <i class="fas fa-exclamation-triangle"></i>
+            No test data received. Set <code class="mono" style="color:var(--accent);">window.REPORT_DATA</code> before
+            loading this page to populate the dashboard dynamically.
+        </div>
+
+        <section
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px;"
+                aria-label="Key metrics">
+
+            <div class="kpi-card harmony anim-fade-up anim-delay-6">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon harmony"><i class="fas fa-clipboard-list"></i></div>
+                </div>
+                <div class="kpi-value" style="color:var(--harmony);" data-target="" id="kpiTotalTest">0</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Total Test</div>
+            </div>
+
+            <div class="kpi-card green anim-fade-up anim-delay-1">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon green"><i class="fas fa-check-circle"></i></div>
+                    <span class="kpi-trend up" id="trendPassedBadge"></span>
+                </div>
+                <div class="kpi-value" style="color:var(--accent);" data-target="" id="kpiPassed">0</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Tests Passed</div>
+            </div>
+
+            <div class="kpi-card red anim-fade-up anim-delay-2">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon red"><i class="fas fa-times-circle"></i></div>
+                    <span class="kpi-trend down" id="trendFailedBadge"></span>
+                </div>
+                <div class="kpi-value" style="color:var(--danger);" id="kpiFailed">0</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Tests Failed</div>
+            </div>
+
+            <div class="kpi-card yellow anim-fade-up anim-delay-3">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon yellow"><i class="fas fa-forward"></i></div>
+                    <span class="kpi-trend up" id="trendSkippedBadge"></span>
+                </div>
+                <div class="kpi-value" style="color:var(--warning);" id="kpiSkipped">0</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Skipped</div>
+            </div>
+
+            <div class="kpi-card blue anim-fade-up anim-delay-4">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon blue"><i class="fas fa-clock"></i></div>
+                    <span class="kpi-trend up" id="trendDurationBadge"></span>
+                </div>
+                <div class="kpi-value" style="color:var(--skip);" id="kpiDuration"></div>
+                <div style="font-size:13px;color:var(--text-secondary);">Total Duration</div>
+            </div>
+
+            <div class="kpi-card green anim-fade-up anim-delay-5">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+                    <div class="kpi-icon green"><i class="fas fa-percentage"></i></div>
+                    <span class="kpi-trend up" id="trendRateBadge">
+            <i class="fas fa-arrow-up" style="font-size:9px;"></i> 1.1%
+          </span>
+                </div>
+                <div class="kpi-value" style="color:var(--accent);" id="kpiPassRate">0</div>
+                <div style="font-size:13px;color:var(--text-secondary);">Pass Rate</div>
+            </div>
+        </section>
+
+        <section class="chart-card anim-fade-up anim-delay-5" style="margin-bottom:28px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+                <div>
+                    <div class="chart-card-title">Overall Execution Progress</div>
+                    <div class="chart-card-sub" id="progressSub"></div>
+                </div>
+                <div style="display:flex;gap:16px;font-size:12px;">
+                    <span style="display:flex;align-items:center;gap:5px;"><span
+                            style="width:10px;height:10px;border-radius:3px;background:var(--accent);"></span> Passed</span>
+                    <span style="display:flex;align-items:center;gap:5px;"><span
+                            style="width:10px;height:10px;border-radius:3px;background:var(--danger);"></span> Failed</span>
+                    <span style="display:flex;align-items:center;gap:5px;"><span
+                            style="width:10px;height:10px;border-radius:3px;background:var(--warning);"></span> Skipped</span>
+                </div>
+            </div>
+            <div class="progress-track">
+                <div class="progress-segment" style="width:0%;background:var(--accent);" id="progPassed"></div>
+                <div class="progress-segment" style="width:0%;background:var(--danger);" id="progFailed"></div>
+                <div class="progress-segment" style="width:0%;background:var(--warning);" id="progSkipped"></div>
+            </div>
+        </section>
+
+        <section style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:28px;"
+                 aria-label="Charts row 1">
+            <div class="chart-card anim-fade-up anim-delay-6">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
+                    <div>
+                        <div class="chart-card-title">Test Execution Trend</div>
+                        <div class="chart-card-sub">Last <span id="trendCount"></span> build runs</div>
+                    </div>
+                    <div style="display:flex;gap:6px;" role="tablist" aria-label="Trend filter">
+                        <button class="filter-pill active" data-trend="all" role="tab" aria-selected="true">All</button>
+                        <button class="filter-pill" data-trend="passed" role="tab" aria-selected="false">Passed</button>
+                        <button class="filter-pill" data-trend="failed" role="tab" aria-selected="false">Failed</button>
+                    </div>
+                </div>
+                <div style="position:relative;height:280px;">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart-card anim-fade-up anim-delay-7">
+                <div class="chart-card-title">Result Distribution</div>
+                <div class="chart-card-sub" id="doughnutSub"></div>
+                <div style="position:relative;height:220px;display:flex;align-items:center;justify-content:center;">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);">
+              <span style="width:10px;height:10px;border-radius:3px;background:var(--accent);"></span> Passed
+            </span>
+                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendPassed"></span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);">
+              <span style="width:10px;height:10px;border-radius:3px;background:var(--danger);"></span> Failed
+            </span>
+                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendFailed"></span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--text-secondary);">
+              <span style="width:10px;height:10px;border-radius:3px;background:var(--warning);"></span> Skipped
+            </span>
+                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendSkipped"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section style="margin-bottom:28px;" aria-label="Suite details">
+            <div class="chart-card anim-fade-up anim-delay-7">
+                <div class="chart-card-title">Test Suite Details</div>
+                <div class="chart-card-sub">Individual suite completion status</div>
+                <div style="margin-top:8px;" id="suiteList"></div>
+            </div>
+        </section>
+
+        <section class="chart-card anim-fade-up anim-delay-8" style="margin-bottom:28px;"
+                 aria-label="Recent test results">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:12px;">
+                <div>
+                    <div class="chart-card-title">Recent Test Results</div>
+                    <div class="chart-card-sub" id="tableSub"></div>
+                </div>
+                <div style="display:flex;gap:6px;" role="tablist" aria-label="Table filter">
+                    <button class="filter-pill active" data-table="all" role="tab" aria-selected="true">All</button>
+                    <button class="filter-pill" data-table="passed" role="tab" aria-selected="false">Passed</button>
+                    <button class="filter-pill" data-table="failed" role="tab" aria-selected="false">Failed</button>
+                    <button class="filter-pill" data-table="skipped" role="tab" aria-selected="false">Skipped</button>
+                </div>
+            </div>
+            <div style="overflow-x:auto;">
+                <table class="report-table" id="reportTable">
+                    <thead>
+                    <tr>
+                        <th>Test Name</th>
+                        <th>Module</th>
+                        <th>Status</th>
+                        <th>Duration</th>
+                        <th>Retries</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+
+            <div id="paginationWrapper"
+                 style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; flex-wrap:wrap; gap:12px;">
+                <span id="pageInfo" style="font-size:13px; color:var(--text-muted);"></span>
+                <div id="pageButtons" style="display:flex; gap:6px;"></div>
+            </div>
+        </section>
+
+        <footer style="text-align:center;padding:20px 0;font-size:12px;color:var(--text-muted);border-top:1px solid var(--border);"
+                id="footerText"></footer>
+    </main>
+</div>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+    /* ================================================================
+       SIDEBAR TOGGLE LOGIC
+       ================================================================ */
+    (function () {
+        var sidebar = document.getElementById('sidebar');
+        var overlay = document.getElementById('sidebarOverlay');
+        var mainContent = document.getElementById('mainContent');
+        var toggleBtn = document.getElementById('mobileToggle');
+        var toggleIcon = document.getElementById('toggleIcon');
+        var navItems = document.querySelectorAll('.nav-item');
+        var sidebarOpen = false;
+
+        function openSidebar() {
+            sidebarOpen = true;
+            sidebar.classList.add('open');
+            overlay.classList.add('visible');
+            toggleIcon.classList.remove('fa-bars');
+            toggleIcon.classList.add('fa-times');
+            if (window.innerWidth > 1024) {
+                mainContent.classList.add('shifted');
+            }
+        }
+
+        function closeSidebar() {
+            sidebarOpen = false;
+            sidebar.classList.remove('open');
+            overlay.classList.remove('visible');
+            toggleIcon.classList.remove('fa-times');
+            toggleIcon.classList.add('fa-bars');
+            mainContent.classList.remove('shifted');
+        }
+
+        function toggleSidebar() {
+            if (sidebarOpen) {
+                closeSidebar();
+            } else {
+                openSidebar();
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleSidebar);
+        overlay.addEventListener('click', closeSidebar);
+
+        navItems.forEach(function (item) {
+            item.addEventListener('click', function () {
+                navItems.forEach(function (n) {
+                    n.classList.remove('active');
+                });
+                item.classList.add('active');
+                closeSidebar();
+            });
+            item.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+
+        window.addEventListener('resize', function () {
+            if (sidebarOpen && window.innerWidth <= 1024) {
+                mainContent.classList.remove('shifted');
+            } else if (sidebarOpen && window.innerWidth > 1024) {
+                mainContent.classList.add('shifted');
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && sidebarOpen) {
+                closeSidebar();
+            }
+        });
+    })();
+
+
+    /* ================================================================
+       POPULATE ALL DYNAMIC ELEMENTS FROM RD
+       ================================================================ */
+
+    document.getElementById('sidebarProjectName').textContent = RD.projectName;
+    document.getElementById('userAvatar').textContent = RD.userInitials;
+    document.getElementById('userName').textContent = RD.userName;
+    document.getElementById('userRole').textContent = RD.userRole;
+
+    document.getElementById('topbarMeta').innerHTML =
+        `Build  <span class="mono" style="color:var(--accent);">#${RD.buildNumber}</span> &middot; ${RD.branch} &middot; Run completed ${RD.runAgo}`;
+
+    var pipelineBadge = document.getElementById('pipelineBadge');
+    var pipelineDot = document.getElementById('pipelineDot');
+    var pipelineLabel = document.getElementById('pipelineLabel');
+    if (PIPELINE_PASSED) {
+        pipelineBadge.style.background = 'var(--accent-dim)';
+        pipelineDot.style.background = 'var(--accent)';
+        pipelineLabel.style.color = 'var(--accent)';
+        pipelineLabel.textContent = 'Pipeline Passed';
+    } else {
+        pipelineBadge.style.background = 'var(--danger-dim)';
+        pipelineDot.style.background = 'var(--danger)';
+        pipelineLabel.style.color = 'var(--danger)';
+        pipelineLabel.textContent = 'Pipeline Failed';
+    }
+
+    function setTrendBadge(elId, delta, invertColor) {
+        var el = document.getElementById(elId);
+        if (!el || delta == null) {
+            el.style.display = 'none';
+            return;
+        }
+        var isImprovement = invertColor ? delta < 0 : delta > 0;
+        el.className = 'kpi-trend ' + (isImprovement ? 'up' : 'down');
+        var arrow = delta >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
+        el.innerHTML = '<i class="fas ' + arrow + '" style="font-size:9px;"></i> ' + Math.abs(delta).toFixed(1) + '%';
+    }
+
+    setTrendBadge('trendPassedBadge', RD.trendPassedDelta, false);
+    setTrendBadge('trendFailedBadge', RD.trendFailedDelta, true);
+    setTrendBadge('trendSkippedBadge', RD.trendSkippedDelta, false);
+    setTrendBadge('trendDurationBadge', RD.trendDurationDelta, true);
+
+    var kpiPassed = document.getElementById('kpiPassed');
+    kpiPassed.setAttribute('data-target', RD.passed);
+    var kpiFailed = document.getElementById('kpiFailed');
+    kpiFailed.setAttribute('data-target', RD.failed);
+    var kpiSkipped = document.getElementById('kpiSkipped');
+    kpiSkipped.setAttribute('data-target', RD.skipped);
+    var kpiTotalTest = document.getElementById('kpiTotalTest');
+    kpiTotalTest.setAttribute('data-target', RD_TOTAL);
+
+    var kpiDuration = document.getElementById('kpiDuration');
+    kpiDuration.innerHTML = '<span data-target="' + RD_DUR_MIN + '">0</span>m <span data-target="' + RD_DUR_SEC + '">0</span>s';
+
+    var kpiPassRate = document.getElementById('kpiPassRate');
+    kpiPassRate.setAttribute('data-target', RD_PASS_RATE.toFixed(1) + "%");
+    kpiPassRate.setAttribute('data-decimal', '1');
+
+    document.getElementById('progressSub').textContent = RD_TOTAL + ' of ' + RD_TOTAL + ' tests completed';
+    document.getElementById('progPassed').setAttribute('data-width', RD_PASS_PCT + '%');
+    document.getElementById('progFailed').setAttribute('data-width', RD_FAIL_PCT + '%');
+    document.getElementById('progSkipped').setAttribute('data-width', RD_SKIP_PCT + '%');
+
+    document.getElementById('trendCount').textContent = RD.trendBuilds.length;
+    document.getElementById('doughnutSub').textContent = 'Current build #' + RD.buildNumber;
+    document.getElementById('legendPassed').textContent = RD.passed;
+    document.getElementById('legendFailed').textContent = RD.failed;
+    document.getElementById('legendSkipped').textContent = RD.skipped;
+
+    var tableShowCount = Math.min(RD.recentTests.length, 20);
+    document.getElementById('tableSub').textContent = 'Showing ' + tableShowCount + ' most recent test executions';
+
+    document.getElementById('footerText').innerHTML =
+        'Generated by ' + RD.frameworkName + ' ' + RD.frameworkVersion + ' &middot; Report ID: ' + RD.reportId + ' &middot; Environment: ' + RD.environment;
+
+
+    /* ================================================================
+       CHART.JS
+       ================================================================ */
+
+    function getThemeChartColors() {
+        var cs = getComputedStyle(document.documentElement);
+        return {
+            grid: cs.getPropertyValue('--chart-grid').trim() || 'rgba(42,54,84,0.5)',
+            text: cs.getPropertyValue('--chart-text').trim() || '#8896b3',
+            accent: cs.getPropertyValue('--accent').trim() || '#00e5a0',
+            danger: cs.getPropertyValue('--danger').trim() || '#ff4d6a',
+            warning: cs.getPropertyValue('--warning').trim() || '#ffb545',
+            skip: cs.getPropertyValue('--skip').trim() || '#6b7fff',
+        };
+    }
+
+    var tc = getThemeChartColors();
+    Chart.defaults.color = tc.text;
+    Chart.defaults.font.family = "'Space Grotesk', sans-serif";
+    Chart.defaults.font.size = 11;
+    Chart.defaults.plugins.legend.display = false;
+    Chart.defaults.scale.grid = {color: tc.grid, drawBorder: false};
+
+    var trendCtx = document.getElementById('trendChart').getContext('2d');
+    var trendGradPassed = trendCtx.createLinearGradient(0, 0, 0, 280);
+    trendGradPassed.addColorStop(0, 'rgba(0,229,160,0.25)');
+    trendGradPassed.addColorStop(1, 'rgba(0,229,160,0.0)');
+    var trendGradFailed = trendCtx.createLinearGradient(0, 0, 0, 280);
+    trendGradFailed.addColorStop(0, 'rgba(255,77,106,0.2)');
+    trendGradFailed.addColorStop(1, 'rgba(255,77,106,0.0)');
+
+    var trendChart = new Chart(trendCtx, {
+        type: 'line',
+        data: {
+            labels: RD.trendBuilds,
+            datasets: [
+                {
+                    label: 'Passed',
+                    data: RD.trendPassed,
+                    borderColor: tc.accent,
+                    backgroundColor: trendGradPassed,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: tc.accent,
+                },
+                {
+                    label: 'Failed',
+                    data: RD.trendFailed,
+                    borderColor: tc.danger,
+                    backgroundColor: trendGradFailed,
+                    fill: true,
+                    tension: 0.4,
+                    borderWidth: 2,
+                    pointRadius: 0,
+                    pointHoverRadius: 5,
+                    pointHoverBackgroundColor: tc.danger,
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {mode: 'index', intersect: false},
+            scales: {
+                x: {grid: {display: false}, ticks: {maxRotation: 0, autoSkip: true, maxTicksLimit: 7}},
+                y: {beginAtZero: false, ticks: {padding: 8}}
+            },
+            plugins: {
+                tooltip: {
+                    backgroundColor: 'rgba(26,34,54,0.95)',
+                    titleColor: '#e8ecf4',
+                    bodyColor: '#8896b3',
+                    borderColor: 'rgba(42,54,84,0.8)',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    padding: 12,
+                }
+            }
+        }
+    });
+
+    document.querySelectorAll('[data-trend]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('[data-trend]').forEach(function(b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            var filter = btn.getAttribute('data-trend');
+            trendChart.data.datasets[0].hidden = (filter === 'failed');
+            trendChart.data.datasets[1].hidden = (filter === 'passed');
+            trendChart.update();
+        });
+    });
+
+    /* ── Custom plugin: draw pass rate % in the center of the doughnut ── */
+    var doughnutCenterTextPlugin = {
+        id: 'doughnutCenterText',
+        afterDraw: function(chart) {
+            if (chart.config.type !== 'doughnut') return;
+            var ctx = chart.ctx;
+            var width = chart.width;
+            var height = chart.height;
+            ctx.restore();
+
+            var c = getThemeChartColors();
+
+            /* Main percentage text */
+            ctx.font = '700 28px "Space Grotesk", sans-serif';
+            ctx.fillStyle = c.accent;
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            ctx.fillText(RD_PASS_PCT + '%', width / 2, height / 2 - 8);
+
+            /* Sub label */
+            ctx.font = '400 12px "Space Grotesk", sans-serif';
+            ctx.fillStyle = c.text;
+            ctx.fillText('Pass Rate', width / 2, height / 2 + 16);
+
+            ctx.save();
+        }
+    };
+
+    /* Doughnut Chart — with center text plugin registered */
+    var doughnutCtx = document.getElementById('doughnutChart').getContext('2d');
+    var doughnutChart = new Chart(doughnutCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Passed', 'Failed', 'Skipped'],
+            datasets: [{
+                data: [RD.passed, RD.failed, RD.skipped],
+                backgroundColor: [tc.accent, tc.danger, tc.warning],
+                borderColor: 'transparent',
+                borderWidth: 0,
+                hoverOffset: 6,
+            }]
+        },
+        plugins: [doughnutCenterTextPlugin],
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '72%',
+            plugins: {
+                tooltip: {
+                    backgroundColor: 'rgba(26,34,54,0.95)',
+                    titleColor: '#e8ecf4',
+                    bodyColor: '#8896b3',
+                    borderColor: 'rgba(42,54,84,0.8)',
+                    borderWidth: 1,
+                    cornerRadius: 8,
+                    padding: 12,
+                    callbacks: {
+                        label: function(ctx) {
+                            var total = ctx.dataset.data.reduce(function(a,b){return a+b},0);
+                            var pct = total > 0 ? ((ctx.parsed / total) * 100).toFixed(1) : 0;
+                            return ctx.label + ': ' + ctx.parsed + ' (' + pct + '%)';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+
+    /* ================================================================
+       SUITE LIST
+       ================================================================ */
+    (function() {
+        var container = document.getElementById('suiteList');
+        var html = '';
+        RD.suites.forEach(function(s) {
+            var pPct = s.total > 0 ? ((s.passed / s.total) * 100).toFixed(0) : 0;
+            var fPct = s.total > 0 ? ((s.failed / s.total) * 100).toFixed(0) : 0;
+            var sPct = s.total > 0 ? ((s.skipped / s.total) * 100).toFixed(0) : 0;
+            html += '<div class="suite-item">';
+            html += '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">';
+            html += '    <div style="font-size:14px;font-weight:500;color:var(--text-primary);">' + s.name + '</div>';
+            html += '    <div style="display:flex;gap:12px;font-size:12px;">';
+            html += '      <span style="color:var(--accent);" class="mono">' + s.passed + ' passed</span>';
+            if (s.failed > 0) html += '      <span style="color:var(--danger);" class="mono">' + s.failed + ' failed</span>';
+            if (s.skipped > 0) html += '      <span style="color:var(--warning);" class="mono">' + s.skipped + ' skipped</span>';
+            html += '      <span style="color:var(--text-muted);" class="mono">' + fmtDuration(s.durationSeconds) + '</span>';
+            html += '    </div>';
+            html += '  </div>';
+            html += '  <div class="progress-track">';
+            html += '    <div class="progress-segment" style="width:' + pPct + '%;background:var(--accent);"></div>';
+            html += '    <div class="progress-segment" style="width:' + fPct + '%;background:var(--danger);"></div>';
+            html += '    <div class="progress-segment" style="width:' + sPct + '%;background:var(--warning);"></div>';
+            html += '  </div>';
+            html += '</div>';
+        });
+        container.innerHTML = html;
+    })();
+
+
+    /* ================================================================
+       TABLE RENDERING + PAGINATION
+       ================================================================ */
+    var TABLE_PAGE_SIZE = 5;
+    var tableCurrentFilter = 'all';
+    var tableCurrentPage = 1;
+
+    function getFilteredTests() {
+        if (tableCurrentFilter === 'all') return RD.recentTests;
+        return RD.recentTests.filter(function(t) { return t.status === tableCurrentFilter; });
+    }
+
+    function renderTable() {
+        var filtered = getFilteredTests();
+        var totalPages = Math.max(1, Math.ceil(filtered.length / TABLE_PAGE_SIZE));
+        if (tableCurrentPage > totalPages) tableCurrentPage = totalPages;
+        var start = (tableCurrentPage - 1) * TABLE_PAGE_SIZE;
+        var page = filtered.slice(start, start + TABLE_PAGE_SIZE);
+
+        var tbody = document.getElementById('tableBody');
+        var html = '';
+        page.forEach(function(t) {
+            var statusIcon = t.status === 'passed' ? 'fa-check' : (t.status === 'failed' ? 'fa-xmark' : 'fa-forward');
+            html += '<tr>';
+            html += '<td style="color:var(--text-primary);font-weight:500;">' + t.name + '</td>';
+            html += '<td>' + t.module + '</td>';
+            html += '<td><span class="status-badge ' + t.status + '"><i class="fas ' + statusIcon + '" style="font-size:10px;"></i> ' + t.status.charAt(0).toUpperCase() + t.status.slice(1) + '</span></td>';
+            html += '<td class="mono">' + fmtDurationMs(t.durationMs) + '</td>';
+            html += '<td class="mono">' + t.retries + '</td>';
+            html += '<td class="mono" style="color:var(--text-muted);">' + t.timestamp + '</td>';
+            html += '</tr>';
+        });
+        tbody.innerHTML = html;
+
+        document.getElementById('pageInfo').textContent =
+            'Showing ' + (filtered.length === 0 ? 0 : start + 1) + '–' + Math.min(start + TABLE_PAGE_SIZE, filtered.length) + ' of ' + filtered.length;
+
+        var btnWrap = document.getElementById('pageButtons');
+        var btnHtml = '';
+        btnHtml += '<button onclick="tableGoPage(' + (tableCurrentPage - 1) + ')" ' +
+            'style="padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;font-size:12px;font-family:inherit;"' +
+            (tableCurrentPage <= 1 ? ' disabled style="opacity:0.4;cursor:default;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);font-size:12px;font-family:inherit;"' : '') +
+            '><i class="fas fa-chevron-left"></i></button>';
+
+        for (var i = 1; i <= totalPages; i++) {
+            if (i === tableCurrentPage) {
+                btnHtml += '<button style="padding:6px 12px;border-radius:6px;border:1px solid var(--accent);background:var(--accent-dim);color:var(--accent);cursor:default;font-size:12px;font-weight:600;font-family:inherit;">' + i + '</button>';
+            } else {
+                btnHtml += '<button onclick="tableGoPage(' + i + ')" style="padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;font-size:12px;font-family:inherit;">' + i + '</button>';
+            }
+        }
+
+        btnHtml += '<button onclick="tableGoPage(' + (tableCurrentPage + 1) + ')" ' +
+            'style="padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);cursor:pointer;font-size:12px;font-family:inherit;"' +
+            (tableCurrentPage >= totalPages ? ' disabled style="opacity:0.4;cursor:default;padding:6px 10px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-secondary);font-size:12px;font-family:inherit;"' : '') +
+            '><i class="fas fa-chevron-right"></i></button>';
+
+        btnWrap.innerHTML = btnHtml;
+    }
+
+    window.tableGoPage = function(p) {
+        var filtered = getFilteredTests();
+        var totalPages = Math.max(1, Math.ceil(filtered.length / TABLE_PAGE_SIZE));
+        if (p < 1 || p > totalPages) return;
+        tableCurrentPage = p;
+        renderTable();
+    };
+
+    document.querySelectorAll('[data-table]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('[data-table]').forEach(function(b) {
+                b.classList.remove('active');
+                b.setAttribute('aria-selected', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+            tableCurrentFilter = btn.getAttribute('data-table');
+            tableCurrentPage = 1;
+            renderTable();
+        });
+    });
+
+    renderTable();
+
+
+    /* ================================================================
+       NUMBER COUNTER ANIMATION
+       ================================================================ */
+    function animateCounters() {
+        document.querySelectorAll('[data-target]').forEach(function(el) {
+            var raw = el.getAttribute('data-target');
+            var isDecimal = raw.indexOf('.') !== -1;
+            var isPercent = raw.indexOf('%') !== -1;
+            var numStr = raw.replace('%', '');
+            var target = parseFloat(numStr);
+            if (isNaN(target)) return;
+            var duration = 1200;
+            var start = performance.now();
+
+            function step(now) {
+                var elapsed = now - start;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = 1 - Math.pow(1 - progress, 3);
+                var current = target * eased;
+                if (isDecimal) {
+                    el.textContent = current.toFixed(1) + (isPercent ? '%' : '');
+                } else {
+                    el.textContent = Math.round(current) + (isPercent ? '%' : '');
+                }
+                if (progress < 1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+        });
+    }
+
+    /* ================================================================
+       PROGRESS BAR ANIMATION
+       ================================================================ */
+    function animateProgressBars() {
+        document.querySelectorAll('[data-width]').forEach(function(el) {
+            setTimeout(function() {
+                el.style.width = el.getAttribute('data-width');
+            }, 200);
+        });
+    }
+
+    /* ================================================================
+       TOAST HELPER
+       ================================================================ */
+    function showToast(message, icon, iconColor) {
+        var container = document.getElementById('toastContainer');
+        var toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = '<i class="fas ' + (icon || 'fa-info-circle') + '" style="color:' + (iconColor || 'var(--accent)') + ';font-size:16px;"></i> ' + message;
+        container.appendChild(toast);
+        setTimeout(function() {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateY(-10px)';
+            toast.style.transition = 'all 0.3s ease';
+            setTimeout(function() { toast.remove(); }, 300);
+        }, 3000);
+    }
+
+    /* ================================================================
+       EXPORT PDF
+       ================================================================ */
+    document.getElementById('exportBtn').addEventListener('click', function() {
+        showToast('Generating PDF report...', 'fa-file-pdf', 'var(--skip)');
+        var element = document.getElementById('mainContent');
+        document.body.classList.add('pdf-export-mode');
+        var opt = {
+            margin: [10, 10, 10, 10],
+            filename: 'Automation-Report-' + RD.buildNumber + '.pdf',
+            image: {type: 'jpeg', quality: 0.95},
+            html2canvas: {scale: 2, useCORS: true, logging: false},
+            jsPDF: {unit: 'mm', format: 'a3', orientation: 'landscape'}
+        };
+        html2pdf().set(opt).from(element).save().then(function() {
+            document.body.classList.remove('pdf-export-mode');
+            showToast('PDF exported successfully!', 'fa-check-circle', 'var(--accent)');
+        }).catch(function() {
+            document.body.classList.remove('pdf-export-mode');
+            showToast('PDF export failed.', 'fa-exclamation-circle', 'var(--danger)');
+        });
+    });
+
+    /* ================================================================
+       REFRESH BUTTON
+       ================================================================ */
+    document.getElementById('refreshBtn').addEventListener('click', function() {
+        var icon = this.querySelector('i');
+        icon.style.transition = 'transform 0.6s ease';
+        icon.style.transform = 'rotate(360deg)';
+        setTimeout(function() {
+            icon.style.transition = 'none';
+            icon.style.transform = 'rotate(0deg)';
+        }, 650);
+        animateCounters();
+        animateProgressBars();
+        showToast('Dashboard refreshed.', 'fa-sync-alt', 'var(--accent)');
+    });
+
+
+    /* ================================================================
+       INIT ANIMATIONS ON LOAD
+       ================================================================ */
+    window.addEventListener('load', function() {
+        setTimeout(animateCounters, 300);
+        setTimeout(animateProgressBars, 400);
+    });
+
+
+    /* ═══════════════════════════════════════════════════════════════
+       DARK / LIGHT THEME SWITCHING LOGIC
+       ═══════════════════════════════════════════════════════════════ */
+    (function() {
+        var toggleBtn = document.getElementById('themeToggleBtn');
+
+        function getCurrentTheme() {
+            return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+        }
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+            }
+            localStorage.setItem('report-theme', theme);
+            updateChartsForTheme();
+        }
+
+        function updateChartsForTheme() {
+            var c = getThemeChartColors();
+
+            Chart.defaults.color = c.text;
+            Chart.defaults.scale.grid = {color: c.grid, drawBorder: false};
+
+            var ctx1 = document.getElementById('trendChart').getContext('2d');
+            var gp = ctx1.createLinearGradient(0, 0, 0, 280);
+            gp.addColorStop(0, 'rgba(0,229,160,0.25)');
+            gp.addColorStop(1, 'rgba(0,229,160,0.0)');
+            var gf = ctx1.createLinearGradient(0, 0, 0, 280);
+            gf.addColorStop(0, 'rgba(255,77,106,0.2)');
+            gf.addColorStop(1, 'rgba(255,77,106,0.0)');
+
+            trendChart.data.datasets[0].borderColor = c.accent;
+            trendChart.data.datasets[0].backgroundColor = gp;
+            trendChart.data.datasets[0].pointHoverBackgroundColor = c.accent;
+            trendChart.data.datasets[1].borderColor = c.danger;
+            trendChart.data.datasets[1].backgroundColor = gf;
+            trendChart.data.datasets[1].pointHoverBackgroundColor = c.danger;
+            trendChart.options.scales.x.grid.color = 'transparent';
+            trendChart.options.scales.y.grid.color = c.grid;
+            trendChart.options.scales.x.ticks.color = c.text;
+            trendChart.options.scales.y.ticks.color = c.text;
+
+            var tooltipBg = getCurrentTheme() === 'light' ? 'rgba(255,255,255,0.95)' : 'rgba(26,34,54,0.95)';
+            var tooltipTitle = getCurrentTheme() === 'light' ? '#1a1d23' : '#e8ecf4';
+            var tooltipBody = getCurrentTheme() === 'light' ? '#5a6270' : '#8896b3';
+            var tooltipBorder = getCurrentTheme() === 'light' ? 'rgba(0,0,0,0.08)' : 'rgba(42,54,84,0.8)';
+
+            trendChart.options.plugins.tooltip.backgroundColor = tooltipBg;
+            trendChart.options.plugins.tooltip.titleColor = tooltipTitle;
+            trendChart.options.plugins.tooltip.bodyColor = tooltipBody;
+            trendChart.options.plugins.tooltip.borderColor = tooltipBorder;
+
+            trendChart.update('none');
+
+            /* Update doughnut chart colors */
+            doughnutChart.data.datasets[0].backgroundColor = [c.accent, c.danger, c.warning];
+            doughnutChart.options.plugins.tooltip.backgroundColor = tooltipBg;
+            doughnutChart.options.plugins.tooltip.titleColor = tooltipTitle;
+            doughnutChart.options.plugins.tooltip.bodyColor = tooltipBody;
+            doughnutChart.options.plugins.tooltip.borderColor = tooltipBorder;
+            doughnutChart.update('none');
+        }
+
+        toggleBtn.addEventListener('click', function() {
+            var current = getCurrentTheme();
+            var next = current === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+            showToast(
+                'Switched to ' + next.charAt(0).toUpperCase() + next.slice(1) + ' mode',
+                next === 'dark' ? 'fa-moon' : 'fa-sun',
+                'var(--accent)'
+            );
+        });
+
+        toggleBtn.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleBtn.click();
+            }
+        });
+
+        updateChartsForTheme();
+    })();
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>Automation Report Dashboard</title>-->
+<!--    <script src="https://cdn.tailwindcss.com"></script>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>-->
+<!--    <link rel="preconnect" href="https://fonts.googleapis.com">-->
+<!--    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"-->
+<!--          rel="stylesheet">-->
+<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">-->
+
+<!--    <style>-->
+<!--        :root {-->
+<!--            &#45;&#45;bg-primary: #0a0f1a;-->
+<!--            &#45;&#45;bg-secondary: #111827;-->
+<!--            &#45;&#45;bg-card: #1a2236;-->
+<!--            &#45;&#45;bg-card-hover: #1f2a40;-->
+<!--            &#45;&#45;border: #2a3654;-->
+<!--            &#45;&#45;text-primary: #e8ecf4;-->
+<!--            &#45;&#45;text-secondary: #8896b3;-->
+<!--            &#45;&#45;text-muted: #5a6a8a;-->
+<!--            &#45;&#45;accent: #00e5a0;-->
+<!--            &#45;&#45;accent-dim: rgba(0, 229, 160, 0.15);-->
+<!--            &#45;&#45;danger: #ff4d6a;-->
+<!--            &#45;&#45;danger-dim: rgba(255, 77, 106, 0.15);-->
+<!--            &#45;&#45;warning: #ffb545;-->
+<!--            &#45;&#45;warning-dim: rgba(255, 181, 69, 0.15);-->
+<!--            &#45;&#45;skip: #6b7fff;-->
+<!--            &#45;&#45;skip-dim: rgba(107, 127, 255, 0.15);-->
+<!--            &#45;&#45;harmony: #00ccff;-->
+<!--            &#45;&#45;harmony-dim: rgba(0, 102, 153);-->
+<!--        }-->
+
+<!--        * {-->
+<!--            box-sizing: border-box;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--        }-->
+
+<!--        body {-->
+<!--            font-family: 'Space Grotesk', sans-serif;-->
+<!--            background: var(&#45;&#45;bg-primary);-->
+<!--            color: var(&#45;&#45;text-primary);-->
+<!--            overflow-x: hidden;-->
+<!--        }-->
+
+<!--        .mono {-->
+<!--            font-family: 'JetBrains Mono', monospace;-->
+<!--        }-->
+
+<!--        .bg-mesh {-->
+<!--            position: fixed;-->
+<!--            inset: 0;-->
+<!--            z-index: 0;-->
+<!--            pointer-events: none;-->
+<!--            background: radial-gradient(ellipse 600px 400px at 10% 20%, rgba(0, 229, 160, 0.06) 0%, transparent 70%),-->
+<!--            radial-gradient(ellipse 500px 500px at 85% 80%, rgba(107, 127, 255, 0.05) 0%, transparent 70%),-->
+<!--            radial-gradient(ellipse 400px 300px at 50% 50%, rgba(255, 77, 106, 0.03) 0%, transparent 70%);-->
+<!--        }-->
+
+<!--        ::-webkit-scrollbar {-->
+<!--            width: 6px;-->
+<!--        }-->
+
+<!--        ::-webkit-scrollbar-track {-->
+<!--            background: var(&#45;&#45;bg-primary);-->
+<!--        }-->
+
+<!--        ::-webkit-scrollbar-thumb {-->
+<!--            background: var(&#45;&#45;border);-->
+<!--            border-radius: 3px;-->
+<!--        }-->
+
+<!--        ::-webkit-scrollbar-thumb:hover {-->
+<!--            background: var(&#45;&#45;text-muted);-->
+<!--        }-->
+
+<!--        /* ── SIDEBAR: closed by default on ALL screens ── */-->
+<!--        .sidebar {-->
+<!--            position: fixed;-->
+<!--            left: 0;-->
+<!--            top: 0;-->
+<!--            bottom: 0;-->
+<!--            width: 260px;-->
+<!--            background: var(&#45;&#45;bg-secondary);-->
+<!--            border-right: 1px solid var(&#45;&#45;border);-->
+<!--            z-index: 50;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            transform: translateX(-100%);-->
+<!--            transition: transform 0.3s ease;-->
+<!--        }-->
+
+<!--        .sidebar.open {-->
+<!--            transform: translateX(0);-->
+<!--        }-->
+
+<!--        /* ── SIDEBAR OVERLAY ── */-->
+<!--        .sidebar-overlay {-->
+<!--            position: fixed;-->
+<!--            inset: 0;-->
+<!--            background: rgba(0, 0, 0, 0.5);-->
+<!--            z-index: 45;-->
+<!--            opacity: 0;-->
+<!--            pointer-events: none;-->
+<!--            transition: opacity 0.3s ease;-->
+<!--        }-->
+
+<!--        .sidebar-overlay.visible {-->
+<!--            opacity: 1;-->
+<!--            pointer-events: auto;-->
+<!--        }-->
+
+<!--        .sidebar-logo {-->
+<!--            padding: 24px 20px;-->
+<!--            border-bottom: 1px solid var(&#45;&#45;border);-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 12px;-->
+<!--        }-->
+
+<!--        .logo-icon {-->
+<!--            width: 38px;-->
+<!--            height: 38px;-->
+<!--            background: linear-gradient(135deg, var(&#45;&#45;accent), #00b87a);-->
+<!--            border-radius: 10px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 18px;-->
+<!--            color: #0a0f1a;-->
+<!--            font-weight: 700;-->
+<!--        }-->
+
+<!--        .nav-item {-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 12px;-->
+<!--            padding: 12px 20px;-->
+<!--            color: var(&#45;&#45;text-secondary);-->
+<!--            cursor: pointer;-->
+<!--            transition: all 0.2s;-->
+<!--            border-left: 3px solid transparent;-->
+<!--            font-size: 14px;-->
+<!--        }-->
+
+<!--        .nav-item:hover {-->
+<!--            color: var(&#45;&#45;text-primary);-->
+<!--            background: rgba(255, 255, 255, 0.03);-->
+<!--        }-->
+
+<!--        .nav-item.active {-->
+<!--            color: var(&#45;&#45;accent);-->
+<!--            background: var(&#45;&#45;accent-dim);-->
+<!--            border-left-color: var(&#45;&#45;accent);-->
+<!--        }-->
+
+<!--        .nav-item i {-->
+<!--            width: 20px;-->
+<!--            text-align: center;-->
+<!--            font-size: 15px;-->
+<!--        }-->
+
+<!--        .nav-section-title {-->
+<!--            padding: 20px 20px 8px;-->
+<!--            font-size: 11px;-->
+<!--            font-weight: 600;-->
+<!--            text-transform: uppercase;-->
+<!--            letter-spacing: 1.5px;-->
+<!--            color: var(&#45;&#45;text-muted);-->
+<!--        }-->
+
+<!--        /* ── MAIN CONTENT: no left margin by default, shifts when sidebar opens ── */-->
+<!--        .main-content {-->
+<!--            margin-left: 0;-->
+<!--            min-height: 100vh;-->
+<!--            position: relative;-->
+<!--            z-index: 1;-->
+<!--            transition: margin-left 0.3s ease;-->
+<!--        }-->
+
+<!--        .main-content.shifted {-->
+<!--            margin-left: 260px;-->
+<!--        }-->
+
+<!--        .topbar {-->
+<!--            position: sticky;-->
+<!--            top: 0;-->
+<!--            z-index: 40;-->
+<!--            background: rgba(10, 15, 26, 0.85);-->
+<!--            backdrop-filter: blur(20px);-->
+<!--            border-bottom: 1px solid var(&#45;&#45;border);-->
+<!--            padding: 16px 32px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: space-between;-->
+<!--        }-->
+
+<!--        .kpi-card {-->
+<!--            background: var(&#45;&#45;bg-card);-->
+<!--            border: 1px solid var(&#45;&#45;border);-->
+<!--            border-radius: 14px;-->
+<!--            padding: 22px;-->
+<!--            position: relative;-->
+<!--            overflow: hidden;-->
+<!--            transition: all 0.3s ease;-->
+<!--        }-->
+
+<!--        .kpi-card:hover {-->
+<!--            background: var(&#45;&#45;bg-card-hover);-->
+<!--            border-color: rgba(255, 255, 255, 0.1);-->
+<!--            transform: translateY(-2px);-->
+<!--        }-->
+
+<!--        .kpi-card::before {-->
+<!--            content: '';-->
+<!--            position: absolute;-->
+<!--            top: 0;-->
+<!--            left: 0;-->
+<!--            right: 0;-->
+<!--            height: 3px;-->
+<!--            border-radius: 14px 14px 0 0;-->
+<!--        }-->
+
+
+<!--        .kpi-card.harmony::before {-->
+<!--            background: linear-gradient(90deg, var(&#45;&#45;harmony), #00ffff);-->
+<!--        }-->
+
+<!--        .kpi-card.green::before {-->
+<!--            background: linear-gradient(90deg, var(&#45;&#45;accent), #00b87a);-->
+<!--        }-->
+
+<!--        .kpi-card.red::before {-->
+<!--            background: linear-gradient(90deg, var(&#45;&#45;danger), #e0365a);-->
+<!--        }-->
+
+<!--        .kpi-card.yellow::before {-->
+<!--            background: linear-gradient(90deg, var(&#45;&#45;warning), #e09800);-->
+<!--        }-->
+
+<!--        .kpi-card.blue::before {-->
+<!--            background: linear-gradient(90deg, var(&#45;&#45;skip), #4f60e0);-->
+<!--        }-->
+
+<!--        .kpi-icon {-->
+<!--            width: 44px;-->
+<!--            height: 44px;-->
+<!--            border-radius: 12px;-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            justify-content: center;-->
+<!--            font-size: 18px;-->
+<!--        }-->
+
+<!--        .kpi-icon.harmony {-->
+<!--            background: var(&#45;&#45;border);-->
+<!--            color: var(&#45;&#45;text-primary);-->
+<!--        }-->
+
+<!--        .kpi-icon.green {-->
+<!--            background: var(&#45;&#45;accent-dim);-->
+<!--            color: var(&#45;&#45;accent);-->
+<!--        }-->
+
+<!--        .kpi-icon.red {-->
+<!--            background: var(&#45;&#45;danger-dim);-->
+<!--            color: var(&#45;&#45;danger);-->
+<!--        }-->
+
+<!--        .kpi-icon.yellow {-->
+<!--            background: var(&#45;&#45;warning-dim);-->
+<!--            color: var(&#45;&#45;warning);-->
+<!--        }-->
+
+<!--        .kpi-icon.blue {-->
+<!--            background: var(&#45;&#45;skip-dim);-->
+<!--            color: var(&#45;&#45;skip);-->
+<!--        }-->
+
+<!--        .kpi-value {-->
+<!--            font-size: 32px;-->
+<!--            font-weight: 700;-->
+<!--            line-height: 1;-->
+<!--            margin: 12px 0 4px;-->
+<!--        }-->
+
+<!--        .kpi-trend {-->
+<!--            font-size: 12px;-->
+<!--            font-weight: 500;-->
+<!--            display: inline-flex;-->
+<!--            align-items: center;-->
+<!--            gap: 4px;-->
+<!--            padding: 2px 8px;-->
+<!--            border-radius: 6px;-->
+<!--        }-->
+
+<!--        .kpi-trend.up {-->
+<!--            background: var(&#45;&#45;accent-dim);-->
+<!--            color: var(&#45;&#45;accent);-->
+<!--        }-->
+
+<!--        .kpi-trend.down {-->
+<!--            background: var(&#45;&#45;danger-dim);-->
+<!--            color: var(&#45;&#45;danger);-->
+<!--        }-->
+
+<!--        .chart-card {-->
+<!--            background: var(&#45;&#45;bg-card);-->
+<!--            border: 1px solid var(&#45;&#45;border);-->
+<!--            border-radius: 14px;-->
+<!--            padding: 24px;-->
+<!--            transition: all 0.3s ease;-->
+<!--        }-->
+
+<!--        .chart-card:hover {-->
+<!--            border-color: rgba(255, 255, 255, 0.08);-->
+<!--        }-->
+
+<!--        .chart-card-title {-->
+<!--            font-size: 15px;-->
+<!--            font-weight: 600;-->
+<!--            margin-bottom: 4px;-->
+<!--        }-->
+
+<!--        .chart-card-sub {-->
+<!--            font-size: 12px;-->
+<!--            color: var(&#45;&#45;text-muted);-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+
+<!--        .filter-pill {-->
+<!--            padding: 6px 16px;-->
+<!--            border-radius: 8px;-->
+<!--            font-size: 13px;-->
+<!--            font-weight: 500;-->
+<!--            cursor: pointer;-->
+<!--            border: 1px solid var(&#45;&#45;border);-->
+<!--            background: transparent;-->
+<!--            color: var(&#45;&#45;text-secondary);-->
+<!--            transition: all 0.2s;-->
+<!--        }-->
+
+<!--        .filter-pill:hover {-->
+<!--            border-color: var(&#45;&#45;text-muted);-->
+<!--            color: var(&#45;&#45;text-primary);-->
+<!--        }-->
+
+<!--        .filter-pill.active {-->
+<!--            background: var(&#45;&#45;accent-dim);-->
+<!--            border-color: var(&#45;&#45;accent);-->
+<!--            color: var(&#45;&#45;accent);-->
+<!--        }-->
+
+<!--        .report-table {-->
+<!--            width: 100%;-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
+
+<!--        .report-table thead th {-->
+<!--            text-align: left;-->
+<!--            padding: 12px 16px;-->
+<!--            font-size: 11px;-->
+<!--            font-weight: 600;-->
+<!--            text-transform: uppercase;-->
+<!--            letter-spacing: 1px;-->
+<!--            color: var(&#45;&#45;text-muted);-->
+<!--            border-bottom: 1px solid var(&#45;&#45;border);-->
+<!--        }-->
+
+<!--        .report-table tbody tr {-->
+<!--            border-bottom: 1px solid rgba(42, 54, 84, 0.5);-->
+<!--            transition: background 0.15s;-->
+<!--        }-->
+
+<!--        .report-table tbody tr:hover {-->
+<!--            background: rgba(255, 255, 255, 0.02);-->
+<!--        }-->
+
+<!--        .report-table tbody td {-->
+<!--            padding: 14px 16px;-->
+<!--            font-size: 13px;-->
+<!--            color: var(&#45;&#45;text-secondary);-->
+<!--        }-->
+
+<!--        .status-badge {-->
+<!--            display: inline-flex;-->
+<!--            align-items: center;-->
+<!--            gap: 5px;-->
+<!--            padding: 4px 10px;-->
+<!--            border-radius: 6px;-->
+<!--            font-size: 12px;-->
+<!--            font-weight: 600;-->
+<!--        }-->
+
+<!--        .status-badge.passed {-->
+<!--            background: var(&#45;&#45;accent-dim);-->
+<!--            color: var(&#45;&#45;accent);-->
+<!--        }-->
+
+<!--        .status-badge.failed {-->
+<!--            background: var(&#45;&#45;danger-dim);-->
+<!--            color: var(&#45;&#45;danger);-->
+<!--        }-->
+
+<!--        .status-badge.skipped {-->
+<!--            background: var(&#45;&#45;skip-dim);-->
+<!--            color: var(&#45;&#45;skip);-->
+<!--        }-->
+
+<!--        .progress-track {-->
+<!--            height: 8px;-->
+<!--            background: rgba(255, 255, 255, 0.06);-->
+<!--            border-radius: 4px;-->
+<!--            overflow: hidden;-->
+<!--            display: flex;-->
+<!--        }-->
+
+<!--        .progress-segment {-->
+<!--            height: 100%;-->
+<!--            transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);-->
+<!--        }-->
+
+<!--        .suite-item {-->
+<!--            padding: 16px 0;-->
+<!--            border-bottom: 1px solid rgba(42, 54, 84, 0.4);-->
+<!--        }-->
+
+<!--        .suite-item:last-child {-->
+<!--            border-bottom: none;-->
+<!--        }-->
+
+<!--        @keyframes fadeUp {-->
+<!--            from {-->
+<!--                opacity: 0;-->
+<!--                transform: translateY(16px);-->
+<!--            }-->
+<!--            to {-->
+<!--                opacity: 1;-->
+<!--                transform: translateY(0);-->
+<!--            }-->
+<!--        }-->
+
+<!--        .anim-fade-up {-->
+<!--            opacity: 0;-->
+<!--            animation: fadeUp 0.6s ease forwards;-->
+<!--        }-->
+
+<!--        .anim-delay-1 {-->
+<!--            animation-delay: 0.05s;-->
+<!--        }-->
+
+<!--        .anim-delay-2 {-->
+<!--            animation-delay: 0.1s;-->
+<!--        }-->
+
+<!--        .anim-delay-3 {-->
+<!--            animation-delay: 0.15s;-->
+<!--        }-->
+
+<!--        .anim-delay-4 {-->
+<!--            animation-delay: 0.2s;-->
+<!--        }-->
+
+<!--        .anim-delay-5 {-->
+<!--            animation-delay: 0.25s;-->
+<!--        }-->
+
+<!--        .anim-delay-6 {-->
+<!--            animation-delay: 0.3s;-->
+<!--        }-->
+
+<!--        .anim-delay-7 {-->
+<!--            animation-delay: 0.35s;-->
+<!--        }-->
+
+<!--        .anim-delay-8 {-->
+<!--            animation-delay: 0.4s;-->
+<!--        }-->
+
+<!--        @keyframes pulse-dot {-->
+<!--            0%, 100% {-->
+<!--                opacity: 1;-->
+<!--            }-->
+<!--            50% {-->
+<!--                opacity: 0.4;-->
+<!--            }-->
+<!--        }-->
+
+<!--        .pulse-dot {-->
+<!--            width: 8px;-->
+<!--            height: 8px;-->
+<!--            border-radius: 50%;-->
+<!--            background: var(&#45;&#45;accent);-->
+<!--            animation: pulse-dot 2s ease-in-out infinite;-->
+<!--        }-->
+
+<!--        .toast-container {-->
+<!--            position: fixed;-->
+<!--            top: 24px;-->
+<!--            right: 24px;-->
+<!--            z-index: 999;-->
+<!--            display: flex;-->
+<!--            flex-direction: column;-->
+<!--            gap: 8px;-->
+<!--        }-->
+
+<!--        .toast {-->
+<!--            background: var(&#45;&#45;bg-card);-->
+<!--            border: 1px solid var(&#45;&#45;border);-->
+<!--            border-radius: 10px;-->
+<!--            padding: 14px 20px;-->
+<!--            font-size: 13px;-->
+<!--            color: var(&#45;&#45;text-primary);-->
+<!--            display: flex;-->
+<!--            align-items: center;-->
+<!--            gap: 10px;-->
+<!--            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);-->
+<!--            animation: fadeUp 0.3s ease;-->
+<!--            max-width: 360px;-->
+<!--        }-->
+
+<!--        /* No-data fallback */-->
+<!--        .no-data-banner {-->
+<!--            text-align: center;-->
+<!--            padding: 48px 24px;-->
+<!--            color: var(&#45;&#45;text-muted);-->
+<!--            font-size: 14px;-->
+<!--            border: 1px dashed var(&#45;&#45;border);-->
+<!--            border-radius: 14px;-->
+<!--            margin-bottom: 28px;-->
+<!--        }-->
+
+<!--        .no-data-banner i {-->
+<!--            font-size: 32px;-->
+<!--            margin-bottom: 12px;-->
+<!--            display: block;-->
+<!--            color: var(&#45;&#45;danger);-->
+<!--        }-->
+
+<!--        @media (max-width: 1024px) {-->
+<!--            .main-content.shifted {-->
+<!--                margin-left: 0;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @media (max-width: 640px) {-->
+<!--            .topbar {-->
+<!--                padding: 12px 16px;-->
+<!--            }-->
+
+<!--            .content-area {-->
+<!--                padding: 16px !important;-->
+<!--            }-->
+<!--        }-->
+
+<!--        @media (prefers-reduced-motion: reduce) {-->
+<!--            *, *::before, *::after {-->
+<!--                animation-duration: 0.01ms !important;-->
+<!--                transition-duration: 0.01ms !important;-->
+<!--            }-->
+<!--        }-->
+
+<!--        .pdf-export-mode {-->
+<!--            overflow: visible !important;-->
+<!--            height: auto !important;-->
+<!--            min-height: auto !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode .main-content {-->
+<!--            overflow: visible !important;-->
+<!--            height: auto !important;-->
+<!--            min-height: 100vh !important;-->
+<!--            max-height: none !important;-->
+<!--            position: relative !important;-->
+<!--            transform: none !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode header,-->
+<!--        .pdf-export-mode .header,-->
+<!--        .pdf-export-mode .top-bar {-->
+<!--            position: relative !important;-->
+<!--            top: auto !important;-->
+<!--            left: auto !important;-->
+<!--            z-index: 1 !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode footer,-->
+<!--        .pdf-export-mode .footer {-->
+<!--            position: relative !important;-->
+<!--            bottom: auto !important;-->
+<!--            z-index: 1 !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode .sidebar,-->
+<!--        .pdf-export-mode nav {-->
+<!--            display: none !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode .sidebar-overlay {-->
+<!--            display: none !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode * {-->
+<!--            -webkit-transform: none !important;-->
+<!--            transform: none !important;-->
+<!--            animation: none !important;-->
+<!--            transition: none !important;-->
+<!--        }-->
+
+<!--        .pdf-export-mode .main-content > * {-->
+<!--            flex: none !important;-->
+<!--            min-height: auto !important;-->
+<!--        }-->
+
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+
+<!--<div class="bg-mesh"></div>-->
+
+<!--<div class="bg-mesh"></div>-->
+
+<!--&lt;!&ndash; ============================================================-->
+<!--     DATA INJECTION POINT-->
+<!--     ============================================================-->
+<!--     Your test framework MUST set window.REPORT_DATA before this-->
+<!--     page loads (or inline in a <script> above this one).-->
+<!--     If window.REPORT_DATA is undefined, defaults are used.-->
+<!--     ============================================================ &ndash;&gt;-->
+
+<!--<script>-->
+<!--    /**-->
+<!--     * ──────────────────────────────────────────────────────────────-->
+<!--     *  DEFAULT DATA — used when no external REPORT_DATA is provided.-->
+<!--     *  In production, your test runner overwrites window.REPORT_DATA-->
+<!--     *  BEFORE this script runs.-->
+<!--     * ──────────────────────────────────────────────────────────────-->
+<!--     */-->
+
+<!--    const DEFAULT_REPORT_DATA = {-->
+
+<!--        /* ── Build metadata ── */-->
+<!--        buildNumber: 2847,-->
+<!--        branch: 'Main Branch',-->
+<!--        runAgo: '12 min ago',-->
+<!--        environment: 'Staging',-->
+<!--        reportId: 'RPT-2024-2847-A3F8',-->
+<!--        frameworkVersion: 'v3.2.1',-->
+<!--        frameworkName: 'TestPulse Automation Framework',-->
+<!--        projectName: 'Test Swag Labs',-->
+<!--        userName: 'Sumit K',-->
+<!--        userRole: 'QA Lead',-->
+<!--        userInitials: 'SK',-->
+
+<!--        /* ── Current build totals ── */-->
+<!--        passed: 847,-->
+<!--        failed: 23,-->
+<!--        skipped: 12,-->
+
+<!--        /* ── Trend history (last N builds) ── */-->
+<!--        trendBuilds: ['#2834', '#2835', '#2836', '#2837', '#2838', '#2839', '#2840', '#2841', '#2842', '#2843', '#2844', '#2845', '#2846', '#2847'],-->
+<!--        trendPassed: [810, 815, 820, 812, 825, 830, 828, 835, 840, 838, 842, 845, 843, 847],-->
+<!--        trendFailed: [35, 32, 30, 38, 28, 25, 27, 22, 20, 24, 21, 19, 22, 23],-->
+<!--        trendSkipped: [15, 14, 14, 14, 15, 15, 15, 15, 14, 14, 15, 14, 13, 12],-->
+
+<!--        /* ── KPI trends (% change from previous build) ── */-->
+<!--        trendPassedDelta: 3.2, // positive = improvement-->
+<!--        trendFailedDelta: -1.8, // negative = improvement (fewer failures)-->
+<!--        trendSkippedDelta: 0.5,-->
+<!--        trendDurationDelta: -8.4,-->
+
+<!--        /* ── Duration (seconds) ── */-->
+<!--        durationSeconds: 272,-->
+
+<!--        /* ── Test suites ── */-->
+<!--        suites: [-->
+<!--            {name: 'Smoke Tests', total: 45, passed: 44, failed: 1, skipped: 0, durationSeconds: 42},-->
+<!--            {name: 'Regression - Auth', total: 122, passed: 120, failed: 2, skipped: 0, durationSeconds: 68},-->
+<!--            {name: 'Regression - Payments', total: 103, passed: 98, failed: 5, skipped: 0, durationSeconds: 62},-->
+<!--            {name: 'Regression - Profile', total: 106, passed: 105, failed: 1, skipped: 0, durationSeconds: 28},-->
+<!--            {name: 'Regression - Search', total: 92, passed: 88, failed: 4, skipped: 0, durationSeconds: 45},-->
+<!--            {name: 'API Integration', total: 112, passed: 110, failed: 2, skipped: 0, durationSeconds: 51},-->
+<!--            {name: 'E2E Critical Path', total: 134, passed: 130, failed: 3, skipped: 1, durationSeconds: 94},-->
+<!--            {name: 'Performance Baseline', total: 68, passed: 52, failed: 5, skipped: 11, durationSeconds: 138},-->
+<!--        ],-->
+
+<!--        /* ── Recent test results (most recent first) ── */-->
+<!--        recentTests: [-->
+<!--            {-->
+<!--                name: 'Login with valid credentials',-->
+<!--                module: 'Authentication',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 1200,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:32:08'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Process credit card payment',-->
+<!--                module: 'Payments',-->
+<!--                status: 'failed',-->
+<!--                durationMs: 3800,-->
+<!--                retries: 2,-->
+<!--                timestamp: '14:31:55'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Update user avatar',-->
+<!--                module: 'User Profile',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 900,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:31:42'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Search with filters applied',-->
+<!--                module: 'Search',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 2100,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:31:30'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Push notification delivery',-->
+<!--                module: 'Notifications',-->
+<!--                status: 'failed',-->
+<!--                durationMs: 5200,-->
+<!--                retries: 3,-->
+<!--                timestamp: '14:31:18'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'API rate limiting check',-->
+<!--                module: 'API Gateway',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 1500,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:31:05'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Dashboard widget rendering',-->
+<!--                module: 'Dashboard',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 700,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:30:52'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Theme toggle persistence',-->
+<!--                module: 'Settings',-->
+<!--                status: 'skipped',-->
+<!--                durationMs: 0,-->
+<!--                retries: 0,-->
+<!--                timestamp: '14:30:40'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'OAuth2 token refresh flow',-->
+<!--                module: 'Authentication',-->
+<!--                status: 'passed',-->
+<!--                durationMs: 2300,-->
+<!--                retries: 1,-->
+<!--                timestamp: '14:30:28'-->
+<!--            },-->
+<!--            {-->
+<!--                name: 'Refund processing endpoint',-->
+<!--                module: 'Payments',-->
+<!--                status: 'failed',-->
+<!--                durationMs: 4100,-->
+<!--                retries: 2,-->
+<!--                timestamp: '14:30:15'-->
+<!--            },-->
+<!--        ],-->
+<!--    };-->
+
+<!--    /* Merge: window.REPORT_DATA overrides defaults (deep merge, one level) */-->
+<!--    window.REPORT_DATA = window.REPORT_DATA || {};-->
+<!--    const RD = Object.assign({}, DEFAULT_REPORT_DATA, window.REPORT_DATA || {});-->
+
+<!--    // ── DEBUG: remove after verifying ──-->
+<!--    console.log("%c[REPORT DATA SOURCE]", "color:#00e5a0;font-weight:bold;font-size:14px;",-->
+<!--        window.REPORT_DATA ? "✅ Using INJECTED data from test framework" : "❌ Using DEFAULT fallback data");-->
+<!--    //if (window.REPORT_DATA) console.table(window.REPORT_DATA);-->
+<!--    // ── END DEBUG ──-->
+<!--    // window.REPORT_DATA ? "Using INJECTED data from test framework" : "Using DEFAULT fallback data");-->
+
+<!--    /* ── Computed values derived from RD ── */-->
+<!--    const RD_TOTAL = RD.passed + RD.failed + RD.skipped;-->
+<!--    const RD_PASS_RATE = RD_TOTAL > 0 ? ((RD.passed / RD_TOTAL) * 100) : 0;-->
+<!--    const RD_PASS_PCT = RD_TOTAL > 0 ? ((RD.passed / RD_TOTAL) * 100).toFixed(0) : '0.00';-->
+<!--    const RD_FAIL_PCT = RD_TOTAL > 0 ? ((RD.failed / RD_TOTAL) * 100).toFixed(0) : '0.00';-->
+<!--    const RD_SKIP_PCT = RD_TOTAL > 0 ? ((RD.skipped / RD_TOTAL) * 100).toFixed(0) : '0.00';-->
+<!--    const RD_DUR_MIN = Math.floor(RD.durationSeconds / 60);-->
+<!--    const RD_DUR_SEC = RD.durationSeconds % 60;-->
+
+<!--    /* Format duration from seconds to "Xm Ys" */-->
+<!--    function fmtDuration(sec) {-->
+<!--        const m = Math.floor(sec / 60);-->
+<!--        const s = sec % 60;-->
+<!--        return m > 0 ? `${m}m ${s}s` : `${s}s`;-->
+<!--    }-->
+
+<!--    /* Format duration from ms to "X.Xs" */-->
+<!--    function fmtDurationMs(ms) {-->
+<!--        if (ms === 0) return '0.0s';-->
+<!--        return (ms / 1000).toFixed(0) + 's';-->
+<!--    }-->
+
+<!--    /* Pipeline status: passed if 0 failures, else failed */-->
+<!--    const PIPELINE_PASSED = RD.failed === 0;-->
+<!--</script>-->
+
+<!--&lt;!&ndash; Sidebar &ndash;&gt;-->
+<!--<aside class="sidebar" id="sidebar" role="navigation" aria-label="Main navigation">-->
+<!--    <div class="sidebar-logo">-->
+<!--        <div class="logo-icon"><i class="fas fa-bolt"></i></div>-->
+<!--        <div>-->
+<!--            <div style="font-weight:700; font-size:16px;" id="sidebarProjectName"></div>-->
+<!--            <div style="font-size:11px; color:var(&#45;&#45;text-muted);">Automation Hub</div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <nav style="flex:1; padding:8px 0; overflow-y:auto;">-->
+<!--        <div class="nav-section-title">Overview</div>-->
+<!--        <div class="nav-item active" data-page="dashboard" tabindex="0" role="button">-->
+<!--            <i class="fas fa-chart-pie"></i> Dashboard-->
+<!--        </div>-->
+<!--        &lt;!&ndash;        <div class="nav-item" data-page="executions" tabindex="0" role="button">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <i class="fas fa-play-circle"></i> Executions&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="nav-item" data-page="suites" tabindex="0" role="button">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <i class="fas fa-layer-group"></i> Test Suites&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--        &lt;!&ndash;        <div class="nav-section-title">Analysis</div>&ndash;&gt;-->
+<!--        &lt;!&ndash;        <div class="nav-item" data-page="trends" tabindex="0" role="button">&ndash;&gt;-->
+<!--        &lt;!&ndash;            <i class="fas fa-chart-line"></i> Trends&ndash;&gt;-->
+<!--        &lt;!&ndash;        </div>&ndash;&gt;-->
+<!--        <div class="nav-item" data-page="failures" tabindex="0" role="button">-->
+<!--            <i class="fas fa-bug"></i> Failures-->
+<!--        </div>-->
+<!--        <div class="nav-item" data-page="coverage" tabindex="0" role="button">-->
+<!--            <i class="fas fa-shield-halved"></i> Coverage-->
+<!--        </div>-->
+
+<!--        <div class="nav-section-title">Settings</div>-->
+<!--        <div class="nav-item" data-page="config" tabindex="0" role="button">-->
+<!--            <i class="fas fa-cog"></i> Configuration-->
+<!--        </div>-->
+<!--        <div class="nav-item" data-page="integrations" tabindex="0" role="button">-->
+<!--            <i class="fas fa-plug"></i> Integrations-->
+<!--        </div>-->
+<!--    </nav>-->
+
+<!--    <div style="padding:16px 20px; border-top:1px solid var(&#45;&#45;border);">-->
+<!--        <div style="display:flex; align-items:center; gap:10px;">-->
+<!--            <div id="userAvatar"-->
+<!--                 style="width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#ff6b6b,#ffa36b);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;color:#fff;"></div>-->
+<!--            <div>-->
+<!--                <div id="userName" style="font-size:13px;font-weight:600;"></div>-->
+<!--                <div id="userRole" style="font-size:11px;color:var(&#45;&#45;text-muted);"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</aside>-->
+
+<!--&lt;!&ndash; Sidebar Overlay (click to close) &ndash;&gt;-->
+<!--<div class="sidebar-overlay" id="sidebarOverlay"></div>-->
+
+<!--&lt;!&ndash; Main Content &ndash;&gt;-->
+<!--<div class="main-content" id="mainContent">-->
+<!--    &lt;!&ndash; Top Bar &ndash;&gt;-->
+<!--    <header class="topbar">-->
+<!--        <div style="display:flex;align-items:center;gap:16px;">-->
+<!--            <button class="mobile-toggle" id="mobileToggle"-->
+<!--                    style="display:flex;background:none;border:1px solid var(&#45;&#45;border);color:var(&#45;&#45;text-secondary);width:36px;height:36px;border-radius:8px;cursor:pointer;align-items:center;justify-content:center;"-->
+<!--                    aria-label="Toggle sidebar">-->
+<!--                <i class="fas fa-bars" id="toggleIcon"></i>-->
+<!--            </button>-->
+<!--            <div>-->
+<!--                <h1 style="font-size:18px;font-weight:700;">Automation Report</h1>-->
+<!--                <p style="font-size:12px;color:var(&#45;&#45;text-muted);margin-top:2px;" id="topbarMeta"></p>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div style="display:flex;align-items:center;gap:12px;">-->
+<!--            <div id="pipelineBadge"-->
+<!--                 style="display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:8px;padding-top: 9px;padding-bottom: 9px;">-->
+<!--                <div class="pulse-dot" id="pipelineDot"></div>-->
+<!--                <span id="pipelineLabel" style="font-size:12px;font-weight:600;"></span>-->
+<!--            </div>-->
+<!--            <button id="exportBtn"-->
+<!--                    style="padding:8px 16px;border-radius:8px;background:var(&#45;&#45;bg-card);border:1px solid var(&#45;&#45;border);color:var(&#45;&#45;text-primary);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:inherit;"-->
+<!--                    aria-label="Export report">-->
+<!--                <i class="fas fa-download" style="font-size:12px;"></i> Export-->
+<!--            </button>-->
+<!--            <button id="refreshBtn"-->
+<!--                    style="padding:8px 12px;border-radius:8px;background:var(&#45;&#45;bg-card);border:1px solid var(&#45;&#45;border);color:var(&#45;&#45;text-secondary);cursor:pointer;transition:all 0.2s;"-->
+<!--                    aria-label="Refresh data">-->
+<!--                <i class="fas fa-sync-alt" style="font-size:13px;"></i>-->
+<!--            </button>-->
+<!--        </div>-->
+<!--    </header>-->
+
+<!--    &lt;!&ndash; Content &ndash;&gt;-->
+<!--    <main class="content-area" style="padding:28px 32px;">-->
+
+<!--        &lt;!&ndash; No-data banner (hidden when data exists) &ndash;&gt;-->
+<!--        <div class="no-data-banner" id="noDataBanner" style="display:none;">-->
+<!--            <i class="fas fa-exclamation-triangle"></i>-->
+<!--            No test data received. Set <code class="mono" style="color:var(&#45;&#45;accent);">window.REPORT_DATA</code> before-->
+<!--            loading this page to populate the dashboard dynamically.-->
+<!--        </div>-->
+
+<!--        &lt;!&ndash; KPI Row &ndash;&gt;-->
+<!--        <section-->
+<!--                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:28px;"-->
+<!--                aria-label="Key metrics">-->
+
+<!--            &lt;!&ndash; Total Test &ndash;&gt;-->
+<!--            <div class="kpi-card harmony anim-fade-up anim-delay-6">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon harmony"><i class="fas fa-clipboard-list"></i></div>-->
+<!--                    &lt;!&ndash;                   <span class="kpi-trend up" id="trendTotalTestBadge"></span>&ndash;&gt;-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;harmony);" data-target="" id="kpiTotalTest">0</div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Total Test</div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Passed &ndash;&gt;-->
+<!--            <div class="kpi-card green anim-fade-up anim-delay-1">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon green"><i class="fas fa-check-circle"></i></div>-->
+<!--                    <span class="kpi-trend up" id="trendPassedBadge"></span>-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;accent);" data-target="" id="kpiPassed">0</div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Tests Passed</div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Failed &ndash;&gt;-->
+<!--            <div class="kpi-card red anim-fade-up anim-delay-2">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon red"><i class="fas fa-times-circle"></i></div>-->
+<!--                    <span class="kpi-trend down" id="trendFailedBadge"></span>-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;danger);" id="kpiFailed">0</div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Tests Failed</div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Skipped &ndash;&gt;-->
+<!--            <div class="kpi-card yellow anim-fade-up anim-delay-3">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon yellow"><i class="fas fa-forward"></i></div>-->
+<!--                    <span class="kpi-trend up" id="trendSkippedBadge"></span>-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;warning);" id="kpiSkipped">0</div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Skipped</div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Duration &ndash;&gt;-->
+<!--            <div class="kpi-card blue anim-fade-up anim-delay-4">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon blue"><i class="fas fa-clock"></i></div>-->
+<!--                    <span class="kpi-trend up" id="trendDurationBadge"></span>-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;skip);" id="kpiDuration"></div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Total Duration</div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Pass Rate &ndash;&gt;-->
+<!--            <div class="kpi-card green anim-fade-up anim-delay-5">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;">-->
+<!--                    <div class="kpi-icon green"><i class="fas fa-percentage"></i></div>-->
+<!--                    <span class="kpi-trend up" id="trendRateBadge">-->
+<!--            <i class="fas fa-arrow-up" style="font-size:9px;"></i> 1.1%-->
+<!--          </span>-->
+<!--                </div>-->
+<!--                <div class="kpi-value" style="color:var(&#45;&#45;accent);" id="kpiPassRate">0</div>-->
+<!--                <div style="font-size:13px;color:var(&#45;&#45;text-secondary);">Pass Rate</div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        &lt;!&ndash; Overall Progress Bar &ndash;&gt;-->
+<!--        <section class="chart-card anim-fade-up anim-delay-5" style="margin-bottom:28px;">-->
+<!--            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">-->
+<!--                <div>-->
+<!--                    <div class="chart-card-title">Overall Execution Progress</div>-->
+<!--                    <div class="chart-card-sub" id="progressSub"></div>-->
+<!--                </div>-->
+<!--                <div style="display:flex;gap:16px;font-size:12px;">-->
+<!--                    <span style="display:flex;align-items:center;gap:5px;"><span-->
+<!--                            style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;accent);"></span> Passed</span>-->
+<!--                    <span style="display:flex;align-items:center;gap:5px;"><span-->
+<!--                            style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;danger);"></span> Failed</span>-->
+<!--                    <span style="display:flex;align-items:center;gap:5px;"><span-->
+<!--                            style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;warning);"></span> Skipped</span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="progress-track">-->
+<!--                <div class="progress-segment" style="width:0%;background:var(&#45;&#45;accent);" id="progPassed"></div>-->
+<!--                <div class="progress-segment" style="width:0%;background:var(&#45;&#45;danger);" id="progFailed"></div>-->
+<!--                <div class="progress-segment" style="width:0%;background:var(&#45;&#45;warning);" id="progSkipped"></div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        &lt;!&ndash; Charts Row 1 &ndash;&gt;-->
+<!--        <section style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:28px;"-->
+<!--                 aria-label="Charts row 1">-->
+<!--            &lt;!&ndash; Trend Line Chart &ndash;&gt;-->
+<!--            <div class="chart-card anim-fade-up anim-delay-6">-->
+<!--                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">-->
+<!--                    <div>-->
+<!--                        <div class="chart-card-title">Test Execution Trend</div>-->
+<!--                        <div class="chart-card-sub">Last <span id="trendCount"></span> build runs</div>-->
+<!--                    </div>-->
+<!--                    <div style="display:flex;gap:6px;" role="tablist" aria-label="Trend filter">-->
+<!--                        <button class="filter-pill active" data-trend="all" role="tab" aria-selected="true">All</button>-->
+<!--                        <button class="filter-pill" data-trend="passed" role="tab" aria-selected="false">Passed</button>-->
+<!--                        <button class="filter-pill" data-trend="failed" role="tab" aria-selected="false">Failed</button>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <div style="position:relative;height:280px;">-->
+<!--                    <canvas id="trendChart"></canvas>-->
+<!--                </div>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; Doughnut Chart &ndash;&gt;-->
+<!--            <div class="chart-card anim-fade-up anim-delay-7">-->
+<!--                <div class="chart-card-title">Result Distribution</div>-->
+<!--                <div class="chart-card-sub" id="doughnutSub"></div>-->
+<!--                <div style="position:relative;height:220px;display:flex;align-items:center;justify-content:center;">-->
+<!--                    <canvas id="doughnutChart"></canvas>-->
+<!--                </div>-->
+<!--                <div style="display:flex;flex-direction:column;gap:8px;margin-top:16px;">-->
+<!--                    <div style="display:flex;justify-content:space-between;align-items:center;">-->
+<!--            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(&#45;&#45;text-secondary);">-->
+<!--              <span style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;accent);"></span> Passed-->
+<!--            </span>-->
+<!--                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendPassed"></span>-->
+<!--                    </div>-->
+<!--                    <div style="display:flex;justify-content:space-between;align-items:center;">-->
+<!--            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(&#45;&#45;text-secondary);">-->
+<!--              <span style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;danger);"></span> Failed-->
+<!--            </span>-->
+<!--                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendFailed"></span>-->
+<!--                    </div>-->
+<!--                    <div style="display:flex;justify-content:space-between;align-items:center;">-->
+<!--            <span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(&#45;&#45;text-secondary);">-->
+<!--              <span style="width:10px;height:10px;border-radius:3px;background:var(&#45;&#45;warning);"></span> Skipped-->
+<!--            </span>-->
+<!--                        <span class="mono" style="font-size:13px;font-weight:600;" id="legendSkipped"></span>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        &lt;!&ndash; Suite Completion &ndash;&gt;-->
+<!--        <section style="margin-bottom:28px;" aria-label="Suite details">-->
+<!--            <div class="chart-card anim-fade-up anim-delay-7">-->
+<!--                <div class="chart-card-title">Test Suite Details</div>-->
+<!--                <div class="chart-card-sub">Individual suite completion status</div>-->
+<!--                <div style="margin-top:8px;" id="suiteList"></div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        &lt;!&ndash; Recent Executions Table &ndash;&gt;-->
+<!--        <section class="chart-card anim-fade-up anim-delay-8" style="margin-bottom:28px;"-->
+<!--                 aria-label="Recent test results">-->
+<!--            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;flex-wrap:wrap;gap:12px;">-->
+<!--                <div>-->
+<!--                    <div class="chart-card-title">Recent Test Results</div>-->
+<!--                    <div class="chart-card-sub" id="tableSub"></div>-->
+<!--                </div>-->
+<!--                <div style="display:flex;gap:6px;" role="tablist" aria-label="Table filter">-->
+<!--                    <button class="filter-pill active" data-table="all" role="tab" aria-selected="true">All</button>-->
+<!--                    <button class="filter-pill" data-table="passed" role="tab" aria-selected="false">Passed</button>-->
+<!--                    <button class="filter-pill" data-table="failed" role="tab" aria-selected="false">Failed</button>-->
+<!--                    <button class="filter-pill" data-table="skipped" role="tab" aria-selected="false">Skipped</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div style="overflow-x:auto;">-->
+<!--                <table class="report-table" id="reportTable">-->
+<!--                    <thead>-->
+<!--                    <tr>-->
+<!--                        <th>Test Name</th>-->
+<!--                        <th>Module</th>-->
+<!--                        <th>Status</th>-->
+<!--                        <th>Duration</th>-->
+<!--                        <th>Retries</th>-->
+<!--                        <th>Timestamp</th>-->
+<!--                    </tr>-->
+<!--                    </thead>-->
+<!--                    <tbody id="tableBody"></tbody>-->
+<!--                </table>-->
+<!--            </div>-->
+
+<!--            &lt;!&ndash; PAGINATION BLOCK HERE &ndash;&gt;-->
+<!--            <div id="paginationWrapper"-->
+<!--                 style="display:flex; align-items:center; justify-content:space-between; margin-top:16px; flex-wrap:wrap; gap:12px;">-->
+<!--                <span id="pageInfo" style="font-size:13px; color:var(&#45;&#45;text-muted);"></span>-->
+<!--                <div id="pageButtons" style="display:flex; gap:6px;"></div>-->
+<!--            </div>-->
+<!--        </section>-->
+
+<!--        &lt;!&ndash; Footer &ndash;&gt;-->
+<!--        <footer style="text-align:center;padding:20px 0;font-size:12px;color:var(&#45;&#45;text-muted);border-top:1px solid var(&#45;&#45;border);"-->
+<!--                id="footerText"></footer>-->
+<!--    </main>-->
+<!--</div>-->
+
+<!--&lt;!&ndash; Toast Container &ndash;&gt;-->
+<!--<div class="toast-container" id="toastContainer"></div>-->
+
+<!--<script>-->
+<!--    /* ================================================================-->
+<!--       SIDEBAR TOGGLE LOGIC-->
+<!--       ================================================================ */-->
+<!--    (function () {-->
+<!--        var sidebar = document.getElementById('sidebar');-->
+<!--        var overlay = document.getElementById('sidebarOverlay');-->
+<!--        var mainContent = document.getElementById('mainContent');-->
+<!--        var toggleBtn = document.getElementById('mobileToggle');-->
+<!--        var toggleIcon = document.getElementById('toggleIcon');-->
+<!--        var navItems = document.querySelectorAll('.nav-item');-->
+<!--        var sidebarOpen = false;-->
+
+<!--        function openSidebar() {-->
+<!--            sidebarOpen = true;-->
+<!--            sidebar.classList.add('open');-->
+<!--            overlay.classList.add('visible');-->
+<!--            toggleIcon.classList.remove('fa-bars');-->
+<!--            toggleIcon.classList.add('fa-times');-->
+<!--            /* On wider screens, shift content; on mobile, overlay covers */-->
+<!--            if (window.innerWidth > 1024) {-->
+<!--                mainContent.classList.add('shifted');-->
+<!--            }-->
+<!--        }-->
+
+<!--        function closeSidebar() {-->
+<!--            sidebarOpen = false;-->
+<!--            sidebar.classList.remove('open');-->
+<!--            overlay.classList.remove('visible');-->
+<!--            toggleIcon.classList.remove('fa-times');-->
+<!--            toggleIcon.classList.add('fa-bars');-->
+<!--            mainContent.classList.remove('shifted');-->
+<!--        }-->
+
+<!--        function toggleSidebar() {-->
+<!--            if (sidebarOpen) {-->
+<!--                closeSidebar();-->
+<!--            } else {-->
+<!--                openSidebar();-->
+<!--            }-->
+<!--        }-->
+
+<!--        toggleBtn.addEventListener('click', toggleSidebar);-->
+<!--        overlay.addEventListener('click', closeSidebar);-->
+
+<!--        /* Close sidebar when a nav item is clicked */-->
+<!--        navItems.forEach(function (item) {-->
+<!--            item.addEventListener('click', function () {-->
+<!--                navItems.forEach(function (n) {-->
+<!--                    n.classList.remove('active');-->
+<!--                });-->
+<!--                item.classList.add('active');-->
+<!--                closeSidebar();-->
+<!--            });-->
+<!--            item.addEventListener('keydown', function (e) {-->
+<!--                if (e.key === 'Enter' || e.key === ' ') {-->
+<!--                    e.preventDefault();-->
+<!--                    item.click();-->
+<!--                }-->
+<!--            });-->
+<!--        });-->
+
+<!--        /* Handle resize: remove shifted on small screens, add on large */-->
+<!--        window.addEventListener('resize', function () {-->
+<!--            if (sidebarOpen && window.innerWidth <= 1024) {-->
+<!--                mainContent.classList.remove('shifted');-->
+<!--            } else if (sidebarOpen && window.innerWidth > 1024) {-->
+<!--                mainContent.classList.add('shifted');-->
+<!--            }-->
+<!--        });-->
+
+<!--        /* Close on Escape key */-->
+<!--        document.addEventListener('keydown', function (e) {-->
+<!--            if (e.key === 'Escape' && sidebarOpen) {-->
+<!--                closeSidebar();-->
+<!--            }-->
+<!--        });-->
+<!--    })();-->
+
+
+<!--    /* ================================================================-->
+<!--       POPULATE ALL DYNAMIC ELEMENTS FROM RD-->
+<!--       ================================================================ */-->
+
+<!--    document.getElementById('sidebarProjectName').textContent = RD.projectName;-->
+<!--    document.getElementById('userAvatar').textContent = RD.userInitials;-->
+<!--    document.getElementById('userName').textContent = RD.userName;-->
+<!--    document.getElementById('userRole').textContent = RD.userRole;-->
+
+<!--    document.getElementById('topbarMeta').innerHTML =-->
+<!--        `Build  <span class="mono" style="color:var(&#45;&#45;accent);">#${RD.buildNumber}</span> &middot; ${RD.branch} &middot; Run completed ${RD.runAgo}`;-->
+
+<!--    var pipelineBadge = document.getElementById('pipelineBadge');-->
+<!--    var pipelineDot = document.getElementById('pipelineDot');-->
+<!--    var pipelineLabel = document.getElementById('pipelineLabel');-->
+<!--    if (PIPELINE_PASSED) {-->
+<!--        pipelineBadge.style.background = 'var(&#45;&#45;accent-dim)';-->
+<!--        pipelineDot.style.background = 'var(&#45;&#45;accent)';-->
+<!--        pipelineLabel.style.color = 'var(&#45;&#45;accent)';-->
+<!--        pipelineLabel.textContent = 'Pipeline Passed';-->
+<!--    } else {-->
+<!--        pipelineBadge.style.background = 'var(&#45;&#45;danger-dim)';-->
+<!--        pipelineDot.style.background = 'var(&#45;&#45;danger)';-->
+<!--        pipelineLabel.style.color = 'var(&#45;&#45;danger)';-->
+<!--        pipelineLabel.textContent = 'Pipeline Failed';-->
+<!--    }-->
+
+<!--    function setTrendBadge(elId, delta, invertColor) {-->
+<!--        var el = document.getElementById(elId);-->
+<!--        if (!el || delta == null) {-->
+<!--            el.style.display = 'none';-->
+<!--            return;-->
+<!--        }-->
+<!--        var isImprovement = invertColor ? delta < 0 : delta > 0;-->
+<!--        el.className = 'kpi-trend ' + (isImprovement ? 'up' : 'down');-->
+<!--        var arrow = delta >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';-->
+<!--        el.innerHTML = '<i class="fas ' + arrow + '" style="font-size:9px;"></i> ' + Math.abs(delta).toFixed(1) + '%';-->
+<!--    }-->
+
+<!--    setTrendBadge('trendPassedBadge', RD.trendPassedDelta, false);-->
+<!--    setTrendBadge('trendFailedBadge', RD.trendFailedDelta, true);-->
+<!--    setTrendBadge('trendSkippedBadge', RD.trendSkippedDelta, false);-->
+<!--    setTrendBadge('trendDurationBadge', RD.trendDurationDelta, true);-->
+
+<!--    var kpiPassed = document.getElementById('kpiPassed');-->
+<!--    kpiPassed.setAttribute('data-target', RD.passed);-->
+<!--    var kpiFailed = document.getElementById('kpiFailed');-->
+<!--    kpiFailed.setAttribute('data-target', RD.failed);-->
+<!--    var kpiSkipped = document.getElementById('kpiSkipped');-->
+<!--    kpiSkipped.setAttribute('data-target', RD.skipped);-->
+<!--    var kpiTotalTest = document.getElementById('kpiTotalTest');-->
+<!--    kpiTotalTest.setAttribute('data-target', RD_TOTAL);-->
+
+<!--    var kpiDuration = document.getElementById('kpiDuration');-->
+<!--    kpiDuration.innerHTML = '<span data-target="' + RD_DUR_MIN + '">0</span>m <span data-target="' + RD_DUR_SEC + '">0</span>s';-->
+
+<!--    var kpiPassRate = document.getElementById('kpiPassRate');-->
+<!--    kpiPassRate.setAttribute('data-target', RD_PASS_RATE.toFixed(1) + "%");-->
+<!--    kpiPassRate.setAttribute('data-decimal', '1');-->
+
+<!--    document.getElementById('progressSub').textContent = RD_TOTAL + ' of ' + RD_TOTAL + ' tests completed';-->
+<!--    document.getElementById('progPassed').setAttribute('data-width', RD_PASS_PCT + '%');-->
+<!--    document.getElementById('progFailed').setAttribute('data-width', RD_FAIL_PCT + '%');-->
+<!--    document.getElementById('progSkipped').setAttribute('data-width', RD_SKIP_PCT + '%');-->
+
+<!--    document.getElementById('trendCount').textContent = RD.trendBuilds.length;-->
+<!--    document.getElementById('doughnutSub').textContent = 'Current build #' + RD.buildNumber;-->
+<!--    document.getElementById('legendPassed').textContent = RD.passed;-->
+<!--    document.getElementById('legendFailed').textContent = RD.failed;-->
+<!--    document.getElementById('legendSkipped').textContent = RD.skipped;-->
+
+<!--    var tableShowCount = Math.min(RD.recentTests.length, 20);-->
+<!--    document.getElementById('tableSub').textContent = 'Showing ' + tableShowCount + ' most recent test executions';-->
+
+<!--    document.getElementById('footerText').innerHTML =-->
+<!--        'Generated by ' + RD.frameworkName + ' ' + RD.frameworkVersion + ' &middot; Report ID: ' + RD.reportId + ' &middot; Environment: ' + RD.environment;-->
+
+
+<!--    /* ================================================================-->
+<!--       CHART.JS-->
+<!--       ================================================================ */-->
+<!--    Chart.defaults.color = '#8896b3';-->
+<!--    Chart.defaults.font.family = "'Space Grotesk', sans-serif";-->
+<!--    Chart.defaults.font.size = 11;-->
+<!--    Chart.defaults.plugins.legend.display = false;-->
+<!--    Chart.defaults.scale.grid = {color: 'rgba(42,54,84,0.5)', drawBorder: false};-->
+
+<!--    var trendCtx = document.getElementById('trendChart').getContext('2d');-->
+<!--    var trendGradPassed = trendCtx.createLinearGradient(0, 0, 0, 280);-->
+<!--    trendGradPassed.addColorStop(0, 'rgba(0,229,160,0.25)');-->
+<!--    trendGradPassed.addColorStop(1, 'rgba(0,229,160,0.0)');-->
+<!--    var trendGradFailed = trendCtx.createLinearGradient(0, 0, 0, 280);-->
+<!--    trendGradFailed.addColorStop(0, 'rgba(255,77,106,0.2)');-->
+<!--    trendGradFailed.addColorStop(1, 'rgba(255,77,106,0.0)');-->
+
+<!--    var trendChart = new Chart(trendCtx, {-->
+<!--        type: 'line',-->
+<!--        data: {-->
+<!--            labels: RD.trendBuilds,-->
+<!--            datasets: [-->
+<!--                {-->
+<!--                    label: 'Passed',-->
+<!--                    data: RD.trendPassed,-->
+<!--                    borderColor: '#00e5a0',-->
+<!--                    backgroundColor: trendGradPassed,-->
+<!--                    borderWidth: 2.5,-->
+<!--                    fill: true,-->
+<!--                    tension: 0.4,-->
+<!--                    pointRadius: 3,-->
+<!--                    pointHoverRadius: 6,-->
+<!--                    pointBackgroundColor: '#00e5a0',-->
+<!--                    pointBorderColor: '#0a0f1a',-->
+<!--                    pointBorderWidth: 2,-->
+<!--                },-->
+<!--                {-->
+<!--                    label: 'Failed',-->
+<!--                    data: RD.trendFailed,-->
+<!--                    borderColor: '#ff4d6a',-->
+<!--                    backgroundColor: trendGradFailed,-->
+<!--                    borderWidth: 2.5,-->
+<!--                    fill: true,-->
+<!--                    tension: 0.4,-->
+<!--                    pointRadius: 3,-->
+<!--                    pointHoverRadius: 6,-->
+<!--                    pointBackgroundColor: '#ff4d6a',-->
+<!--                    pointBorderColor: '#0a0f1a',-->
+<!--                    pointBorderWidth: 2,-->
+<!--                }-->
+<!--            ]-->
+<!--        },-->
+<!--        options: {-->
+<!--            responsive: true,-->
+<!--            maintainAspectRatio: false,-->
+<!--            interaction: {mode: 'index', intersect: false},-->
+<!--            plugins: {-->
+<!--                tooltip: {-->
+<!--                    backgroundColor: '#1a2236',-->
+<!--                    borderColor: '#2a3654',-->
+<!--                    borderWidth: 1,-->
+<!--                    titleColor: '#e8ecf4',-->
+<!--                    bodyColor: '#8896b3',-->
+<!--                    padding: 12,-->
+<!--                    cornerRadius: 8,-->
+<!--                    displayColors: true,-->
+<!--                    boxPadding: 4,-->
+<!--                }-->
+<!--            },-->
+<!--            scales: {-->
+<!--                x: {border: {display: false}},-->
+<!--                y: {border: {display: false}, beginAtZero: false, ticks: {padding: 8}}-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+
+<!--    document.querySelectorAll('[data-trend]').forEach(function (btn) {-->
+<!--        btn.addEventListener('click', function () {-->
+<!--            document.querySelectorAll('[data-trend]').forEach(function (b) {-->
+<!--                b.classList.remove('active');-->
+<!--                b.setAttribute('aria-selected', 'false');-->
+<!--            });-->
+<!--            btn.classList.add('active');-->
+<!--            btn.setAttribute('aria-selected', 'true');-->
+<!--            var f = btn.dataset.trend;-->
+<!--            trendChart.data.datasets[0].hidden = f === 'failed';-->
+<!--            trendChart.data.datasets[1].hidden = f === 'passed';-->
+<!--            trendChart.update();-->
+<!--        });-->
+<!--    });-->
+
+<!--    // ── Doughnut Chart ──-->
+<!--    const doughnutCtx = document.getElementById('doughnutChart').getContext('2d');-->
+<!--    const passRateDisplay = RD_PASS_RATE.toFixed(1) + '%';-->
+
+<!--    new Chart(doughnutCtx, {-->
+<!--        type: 'doughnut',-->
+<!--        data: {-->
+<!--            labels: ['Passed', 'Failed', 'Skipped'],-->
+<!--            datasets: [{-->
+<!--                data: [RD.passed, RD.failed, RD.skipped],-->
+<!--                backgroundColor: ['#00e5a0', '#ff4d6a', '#ffb545'],-->
+<!--                borderColor: '#1a2236',-->
+<!--                borderWidth: 3,-->
+<!--                hoverOffset: 6,-->
+<!--            }]-->
+<!--        },-->
+<!--        options: {-->
+<!--            responsive: true,-->
+<!--            maintainAspectRatio: false,-->
+<!--            cutout: '72%',-->
+<!--            plugins: {-->
+<!--                tooltip: {-->
+<!--                    backgroundColor: '#1a2236',-->
+<!--                    borderColor: '#2a3654',-->
+<!--                    borderWidth: 1,-->
+<!--                    titleColor: '#e8ecf4',-->
+<!--                    bodyColor: '#8896b3',-->
+<!--                    padding: 12,-->
+<!--                    cornerRadius: 8,-->
+<!--                    callbacks: {-->
+<!--                        label: function (ctx) {-->
+<!--                            const pct = RD_TOTAL > 0 ? ((ctx.parsed / RD_TOTAL) * 100).toFixed(1) : '0.0';-->
+<!--                            return ` ${ctx.label}: ${ctx.parsed} (${pct}%)`;-->
+<!--                        }-->
+<!--                    }-->
+<!--                }-->
+<!--            }-->
+<!--        },-->
+<!--        plugins: [{-->
+<!--            id: 'centerText',-->
+<!--            afterDraw(chart) {-->
+<!--                const {ctx, width, height} = chart;-->
+<!--                ctx.save();-->
+<!--                ctx.textAlign = 'center';-->
+<!--                ctx.textBaseline = 'middle';-->
+<!--                const cx = width / 2, cy = height / 2;-->
+<!--                ctx.font = "700 28px 'Space Grotesk'";-->
+<!--                ctx.fillStyle = '#e8ecf4';-->
+<!--                ctx.fillText(passRateDisplay, cx, cy - 8);-->
+<!--                ctx.font = "400 11px 'Space Grotesk'";-->
+<!--                ctx.fillStyle = '#5a6a8a';-->
+<!--                ctx.fillText('Pass Rate', cx, cy + 14);-->
+<!--                ctx.restore();-->
+<!--            }-->
+<!--        }]-->
+<!--    });-->
+
+<!--    // ── Suite List ──-->
+<!--    var suiteListEl = document.getElementById('suiteList');-->
+<!--    RD.suites.forEach(function (s) {-->
+<!--        var passPct = s.total > 0 ? ((s.passed / s.total) * 100).toFixed(1) : '0.0';-->
+<!--        var failPct = s.total > 0 ? ((s.failed / s.total) * 100).toFixed(1) : '0.0';-->
+<!--        var skipPct = s.total > 0 ? ((s.skipped / s.total) * 100).toFixed(1) : '0.0';-->
+<!--        var statusColor = s.failed === 0 ? 'var(&#45;&#45;accent)' : 'var(&#45;&#45;danger)';-->
+<!--        var statusText = s.failed === 0 ? 'Passed' : (s.passed === 0 ? 'Failed' : 'Partial');-->
+
+<!--        suiteListEl.innerHTML +=-->
+<!--            '<div class="suite-item">' +-->
+<!--            '  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">' +-->
+<!--            '    <div style="display:flex;align-items:center;gap:10px;">' +-->
+<!--            '      <span style="font-size:14px;font-weight:600;color:var(&#45;&#45;text-primary);">' + s.name + '</span>' +-->
+<!--            '      <span class="status-badge ' + statusText.toLowerCase() + '">' +-->
+<!--            '        <i class="fas ' + (s.failed === 0 ? 'fa-check' : 'fa-exclamation') + '" style="font-size:9px;"></i> ' + statusText +-->
+<!--            '      </span>' +-->
+<!--            '    </div>' +-->
+<!--            '    <div style="display:flex;align-items:center;gap:16px;font-size:12px;color:var(&#45;&#45;text-muted);">' +-->
+<!--            '      <span>' + s.passed + '/' + s.total + ' passed</span>' +-->
+<!--            '      <span class="mono">' + fmtDuration(s.durationSeconds) + '</span>' +-->
+<!--            '    </div>' +-->
+<!--            '  </div>' +-->
+<!--            '  <div class="progress-track">' +-->
+<!--            '    <div class="progress-segment" style="width:' + passPct + '%;background:var(&#45;&#45;accent);"></div>' +-->
+<!--            '    <div class="progress-segment" style="width:' + failPct + '%;background:var(&#45;&#45;danger);"></div>' +-->
+<!--            '    <div class="progress-segment" style="width:' + skipPct + '%;background:var(&#45;&#45;warning);"></div>' +-->
+<!--            '  </div>' +-->
+<!--            '</div>';-->
+<!--    });-->
+
+<!--    // ── Table with Pagination & Filter ──-->
+<!--    var TABLE_PAGE_SIZE = 5;-->
+<!--    var currentTableFilter = 'all';-->
+<!--    var currentTablePage = 1;-->
+
+<!--    function getFilteredTests() {-->
+<!--        if (currentTableFilter === 'all') return RD.recentTests;-->
+<!--        return RD.recentTests.filter(function (t) {-->
+<!--            return t.status === currentTableFilter;-->
+<!--        });-->
+<!--    }-->
+
+<!--    function renderTable() {-->
+<!--        var filtered = getFilteredTests();-->
+<!--        var totalPages = Math.max(1, Math.ceil(filtered.length / TABLE_PAGE_SIZE));-->
+<!--        if (currentTablePage > totalPages) currentTablePage = totalPages;-->
+<!--        var start = (currentTablePage - 1) * TABLE_PAGE_SIZE;-->
+<!--        var pageData = filtered.slice(start, start + TABLE_PAGE_SIZE);-->
+
+<!--        var tbody = document.getElementById('tableBody');-->
+<!--        tbody.innerHTML = '';-->
+
+<!--        if (pageData.length === 0) {-->
+<!--            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;color:var(&#45;&#45;text-muted);">No tests match this filter.</td></tr>';-->
+<!--        } else {-->
+<!--            pageData.forEach(function (t) {-->
+<!--                var statusIcon = t.status === 'passed' ? 'fa-check' : (t.status === 'failed' ? 'fa-times' : 'fa-forward');-->
+<!--                tbody.innerHTML +=-->
+<!--                    '<tr>' +-->
+<!--                    '  <td style="color:var(&#45;&#45;text-primary);font-weight:500;">' + t.name + '</td>' +-->
+<!--                    '  <td>' + t.module + '</td>' +-->
+<!--                    '  <td><span class="status-badge ' + t.status + '"><i class="fas ' + statusIcon + '" style="font-size:9px;"></i> ' + t.status.charAt(0).toUpperCase() + t.status.slice(1) + '</span></td>' +-->
+<!--                    '  <td class="mono">' + fmtDurationMs(t.durationMs) + '</td>' +-->
+<!--                    '  <td class="mono">' + t.retries + '</td>' +-->
+<!--                    '  <td class="mono" style="color:var(&#45;&#45;text-muted);">' + t.timestamp + '</td>' +-->
+<!--                    '</tr>';-->
+<!--            });-->
+<!--        }-->
+
+<!--        document.getElementById('pageInfo').textContent =-->
+<!--            'Showing ' + (filtered.length === 0 ? 0 : start + 1) + '–' + Math.min(start + TABLE_PAGE_SIZE, filtered.length) + ' of ' + filtered.length;-->
+
+<!--        var pageBtns = document.getElementById('pageButtons');-->
+<!--        pageBtns.innerHTML = '';-->
+
+<!--        var prevBtn = document.createElement('button');-->
+<!--        prevBtn.textContent = 'Prev';-->
+<!--        prevBtn.disabled = currentTablePage <= 1;-->
+<!--        prevBtn.style.cssText = 'padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(&#45;&#45;border);background:var(&#45;&#45;bg-card);color:var(&#45;&#45;text-secondary);font-family:inherit;';-->
+<!--        if (prevBtn.disabled) prevBtn.style.opacity = '0.4';-->
+<!--        prevBtn.addEventListener('click', function () {-->
+<!--            currentTablePage&#45;&#45;;-->
+<!--            renderTable();-->
+<!--        });-->
+<!--        pageBtns.appendChild(prevBtn);-->
+
+<!--        for (var i = 1; i <= totalPages; i++) {-->
+<!--            (function (page) {-->
+<!--                var btn = document.createElement('button');-->
+<!--                btn.textContent = page;-->
+<!--                btn.style.cssText = 'padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(&#45;&#45;border);font-family:inherit;';-->
+<!--                if (page === currentTablePage) {-->
+<!--                    btn.style.background = 'var(&#45;&#45;accent-dim)';-->
+<!--                    btn.style.borderColor = 'var(&#45;&#45;accent)';-->
+<!--                    btn.style.color = 'var(&#45;&#45;accent)';-->
+<!--                } else {-->
+<!--                    btn.style.background = 'var(&#45;&#45;bg-card)';-->
+<!--                    btn.style.color = 'var(&#45;&#45;text-secondary)';-->
+<!--                }-->
+<!--                btn.addEventListener('click', function () {-->
+<!--                    currentTablePage = page;-->
+<!--                    renderTable();-->
+<!--                });-->
+<!--                pageBtns.appendChild(btn);-->
+<!--            })(i);-->
+<!--        }-->
+
+<!--        var nextBtn = document.createElement('button');-->
+<!--        nextBtn.textContent = 'Next';-->
+<!--        nextBtn.disabled = currentTablePage >= totalPages;-->
+<!--        nextBtn.style.cssText = 'padding:6px 12px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid var(&#45;&#45;border);background:var(&#45;&#45;bg-card);color:var(&#45;&#45;text-secondary);font-family:inherit;';-->
+<!--        if (nextBtn.disabled) nextBtn.style.opacity = '0.4';-->
+<!--        nextBtn.addEventListener('click', function () {-->
+<!--            currentTablePage++;-->
+<!--            renderTable();-->
+<!--        });-->
+<!--        pageBtns.appendChild(nextBtn);-->
+<!--    }-->
+
+<!--    document.querySelectorAll('[data-table]').forEach(function (btn) {-->
+<!--        btn.addEventListener('click', function () {-->
+<!--            document.querySelectorAll('[data-table]').forEach(function (b) {-->
+<!--                b.classList.remove('active');-->
+<!--                b.setAttribute('aria-selected', 'false');-->
+<!--            });-->
+<!--            btn.classList.add('active');-->
+<!--            btn.setAttribute('aria-selected', 'true');-->
+<!--            currentTableFilter = btn.dataset.table;-->
+<!--            currentTablePage = 1;-->
+<!--            renderTable();-->
+<!--        });-->
+<!--    });-->
+
+<!--    renderTable();-->
+
+<!--    // ── Counter Animation ──-->
+<!--    function animateCounters() {-->
+<!--        document.querySelectorAll('[data-target]').forEach(function (el) {-->
+<!--            var target = parseFloat(el.getAttribute('data-target'));-->
+<!--            var isDecimal = el.hasAttribute('data-decimal');-->
+<!--            var decimals = isDecimal ? parseInt(el.getAttribute('data-decimal')) : 0;-->
+<!--            var duration = 1200;-->
+<!--            var startTime = null;-->
+
+<!--            function step(ts) {-->
+<!--                if (!startTime) startTime = ts;-->
+<!--                var progress = Math.min((ts - startTime) / duration, 1);-->
+<!--                var eased = 1 - Math.pow(1 - progress, 3);-->
+<!--                var current = eased * target;-->
+<!--                el.textContent = isDecimal ? current.toFixed(decimals) : Math.floor(current);-->
+<!--                if (progress < 1) requestAnimationFrame(step);-->
+<!--                else el.textContent = isDecimal ? target.toFixed(decimals) : target;-->
+<!--            }-->
+
+<!--            requestAnimationFrame(step);-->
+<!--        });-->
+<!--    }-->
+
+<!--    // ── Progress Bar Animation ──-->
+<!--    function animateProgress() {-->
+<!--        document.querySelectorAll('.progress-segment[data-width]').forEach(function (seg) {-->
+<!--            seg.style.width = seg.getAttribute('data-width');-->
+<!--        });-->
+<!--    }-->
+
+<!--    // ── Toast Helper ──-->
+<!--    function showToast(message, icon, color) {-->
+<!--        var container = document.getElementById('toastContainer');-->
+<!--        var toast = document.createElement('div');-->
+<!--        toast.className = 'toast';-->
+<!--        toast.innerHTML = '<i class="fas ' + icon + '" style="color:' + color + ';font-size:16px;"></i> ' + message;-->
+<!--        container.appendChild(toast);-->
+<!--        setTimeout(function () {-->
+<!--            toast.style.opacity = '0';-->
+<!--            toast.style.transform = 'translateY(-10px)';-->
+<!--            toast.style.transition = 'all 0.3s ease';-->
+<!--            setTimeout(function () {-->
+<!--                toast.remove();-->
+<!--            }, 300);-->
+<!--        }, 3000);-->
+<!--    }-->
+
+<!--    // ── Export PDF ──-->
+<!--    document.getElementById('exportBtn').addEventListener('click', function () {-->
+<!--        showToast('Generating PDF report...', 'fa-file-pdf', 'var(&#45;&#45;skip)');-->
+<!--        document.body.classList.add('pdf-export-mode');-->
+<!--        var element = document.querySelector('.main-content');-->
+<!--        var opt = {-->
+<!--            margin: [10, 10, 10, 10],-->
+<!--            filename: 'automation-report-' + RD.buildNumber + '.pdf',-->
+<!--            image: {type: 'jpeg', quality: 0.95},-->
+<!--            html2canvas: {scale: 2, useCORS: true, logging: false},-->
+<!--            jsPDF: {unit: 'mm', format: 'a4', orientation: 'landscape'}-->
+<!--        };-->
+<!--        html2pdf().set(opt).from(element).save().then(function () {-->
+<!--            document.body.classList.remove('pdf-export-mode');-->
+<!--            showToast('PDF exported successfully!', 'fa-check-circle', 'var(&#45;&#45;accent)');-->
+<!--        }).catch(function () {-->
+<!--            document.body.classList.remove('pdf-export-mode');-->
+<!--            showToast('PDF export failed.', 'fa-exclamation-circle', 'var(&#45;&#45;danger)');-->
+<!--        });-->
+<!--    });-->
+
+<!--    // ── Refresh Button ──-->
+<!--    document.getElementById('refreshBtn').addEventListener('click', function () {-->
+<!--        var icon = this.querySelector('i');-->
+<!--        icon.style.transition = 'transform 0.6s ease';-->
+<!--        icon.style.transform = 'rotate(360deg)';-->
+<!--        setTimeout(function () {-->
+<!--            icon.style.transform = 'rotate(0deg)';-->
+<!--        }, 600);-->
+<!--        showToast('Data refreshed.', 'fa-sync-alt', 'var(&#45;&#45;accent)');-->
+<!--    });-->
+
+<!--    // ── Run Animations on Load ──-->
+<!--    window.addEventListener('load', function () {-->
+<!--        animateCounters();-->
+<!--        setTimeout(animateProgress, 300);-->
+<!--    });-->
+<!--</script>-->
+<!--</body>-->
+<!--</html>-->

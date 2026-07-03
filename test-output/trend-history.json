@@ -1,0 +1,100 @@
+[
+  {
+    "build": "#36",
+    "passed": 0,
+    "failed": 0,
+    "skipped": 1,
+    "duration": 0
+  },
+  {
+    "build": "#37",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 0
+  },
+  {
+    "build": "#38",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 3
+  },
+  {
+    "build": "#39",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 3
+  },
+  {
+    "build": "#40",
+    "passed": 15,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 24
+  },
+  {
+    "build": "#41",
+    "passed": 15,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 23
+  },
+  {
+    "build": "#42",
+    "passed": 0,
+    "failed": 0,
+    "skipped": 19,
+    "duration": 0
+  },
+  {
+    "build": "#43",
+    "passed": 0,
+    "failed": 0,
+    "skipped": 5,
+    "duration": 0
+  },
+  {
+    "build": "#44",
+    "passed": 0,
+    "failed": 0,
+    "skipped": 1,
+    "duration": 0
+  },
+  {
+    "build": "#45",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9
+  },
+  {
+    "build": "#46",
+    "passed": 17,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 30
+  },
+  {
+    "build": "#47",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9
+  },
+  {
+    "build": "#48",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9
+  },
+  {
+    "build": "#49",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9
+  }
+]
