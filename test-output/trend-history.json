@@ -1,100 +1,222 @@
 [
   {
-    "build": "#36",
-    "passed": 0,
-    "failed": 0,
-    "skipped": 1,
-    "duration": 0
-  },
-  {
-    "build": "#37",
-    "passed": 0,
-    "failed": 1,
-    "skipped": 0,
-    "duration": 0
-  },
-  {
-    "build": "#38",
-    "passed": 1,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 3
-  },
-  {
-    "build": "#39",
-    "passed": 1,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 3
-  },
-  {
-    "build": "#40",
-    "passed": 15,
-    "failed": 1,
-    "skipped": 1,
-    "duration": 24
-  },
-  {
-    "build": "#41",
-    "passed": 15,
-    "failed": 1,
-    "skipped": 1,
-    "duration": 23
-  },
-  {
-    "build": "#42",
-    "passed": 0,
-    "failed": 0,
-    "skipped": 19,
-    "duration": 0
-  },
-  {
-    "build": "#43",
-    "passed": 0,
-    "failed": 0,
-    "skipped": 5,
-    "duration": 0
-  },
-  {
-    "build": "#44",
-    "passed": 0,
-    "failed": 0,
-    "skipped": 1,
-    "duration": 0
-  },
-  {
-    "build": "#45",
+    "build": "#185",
     "passed": 3,
-    "failed": 1,
-    "skipped": 1,
-    "duration": 9
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
   },
   {
-    "build": "#46",
+    "build": "#188",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#191",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#194",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#197",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#200",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#203",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#206",
+    "passed": 17,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 30,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#209",
     "passed": 17,
     "failed": 1,
     "skipped": 1,
-    "duration": 30
+    "duration": 30,
+    "reqCoverage": 89,
+    "tcCoverage": 89,
+    "featCoverage": 85,
+    "browserCoverage": 100
   },
   {
-    "build": "#47",
+    "build": "#212",
+    "passed": 17,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 30,
+    "reqCoverage": 89,
+    "tcCoverage": 89,
+    "featCoverage": 85,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#215",
     "passed": 3,
     "failed": 1,
     "skipped": 1,
-    "duration": 9
+    "duration": 9,
+    "reqCoverage": 60,
+    "tcCoverage": 60,
+    "featCoverage": 50,
+    "browserCoverage": 100
   },
   {
-    "build": "#48",
+    "build": "#218",
     "passed": 3,
     "failed": 1,
     "skipped": 1,
-    "duration": 9
+    "duration": 9,
+    "reqCoverage": 60,
+    "tcCoverage": 60,
+    "featCoverage": 50,
+    "browserCoverage": 100
   },
   {
-    "build": "#49",
+    "build": "#221",
     "passed": 3,
     "failed": 1,
     "skipped": 1,
-    "duration": 9
+    "duration": 9,
+    "reqCoverage": 60,
+    "tcCoverage": 60,
+    "featCoverage": 50,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#224",
+    "passed": 0,
+    "failed": 3,
+    "skipped": 0,
+    "duration": 0,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#227",
+    "passed": 0,
+    "failed": 3,
+    "skipped": 0,
+    "duration": 0,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#230",
+    "passed": 1,
+    "failed": 3,
+    "skipped": 0,
+    "duration": 3,
+    "reqCoverage": 25,
+    "tcCoverage": 25,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#233",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9,
+    "reqCoverage": 60,
+    "tcCoverage": 60,
+    "featCoverage": 50,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#236",
+    "passed": 3,
+    "failed": 1,
+    "skipped": 1,
+    "duration": 9,
+    "reqCoverage": 60,
+    "tcCoverage": 60,
+    "featCoverage": 50,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#239",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#242",
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 6,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
   }
 ]

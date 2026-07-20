@@ -8,7 +8,7 @@
     <packaging>jar</packaging>
 
     <name>swaglabs_automation_Playwright</name>
-    <url>http://maven.apache.org</url>
+    <url>https://www.saucedemo.com/</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,7 +21,6 @@
             <groupId>com.microsoft.playwright</groupId>
             <artifactId>playwright</artifactId>
             <version>1.60.0</version>
-            <scope>compile</scope>
         </dependency>
 
         <!-- Source: https://mvnrepository.com/artifact/org.testng/testng -->
@@ -51,18 +50,43 @@
             <version>${aspectj.version}</version>
         </dependency>
 
-        <!-- SLF4J API -->
+        <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-api -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.17</version>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.26.1</version>
+            <scope>compile</scope>
         </dependency>
 
-        <!-- Logback Implementation -->
+        <!-- Source: https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-core -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.26.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+<!--        &lt;!&ndash; SLF4J API &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.slf4j</groupId>-->
+<!--            <artifactId>slf4j-api</artifactId>-->
+<!--            <version>2.0.17</version>-->
+<!--        </dependency>-->
+
+        <!-- Source: https://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
-            <version>1.5.18</version>
+            <version>1.5.37</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Source: https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
+        <dependency>
+            <groupId>org.apache.poi</groupId>
+            <artifactId>poi-ooxml</artifactId>
+            <version>5.5.1</version>
+            <scope>compile</scope>
         </dependency>
 
     </dependencies>
@@ -89,7 +113,7 @@
 
                     <!-- TestNG Suite -->
                     <suiteXmlFiles>
-                        <suiteXmlFile>testngnew.xml</suiteXmlFile>
+                        <suiteXmlFile>testng_Suit.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
 <!--                    &lt;!&ndash; Allure Listener &ndash;&gt;-->

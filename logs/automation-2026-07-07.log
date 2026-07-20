@@ -1,0 +1,59 @@
+09:57:32 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+09:57:36 INFO  BaseTest         - 🌐 Chromium browser launched
+09:57:39 INFO  UserLoginPage    - 👤 Entered locked user username
+09:57:40 INFO  UserLoginPage    - 🔒 Entered password
+09:57:41 INFO  UserLoginPage    - 🖱️ Clicked Login button with Locked credentials
+09:57:42 INFO  UserLoginPage    - ❌ Entered invalid username
+09:57:43 INFO  UserLoginPage    - 🔒 Entered password 
+09:57:44 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+09:57:45 INFO  UserLoginPage    - 👤 Entered valid username
+09:57:46 INFO  UserLoginPage    - 🔒 Entered valid password
+09:57:47 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+09:57:47 INFO  UserLoginPage    - 🔐 Login successful
+10:04:04 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:04:07 INFO  BaseTest         - 🌐 Chromium browser launched
+10:06:47 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:06:51 INFO  BaseTest         - 🌐 Chromium browser launched
+10:56:04 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:56:08 INFO  BaseTest         - 🌐 Chromium browser launched
+10:57:24 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:57:27 INFO  BaseTest         - 🌐 Chromium browser launched
+10:57:30 INFO  UserLoginPage    - 👤 Entered valid username
+10:57:31 INFO  UserLoginPage    - 🔒 Entered valid password
+10:57:32 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+10:57:32 INFO  UserLoginPage    - 🔐 Login successful
+10:58:01 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:58:04 INFO  BaseTest         - 🌐 Chromium browser launched
+10:58:07 INFO  UserLoginPage    - 👤 Entered locked user username
+10:58:08 INFO  UserLoginPage    - 🔒 Entered password
+10:58:09 INFO  UserLoginPage    - 🖱️ Clicked Login button with Locked credentials
+10:58:11 INFO  UserLoginPage    - ❌ Entered invalid username
+10:58:12 INFO  UserLoginPage    - 🔒 Entered password 
+10:58:13 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+10:58:14 INFO  UserLoginPage    - 👤 Entered valid username
+10:58:15 INFO  UserLoginPage    - 🔒 Entered valid password
+10:58:16 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+10:58:16 INFO  UserLoginPage    - 🔐 Login successful
+10:58:37 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+10:58:41 INFO  BaseTest         - 🌐 Chromium browser launched
+10:58:44 INFO  UserLoginPage    - ❌ Entered invalid username
+10:58:45 INFO  UserLoginPage    - 🔒 Entered password 
+10:58:46 INFO  UserLoginPage    - 🖱️ Clicked Login button with invalid credentials
+13:18:59 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+13:19:03 INFO  BaseTest         - 🌐 Chromium browser launched

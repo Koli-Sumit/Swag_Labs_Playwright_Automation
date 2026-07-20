@@ -112,6 +112,8 @@ public class ReportData {
     public static class TestResultData {
         @SerializedName("name")
         public String name;
+        @SerializedName("description") // <-- ADD THIS
+        public String description;      // <-- ADD THIS
         @SerializedName("module")
         public String module;
         @SerializedName("status")
@@ -122,5 +124,49 @@ public class ReportData {
         public int retries;
         @SerializedName("timestamp")
         public String timestamp;
+
+        // ✅ ADD THIS — links to failure details when status is "failed"
+        @SerializedName("failure")
+        public FailureData failure;
     }
+
+    // ✅ ADD THIS CLASS — holds all failure-specific data for the detail panel
+    public static class FailureData {
+        @SerializedName("id")
+        public String id;              // e.g. "F-10421"
+
+        @SerializedName("severity")
+        public String severity;        // "critical" | "high" | "medium" | "low"
+
+        @SerializedName("errorType")
+        public String errorType;       // "Timeout" | "Network" | "Validation" | "Auth" | "Unknown"
+
+        @SerializedName("error")
+        public String error;           // Short error message
+
+        @SerializedName("stack")
+        public String stack;           // Full stack trace
+
+        @SerializedName("runId")
+        public String runId;           // e.g. "RUN-88a3f2"
+
+        @SerializedName("node")
+        public String node;            // Machine/node name
+
+        @SerializedName("timeline")
+        public List<TimelineEvent> timeline;
+    }
+
+    // ✅ ADD THIS CLASS — individual events in the failure timeline
+    public static class TimelineEvent {
+        @SerializedName("time")
+        public String time;            // e.g. "14:31:51"
+
+        @SerializedName("text")
+        public String text;            // e.g. "Test initiated — connecting to payment API"
+
+        @SerializedName("fail")
+        public boolean fail;           // true = red dot, false = grey dot
+    }
+
 }

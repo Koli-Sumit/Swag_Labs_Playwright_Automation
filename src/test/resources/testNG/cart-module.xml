@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Cart Module">
+
+    <test name="Cart">
+
+        <groups>
+            <run>
+                <include name="cart"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.swaglabs.tests"/>
+        </packages>
+
+    </test>
+
+</suite>

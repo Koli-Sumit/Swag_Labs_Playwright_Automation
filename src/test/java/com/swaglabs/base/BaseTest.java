@@ -2,7 +2,6 @@ package com.swaglabs.base;
 
 import com.microsoft.playwright.*;
 import com.swaglabs.utils.Log;
-import com.swaglabs.utils.RetryAnalyzer;
 import com.swaglabs.utils.configReader;
 import org.slf4j.Logger;
 import org.testng.annotations.*;

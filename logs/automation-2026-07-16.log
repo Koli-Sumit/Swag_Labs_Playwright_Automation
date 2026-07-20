@@ -1,0 +1,14 @@
+16-07-2026 05:39:01 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\src\test\resources\testNG\smoke-testng.xml
+
+16-07-2026 05:39:07 pm INFO  BaseTest        - 🌐 Chromium browser launched
+16-07-2026 05:39:10 pm INFO  UserLoginPage   - 👤 Entered locked user username
+16-07-2026 05:39:11 pm INFO  UserLoginPage   - 🔒 Entered password
+16-07-2026 05:39:12 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+16-07-2026 05:39:59 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\src\test\resources\testNG\smoke-testng.xml
+
+16-07-2026 05:40:03 pm INFO  BaseTest        - 🌐 Chromium browser launched
+16-07-2026 05:40:06 pm INFO  UserLoginPage   - 👤 Entered locked user username
+16-07-2026 05:40:07 pm INFO  UserLoginPage   - 🔒 Entered password
+16-07-2026 05:40:08 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials

@@ -1,0 +1,40 @@
+08:27:44 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:27:49 INFO  BaseTest         - 🌐 Chromium browser launched
+08:30:44 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:30:49 INFO  BaseTest         - 🌐 Chromium browser launched
+08:40:16 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:40:21 INFO  BaseTest         - 🌐 Chromium browser launched
+08:47:14 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:47:19 INFO  BaseTest         - 🌐 Chromium browser launched
+08:52:18 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+08:52:22 INFO  BaseTest         - 🌐 Chromium browser launched
+08:52:26 INFO  UserLoginPage    - 👤 Entered valid username
+08:52:27 INFO  UserLoginPage    - 🔒 Entered valid password
+08:52:28 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+08:52:28 INFO  UserLoginPage    - 🔐 Login successful
+09:09:11 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+09:09:15 INFO  BaseTest         - 🌐 Chromium browser launched
+09:09:18 INFO  UserLoginPage    - 👤 Entered valid username
+09:09:19 INFO  UserLoginPage    - 🔒 Entered valid password
+09:09:20 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+09:09:20 INFO  UserLoginPage    - 🔐 Login successful
+09:10:16 INFO  Utils            - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.1\temp-testng-customsuite.xml
+
+09:10:20 INFO  BaseTest         - 🌐 Chromium browser launched
+09:10:23 INFO  UserLoginPage    - 👤 Entered valid username
+09:10:24 INFO  UserLoginPage    - 🔒 Entered valid password
+09:10:25 INFO  UserLoginPage    - 🖱️ Clicked Login button with valid credentials
+09:10:25 INFO  UserLoginPage    - 🔐 Login successful

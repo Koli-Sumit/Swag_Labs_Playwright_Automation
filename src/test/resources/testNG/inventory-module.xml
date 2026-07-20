@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Inventory Module">
+
+    <test name="Inventory">
+
+        <groups>
+            <run>
+                <include name="inventory"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.swaglabs.tests"/>
+        </packages>
+
+    </test>
+
+</suite>

@@ -31,13 +31,13 @@ public class TestInventory extends BaseTest {
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class,description = "Verify product details page navigation")
-    public void INV_005() {
+    public void INV_004() {
         inventory = new InventoryPage(page);
         inventory.productDetails();
     }
 
     @Test(retryAnalyzer = RetryAnalyzer.class,description = "Verify product sorting (Price Low to High)")
-    public void INV_004() {
+    public void INV_005() {
         inventory = new InventoryPage(page);
         inventory.sortProducts();
     }

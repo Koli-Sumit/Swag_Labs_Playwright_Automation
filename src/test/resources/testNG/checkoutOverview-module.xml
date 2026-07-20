@@ -1,0 +1,19 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Checkout Overview Module">
+
+    <test name="Checkout Overview">
+
+        <groups>
+            <run>
+                <include name="checkoutOverview"/>
+            </run>
+        </groups>
+
+        <packages>
+            <package name="com.swaglabs.tests"/>
+        </packages>
+
+    </test>
+
+</suite>
