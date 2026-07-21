@@ -23,7 +23,7 @@ public class configReader {
         return prop.getProperty("USERNAME");
     }
 
-    public String getLockUesr() {
+    public String getLockUser() {
 
         return prop.getProperty("LOCKED_USER");
     }

@@ -665,6 +665,11 @@ public class DashboardReporter implements IReporter {
 
         f.timeline = buildTimeline(tr, throwable);
 
+        Object ss = tr.getAttribute("screenshot");
+        if (ss != null) {
+            f.screenshot = ss.toString();
+        }
+
         return f;
     }
 

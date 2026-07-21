@@ -7,6 +7,8 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import java.io.IOException;
 
+import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
 @Listeners(com.swaglabs.report.DashboardReporter.class)
 //@Listeners(com.swaglabs.utils.TestListener.class)
 public class TestLogin extends BaseTest {
@@ -16,6 +18,9 @@ public class TestLogin extends BaseTest {
     public void LOGIN_001() throws IOException {
         UserLoginPage ul = new UserLoginPage(page);
         ul.lockedUser();
+
+        assertThat(page.locator("[data-test='error']"))
+                .hasText("Epic sadface: Sorry, this user has been locked out.");
     }
 
     //Verify invalid login shows error
@@ -23,6 +28,9 @@ public class TestLogin extends BaseTest {
     public void LOGIN_002() throws IOException {
         UserLoginPage ul = new UserLoginPage(page);
         ul.invalidPassword();
+
+        assertThat(page.locator("[data-test='error']"))
+                .hasText("Epic sadface: Username and password do not match any user in this service");
     }
 
     //Verify Login with valid credentials
@@ -30,6 +38,8 @@ public class TestLogin extends BaseTest {
     public void LOGIN_003() throws IOException {
         UserLoginPage ul = new UserLoginPage(page);
         ul.validLogin();
+
+        assertThat(page.locator(".title")).hasText("Products");
     }
 
 //    //Verify Failed login functionality

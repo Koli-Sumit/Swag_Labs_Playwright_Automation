@@ -1,71 +1,5 @@
 [
   {
-    "build": "#185",
-    "passed": 3,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 9,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#188",
-    "passed": 3,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 9,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#191",
-    "passed": 3,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 9,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#194",
-    "passed": 3,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 9,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#197",
-    "passed": 3,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 9,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#200",
-    "passed": 17,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 31,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
     "build": "#203",
     "passed": 17,
     "failed": 0,
@@ -217,6 +151,72 @@
     "reqCoverage": 100,
     "tcCoverage": 100,
     "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#245",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#248",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#251",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#254",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#257",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#260",
+    "passed": 0,
+    "failed": 1,
+    "skipped": 0,
+    "duration": 31,
+    "reqCoverage": 0,
+    "tcCoverage": 0,
+    "featCoverage": 0,
     "browserCoverage": 100
   }
 ]

@@ -5,8 +5,14 @@ import com.swaglabs.utils.Log;
 import com.swaglabs.utils.configReader;
 import org.slf4j.Logger;
 import org.testng.annotations.*;
+import org.testng.ITestResult;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class BaseTest {
@@ -85,7 +91,39 @@ public class BaseTest {
         }
     }
 
-    public static Page getPage() {
-        return page;
+    @AfterMethod(alwaysRun = true)
+    public void captureScreenshotOnFailure(ITestResult result) {
+        if (result.getStatus() == ITestResult.FAILURE) {
+            logger.info("Capturing screenshot for failed test: {}", result.getMethod().getMethodName());
+
+            String screenshot = screenShot(page, result);
+            // Store the path in ITestResult
+            result.setAttribute("screenshot", screenshot);
+        }
     }
+
+    public static String screenShot(Page page, ITestResult result) {
+
+        String methodName = result.getMethod().getMethodName();
+        String timestamp = LocalDateTime.now()
+                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy_hh-mm a"));
+
+        String fileName = methodName + "_" + timestamp + ".png";
+
+        Path screenshotPath = Paths.get("test-output", "screenshots", fileName);
+
+        try {
+            Files.createDirectories(screenshotPath.getParent());
+        } catch (IOException e) {
+            throw new RuntimeException("Unable to create screenshot directory", e);
+        }
+
+        page.screenshot(new Page.ScreenshotOptions()
+                .setPath(screenshotPath)
+                .setFullPage(true));
+
+        // This is what your HTML should receive
+        return "screenshots/" + fileName;
+    }
+
 }

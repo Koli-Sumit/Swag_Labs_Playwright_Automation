@@ -2116,6 +2116,9 @@
     </div>
     <div class="dp-content" id="dpContent"></div>
     <div class="dp-footer">
+        <button class="btn-dp" id="dpScreenshot"><i class="fa-solid fa-camera" style="font-size:12px"></i>
+            Screenshot
+        </button>
         <button class="btn-dp" id="dpInvestigate"><i class="fa-solid fa-magnifying-glass" style="font-size:12px"></i>
             Investigate
         </button>
@@ -2932,10 +2935,13 @@
        ================================================================ */
     var detailOverlay = document.getElementById('detailOverlay');
     var detailPanel = document.getElementById('detailPanel');
+    var currentFailure = null;
 
     function openDetailPanel(testIndex) {
         var test = RD.recentTests[testIndex];
         if (!test || !test.failure) return;
+
+        currentFailure = test;
 
         var f = test.failure;
 
@@ -3017,6 +3023,19 @@
     document.getElementById('dpInvestigate').addEventListener('click', function () {
         closeDetailPanel();
         showToast('<i class="fas fa-magnifying-glass" style="color:var(--danger);"></i> Opening investigation workspace...');
+    });
+
+    document.getElementById('dpScreenshot').addEventListener('click', function () {
+
+        if (!currentFailure ||
+            !currentFailure.failure ||
+            !currentFailure.failure.screenshot) {
+
+            showToast('<i class="fas fa-circle-exclamation"></i> Screenshot not available.');
+            return;
+        }
+
+        window.open(currentFailure.failure.screenshot, '_blank');
     });
 
     document.addEventListener('keydown', function (e) {

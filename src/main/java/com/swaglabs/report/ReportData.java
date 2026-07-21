@@ -151,7 +151,10 @@ public class ReportData {
         public String runId;           // e.g. "RUN-88a3f2"
 
         @SerializedName("node")
-        public String node;            // Machine/node name
+        public String node;
+
+        @SerializedName("screenshot")
+        public String screenshot;           // Take screenshot
 
         @SerializedName("timeline")
         public List<TimelineEvent> timeline;
