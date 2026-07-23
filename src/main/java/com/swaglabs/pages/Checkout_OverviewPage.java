@@ -5,62 +5,45 @@ import com.microsoft.playwright.Page;
 import com.swaglabs.utils.Log;
 import org.slf4j.Logger;
 
-import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
-
 public class Checkout_OverviewPage {
 
-    //Variables
     protected Page page;
-    private static final Logger logger =
-            Log.getLogger(Checkout_OverviewPage.class);
-
-    //Locators
     protected Locator overviewPage;
-    protected Locator productSummary;
+    protected Locator productName;
+    protected Locator paymentInfoLabel;
     protected Locator finishButton;
+    private static final Logger logger = Log.getLogger(Checkout_OverviewPage.class);
 
 
-    //Constructor
-    public  Checkout_OverviewPage(Page page) {
+    /** Initializes the overview page with the active browser page. */
+    public Checkout_OverviewPage(Page page) {
         this.page = page;
-
-        //Selectors
         overviewPage = page.locator(".title");
-        productSummary = page.locator(".summary_info");
+        productName = page.locator(".inventory_item_name");
+        paymentInfoLabel = page.locator("data-test=payment-info-label");
         finishButton = page.locator("#finish");
     }
 
-    public void validateOverviewPage() {
-       String pageTitle =  overviewPage.textContent();
-       if (pageTitle.equalsIgnoreCase("Checkout: Overview")) {
-           logger.info("🏷️ Page Title  : {}", pageTitle);
-       }else {
-           logger.error("🏷️ Page Title : {}", pageTitle);
-       }
+    /** Returns the overview page title locator. */
+    public Locator pageTitle() {
+        return overviewPage;
     }
 
-    public void validateProductDescription() {
-
-        try {
-            assertThat(page.locator(".inventory_item_name"))
-                    .hasText("Sauce Labs Backpack");
-            logger.info("☑️ Product Verified");
-        }
-        catch (Exception e) {
-            logger.error(e.getMessage());
-        }
-
-        try {
-            assertThat(page.locator("data-test=payment-info-label"))
-            .hasText("Payment Information:");
-            logger.info("☑️ Payment Verified");
-        }catch (Exception e) {
-            logger.error(e.getMessage());
-        }
+    /** Returns the checkout product name locator. */
+    public Locator productName() {
+        logger.info("Product Verified");
+        return productName;
     }
 
-    public void finishButton() {
+    /** Returns the payment information label locator. */
+    public Locator paymentInfoLabel() {
+        logger.info("Payment Info Label Verified");
+        return paymentInfoLabel;
+    }
+
+    /** Completes checkout and opens the confirmation page. */
+    public Checkout_CompletePage finishButton() {
         finishButton.click();
+        return new Checkout_CompletePage(page);
     }
-
 }

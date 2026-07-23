@@ -100,6 +100,8 @@ public class BaseTest {
             // Store the path in ITestResult
             result.setAttribute("screenshot", screenshot);
         }
+
+        page.waitForTimeout(600);
     }
 
     public static String screenShot(Page page, ITestResult result) {

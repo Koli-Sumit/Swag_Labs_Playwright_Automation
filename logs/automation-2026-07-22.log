@@ -1,0 +1,92 @@
+22-07-2026 06:46:22 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 06:46:27 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 06:46:30 pm INFO  UserLoginPage   - 👤 Entered locked user username
+22-07-2026 06:46:31 pm INFO  UserLoginPage   - 🔒 Entered password
+22-07-2026 06:46:32 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+22-07-2026 06:46:34 pm INFO  UserLoginPage   - ❌ Entered invalid username
+22-07-2026 06:46:35 pm INFO  UserLoginPage   - 🔒 Entered password 
+22-07-2026 06:46:36 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+22-07-2026 06:46:37 pm INFO  UserLoginPage   - 👤 Entered valid username
+22-07-2026 06:46:38 pm INFO  UserLoginPage   - 🔒 Entered valid password
+22-07-2026 06:46:39 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+22-07-2026 07:09:05 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 07:09:09 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 07:09:24 pm INFO  InventoryPage   - Inventory page verification passed. Page title: Products
+22-07-2026 07:09:25 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 07:09:26 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 07:09:27 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+22-07-2026 07:09:28 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 07:09:28 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 07:09:28 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 07:09:30 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:33:20 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 07:33:24 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 07:33:32 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 07:33:33 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 07:35:06 pm INFO  BaseTest        - Capturing screenshot for failed test: INV_003
+22-07-2026 07:35:08 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 07:35:08 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 07:35:08 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 07:35:10 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:35:11 pm INFO  InventoryPage   - Opened Product Cart
+22-07-2026 07:36:18 pm INFO  BaseTest        - Capturing screenshot for failed test: INV_005
+22-07-2026 07:41:23 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 07:41:28 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 07:41:35 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 07:41:36 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 07:41:37 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+22-07-2026 07:41:38 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 07:41:38 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 07:41:38 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 07:41:41 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:41:42 pm INFO  InventoryPage   - Opened Product Cart
+22-07-2026 07:42:49 pm INFO  BaseTest        - Capturing screenshot for failed test: INV_005
+22-07-2026 07:48:31 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 07:48:36 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 07:48:52 pm INFO  BaseTest        - Capturing screenshot for failed test: INV_001
+22-07-2026 07:50:16 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 07:50:17 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 07:50:18 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+22-07-2026 07:50:19 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 07:50:19 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 07:50:19 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 07:50:21 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:50:21 pm INFO  InventoryPage   - Opened Product Cart
+22-07-2026 07:50:27 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:50:27 pm INFO  InventoryPage   - Opened Product Cart
+22-07-2026 07:50:33 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 07:50:33 pm INFO  InventoryPage   - Opened Product Cart
+22-07-2026 07:50:39 pm INFO  BaseTest        - Capturing screenshot for failed test: INV_005
+22-07-2026 08:05:48 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 08:05:52 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 08:06:00 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 08:06:01 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 08:06:02 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+22-07-2026 08:06:03 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 08:06:03 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 08:06:03 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 08:06:05 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 08:24:55 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+22-07-2026 08:24:59 pm INFO  BaseTest        - 🌐 Chromium browser launched
+22-07-2026 08:25:07 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+22-07-2026 08:25:08 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+22-07-2026 08:25:09 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+22-07-2026 08:25:11 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+22-07-2026 08:25:11 pm INFO  InventoryPage   - Product Price: $29.99
+22-07-2026 08:25:11 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+22-07-2026 08:25:13 pm INFO  InventoryPage   - Sorted products by price (low to high)
+22-07-2026 08:25:14 pm INFO  InventoryPage   - Opened Product Cart

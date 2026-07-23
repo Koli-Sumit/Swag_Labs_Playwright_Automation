@@ -9,38 +9,49 @@ public class CartPage {
 
     //Variables
     protected Page page;
-    private static final Logger logger =
-            Log.getLogger(CartPage.class);
+    private static final Logger logger = Log.getLogger(CartPage.class);
 
     //Locators
+    protected Locator cartTitle;
     protected Locator addToCartButton;
     protected Locator checkCartProduct;
     protected Locator checkout;
 
-    //Constructor
+    /** Initializes the cart page with the active browser page. */
     public CartPage(Page page) {
         this.page = page;
 
         //Selectors
+        cartTitle = page.locator(".title");
         addToCartButton = page.locator("#shopping_cart_container");
         checkCartProduct = page.locator(".inventory_item_name");
         checkout = page.locator("#checkout");
+
     }
 
+    /** Returns the cart page title locator. */
+    public Locator pageTitle() {
+
+        return cartTitle;
+    }
+
+    /** Opens the shopping cart from the current page. */
     public void productCart(){
         addToCartButton.click();
         logger.info("🛍️ Opened Product Cart");
-        String prodInCart = checkCartProduct.textContent();
-
-        if (prodInCart.equals("Sauce Labs Backpack")) {
-            logger.info("🛒 Product is added in cart : {}", prodInCart);
-        }else  {
-            logger.error("❌ Wrong product in cart: {}", prodInCart);
-        }
+        //String prodInCart = checkCartProduct.textContent();
     }
 
-    public void checkout(){
+    /** Returns the cart product locator. */
+    public Locator cartProduct() {
+
+        return checkCartProduct;
+    }
+
+    /** Proceeds from the cart to checkout information. */
+    public Checkout_YourInformationPage checkout(){
         checkout.click();
         logger.info("💳 Opened Checkout Page");
+        return new Checkout_YourInformationPage(page);
     }
 }

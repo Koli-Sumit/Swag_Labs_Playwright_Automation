@@ -14,16 +14,16 @@ public class UserLoginPage {
     //Variables
     protected Page page;
     configReader cr;
-    private static final Logger logger =
-            Log.getLogger(UserLoginPage.class);
+    private static final Logger logger = Log.getLogger(UserLoginPage.class);
 
     // Locators
     private final Locator usernameInput;
     private final Locator passwordInput;
     private final Locator loginButton;
+    private final Locator errorMessage;
 
 
-    //Constructor
+    /** Initializes the login page with the active browser page. */
     public UserLoginPage(Page page) {
         this.page = page;
 
@@ -31,9 +31,10 @@ public class UserLoginPage {
         usernameInput = page.locator("#user-name");
         passwordInput = page.locator("#password");
         loginButton = page.locator("#login-button");
+        errorMessage = page.locator("[data-test='error']");
     }
 
-    //Login with locked user
+    /** Attempts login using the configured locked user. */
     public void lockedUser() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getLockUser());
@@ -44,7 +45,7 @@ public class UserLoginPage {
         logger.info("🖱️ Clicked Login button with Locked credentials");
     }
 
-    //Login with invalid password
+    /** Attempts login using an invalid password. */
     public void invalidPassword() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getUsername());
@@ -56,8 +57,8 @@ public class UserLoginPage {
 
     }
 
-    //Login with valid credentials
-    public void validLogin() throws IOException {
+    /** Logs in using configured valid credentials. */
+    public InventoryPage validLogin() throws IOException {
         cr = new configReader();
         usernameInput.fill(cr.getUsername());
         logger.info("👤 Entered valid username");
@@ -65,6 +66,12 @@ public class UserLoginPage {
         logger.info("🔒 Entered valid password");
         loginButton.click();
         logger.info("🖱️ Clicked Login button with valid credentials");
+
+        return new InventoryPage(page);
     }
 
+    /** Returns the login error message locator. */
+    public Locator errorMessage() {
+        return errorMessage;
+    }
 }

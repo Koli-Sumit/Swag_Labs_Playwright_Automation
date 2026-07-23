@@ -72,6 +72,11 @@ public class DashboardReporter implements IReporter {
         List<ReportData.TestResultData> allTests = new ArrayList<>();
 
         for (ISuite suite : suites) {
+
+            if (suite.getResults().isEmpty()) {
+                continue;   // Skip Master
+            }
+
             String suiteName = suite.getName();
             int sPassed = 0, sFailed = 0, sSkipped = 0;
             long sDurationMs = 0;
@@ -133,8 +138,8 @@ public class DashboardReporter implements IReporter {
         int totalDurationSec = (int) (totalDurationMs / 1000);
 
 //         ── 2. Sort tests by end time (most recent first) ──
-//        allTests.sort((a, b) -> b.timestamp.compareTo(a.timestamp));
-//        Collections.reverse(allTests);
+        allTests.sort((a, b) -> b.timestamp.compareTo(a.timestamp));
+        Collections.reverse(allTests);
         List<ReportData.TestResultData> recentTests = new ArrayList<>(allTests);
 
         // ── 3. Trend history ──
@@ -613,20 +618,20 @@ public class DashboardReporter implements IReporter {
         t.name = tr.getMethod().getMethodName();
         t.description = tr.getMethod().getDescription() != null ? tr.getMethod().getDescription() : "";
 
+        ///////////////////////////
+        String className = tr.getTestClass().getRealClass().getSimpleName();
 
-        String[] groups = tr.getMethod().getGroups();
-        if (groups != null && groups.length > 0) {
-            t.module = groups[0];
-        } else {
-            t.module = tr.getTestClass().getName();
-            int lastDot = t.module.lastIndexOf('.');
-            if (lastDot >= 0) {
-                t.module = t.module.substring(lastDot + 1);
-            }
-            if (t.module.endsWith("Test")) {
-                t.module = t.module.substring(0, t.module.length() - 4);
-            }
+// Remove "Test" prefix
+        if (className.startsWith("Test")) {
+            className = className.substring(4);
         }
+
+// Optional: Remove "Tests" suffix if you use names like LoginTests
+        if (className.endsWith("Tests")) {
+            className = className.substring(0, className.length() - 5);
+        }
+
+        t.module = className;
 
         t.status = status;
         t.durationMs = tr.getEndMillis() - tr.getStartMillis();

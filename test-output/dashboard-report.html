@@ -1556,99 +1556,99 @@
 <script>
     // === INJECTED BY TEST FRAMEWORK ===
 window.REPORT_DATA = {
-  "buildNumber": 260,
+  "buildNumber": 347,
   "branch": "Master Branch",
-  "runAgo": "21-Jul-2026 04:58:09 pm",
+  "runAgo": "23-Jul-2026 06:17:02 pm",
   "environment": "Production",
-  "reportId": "RPT-20260721112809-C69C",
+  "reportId": "RPT-20260723124702-DCC3",
   "frameworkVersion": "v1.0.0",
   "frameworkName": "Playwright-TestNG Automation",
   "projectName": "Swag Labs",
   "userName": "QA Team",
   "userRole": "Automation",
   "userInitials": "QA",
-  "passed": 0,
-  "failed": 1,
+  "passed": 29,
+  "failed": 0,
   "skipped": 0,
   "trendBuilds": [
-    "#203",
-    "#206",
-    "#209",
-    "#212",
-    "#215",
-    "#218",
-    "#221",
-    "#224",
-    "#227",
-    "#230",
-    "#233",
-    "#236",
-    "#239",
-    "#242",
-    "#245",
-    "#248",
-    "#251",
-    "#254",
-    "#257",
-    "#260"
+    "#290",
+    "#293",
+    "#296",
+    "#299",
+    "#302",
+    "#305",
+    "#308",
+    "#311",
+    "#314",
+    "#317",
+    "#320",
+    "#323",
+    "#326",
+    "#329",
+    "#332",
+    "#335",
+    "#338",
+    "#341",
+    "#344",
+    "#347"
   ],
   "trendPassed": [
     17,
-    17,
-    17,
-    17,
     3,
     3,
     3,
-    0,
-    0,
+    17,
+    8,
+    5,
+    3,
+    8,
+    17,
+    17,
+    1,
+    1,
+    1,
     1,
     3,
-    3,
-    3,
-    2,
-    3,
+    17,
+    28,
+    29,
+    29
+  ],
+  "trendFailed": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
     0,
     0
   ],
-  "trendFailed": [
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1,
-    3,
-    3,
-    3,
-    1,
-    1,
-    0,
-    0,
-    0,
-    1,
-    1,
-    1,
-    1,
-    1
-  ],
   "trendSkipped": [
     0,
     0,
-    1,
-    1,
-    1,
-    1,
-    1,
     0,
     0,
     0,
-    1,
-    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
     0,
     0,
     0,
@@ -1662,68 +1662,286 @@ window.REPORT_DATA = {
   "trendFailedDelta": 0.0,
   "trendSkippedDelta": 0.0,
   "trendDurationDelta": 0.0,
-  "durationSeconds": 31,
+  "durationSeconds": 53,
   "suites": [
     {
-      "name": "Default Suite",
-      "total": 1,
-      "passed": 0,
-      "failed": 1,
+      "name": "Smoke Suite",
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
       "skipped": 0,
-      "durationSeconds": 31
+      "durationSeconds": 29
+    },
+    {
+      "name": "Regression Suite",
+      "total": 15,
+      "passed": 15,
+      "failed": 0,
+      "skipped": 0,
+      "durationSeconds": 23
     }
   ],
   "recentTests": [
     {
+      "name": "LOGIN_001",
+      "description": "REQ-001",
+      "module": "Login",
+      "status": "passed",
+      "durationMs": 3314,
+      "retries": 0,
+      "timestamp": "06:15:50 pm"
+    },
+    {
+      "name": "LOGIN_002",
+      "description": "REQ-002",
+      "module": "Login",
+      "status": "passed",
+      "durationMs": 3163,
+      "retries": 0,
+      "timestamp": "06:15:54 pm"
+    },
+    {
       "name": "LOGIN_003",
       "description": "REQ-003",
-      "module": "TestLogin",
-      "status": "failed",
-      "durationMs": 31027,
-      "retries": 2,
-      "timestamp": "04:58:08 pm",
-      "failure": {
-        "id": "F-62797",
-        "severity": "critical",
-        "errorType": "Timeout",
-        "error": "Error {\n  message\u003d\u0027Timeout 30000ms exceeded.\n  name\u003d\u0027TimeoutError\n  stack\u003d\u0027TimeoutError: Timeout 30000ms exceeded.\n    at _ProgressController.run (C:\\Users\\1064921\\AppData\\Local\\Temp\\playwright-java-4474916549237483017\\package\\lib\\coreBundle.js:12962:32)\n    at _FrameDispatcher._runCommand (C:\\Users...",
-        "stack": "com.microsoft.playwright.TimeoutError: Error {\n  message\u003d\u0027Timeout 30000ms exceeded.\n  name\u003d\u0027TimeoutError\n  stack\u003d\u0027TimeoutError: Timeout 30000ms exceeded.\n    at _ProgressController.run (C:\\Users\\1064921\\AppData\\Local\\Temp\\playwright-java-4474916549237483017\\package\\lib\\coreBundle.js:12962:32)\n    at _FrameDispatcher._runCommand (C:\\Users\\1064921\\AppData\\Local\\Temp\\playwright-java-4474916549237483017\\package\\lib\\coreBundle.js:24019:35)\n    at DispatcherConnection.dispatch (C:\\Users\\1064921\\AppData\\Local\\Temp\\playwright-java-4474916549237483017\\package\\lib\\coreBundle.js:24253:44)\n}\nCall log:\n-   - waiting for locator(\"#user-name\")\n\r\n\tat com.microsoft.playwright.impl.WaitableResult.get(WaitableResult.java:52)\r\n\tat com.microsoft.playwright.impl.ChannelOwner.runUntil(ChannelOwner.java:138)\r\n\tat com.microsoft.playwright.impl.Connection.sendMessage(Connection.java:131)\r\n\tat com.microsoft.playwright.impl.ChannelOwner.sendMessage(ChannelOwner.java:124)\r\n\tat com.microsoft.playwright.impl.FrameImpl.fill(FrameImpl.java:310)\r\n\tat com.microsoft.playwright.impl.LocatorImpl.fill(LocatorImpl.java:273)\r\n\tat com.microsoft.playwright.Locator.fill(Locator.java:3346)\r\n\tat com.swaglabs.pages.UserLoginPage.validLogin(UserLoginPage.java:62)\r\n\tat com.swaglabs.tests.TestLogin.LOGIN_003(TestLogin.java:40)\r\n\tat java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)\r\n\tat java.base/java.lang.reflect.Method.invoke(Method.java:565)\r\n\tat org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)\r\n\tat org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:687)\r\n\tat org.testng.internal.invokers.TestInvoker.retryFailed(TestInvoker.java:269)\r\n\tat org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:76)\r\n\tat org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:995)\r\n\tat org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)\r\n... [truncated]",
-        "runId": "RUN-33a7b8",
-        "node": "local-runner",
-        "screenshot": "screenshots/LOGIN_003_21-07-2026_16-58-08.png",
-        "timeline": [
-          {
-            "time": "04:57:37 pm",
-            "text": "Test initiated — LOGIN_003",
-            "fail": false
-          },
-          {
-            "time": "04:57:48 pm",
-            "text": "Retry 1/2 initiated",
-            "fail": false
-          },
-          {
-            "time": "04:57:53 pm",
-            "text": "Retry 1 failed — Error {\n  message\u003d\u0027Timeout 30000ms exceeded.\n  name\u003d\u0027Timeout...",
-            "fail": true
-          },
-          {
-            "time": "04:57:58 pm",
-            "text": "Retry 2/2 initiated",
-            "fail": false
-          },
-          {
-            "time": "04:58:03 pm",
-            "text": "Retry 2 failed — Error {\n  message\u003d\u0027Timeout 30000ms exceeded.\n  name\u003d\u0027Timeout...",
-            "fail": true
-          },
-          {
-            "time": "04:58:08 pm",
-            "text": "Test marked FAILED — Error {\n  message\u003d\u0027Timeout 30000ms exceeded.\n  name\u003d\u0027Timeout...",
-            "fail": true
-          }
-        ]
-      }
+      "module": "Login",
+      "status": "passed",
+      "durationMs": 3173,
+      "retries": 0,
+      "timestamp": "06:15:57 pm"
+    },
+    {
+      "name": "INV_002",
+      "description": "REQ-005",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2121,
+      "retries": 0,
+      "timestamp": "06:16:00 pm"
+    },
+    {
+      "name": "INV_003",
+      "description": "REQ-006",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 1061,
+      "retries": 0,
+      "timestamp": "06:16:02 pm"
+    },
+    {
+      "name": "INV_004",
+      "description": "REQ-007",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2180,
+      "retries": 0,
+      "timestamp": "06:16:05 pm"
+    },
+    {
+      "name": "INV_005",
+      "description": "REQ-008",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2125,
+      "retries": 0,
+      "timestamp": "06:16:07 pm"
+    },
+    {
+      "name": "CART_001",
+      "description": "REQ-009",
+      "module": "Cart",
+      "status": "passed",
+      "durationMs": 1062,
+      "retries": 0,
+      "timestamp": "06:16:09 pm"
+    },
+    {
+      "name": "CART_002",
+      "description": "REQ-010",
+      "module": "Cart",
+      "status": "passed",
+      "durationMs": 1064,
+      "retries": 0,
+      "timestamp": "06:16:11 pm"
+    },
+    {
+      "name": "CHK1_002",
+      "description": "REQ-012",
+      "module": "CheckoutYourInformation",
+      "status": "passed",
+      "durationMs": 1074,
+      "retries": 0,
+      "timestamp": "06:16:13 pm"
+    },
+    {
+      "name": "CHK1_003",
+      "description": "REQ-013",
+      "module": "CheckoutYourInformation",
+      "status": "passed",
+      "durationMs": 7324,
+      "retries": 0,
+      "timestamp": "06:16:21 pm"
+    },
+    {
+      "name": "CHK2_002",
+      "description": "REQ-015",
+      "module": "CheckoutOverview",
+      "status": "passed",
+      "durationMs": 1083,
+      "retries": 0,
+      "timestamp": "06:16:22 pm"
+    },
+    {
+      "name": "CHKC_001",
+      "description": "REQ-016",
+      "module": "CheckoutComplete",
+      "status": "passed",
+      "durationMs": 12,
+      "retries": 0,
+      "timestamp": "06:16:23 pm"
+    },
+    {
+      "name": "CHKC_002",
+      "description": "REQ-017",
+      "module": "CheckoutComplete",
+      "status": "passed",
+      "durationMs": 1076,
+      "retries": 0,
+      "timestamp": "06:16:25 pm"
+    },
+    {
+      "name": "LOGIN_003",
+      "description": "REQ-003",
+      "module": "Login",
+      "status": "passed",
+      "durationMs": 3234,
+      "retries": 0,
+      "timestamp": "06:16:32 pm"
+    },
+    {
+      "name": "INV_001",
+      "description": "REQ-004",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 10,
+      "retries": 0,
+      "timestamp": "06:16:32 pm"
+    },
+    {
+      "name": "INV_002",
+      "description": "REQ-005",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2102,
+      "retries": 0,
+      "timestamp": "06:16:35 pm"
+    },
+    {
+      "name": "INV_003",
+      "description": "REQ-006",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 1056,
+      "retries": 0,
+      "timestamp": "06:16:37 pm"
+    },
+    {
+      "name": "INV_004",
+      "description": "REQ-007",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2171,
+      "retries": 0,
+      "timestamp": "06:16:39 pm"
+    },
+    {
+      "name": "INV_005",
+      "description": "REQ-008",
+      "module": "Inventory",
+      "status": "passed",
+      "durationMs": 2099,
+      "retries": 0,
+      "timestamp": "06:16:42 pm"
+    },
+    {
+      "name": "CART_001",
+      "description": "REQ-009",
+      "module": "Cart",
+      "status": "passed",
+      "durationMs": 1081,
+      "retries": 0,
+      "timestamp": "06:16:44 pm"
+    },
+    {
+      "name": "CHK1_001",
+      "description": "REQ-011",
+      "module": "CheckoutYourInformation",
+      "status": "passed",
+      "durationMs": 25,
+      "retries": 0,
+      "timestamp": "06:16:46 pm"
+    },
+    {
+      "name": "CART_002",
+      "description": "REQ-010",
+      "module": "Cart",
+      "status": "passed",
+      "durationMs": 1089,
+      "retries": 0,
+      "timestamp": "06:16:46 pm"
+    },
+    {
+      "name": "CHK1_002",
+      "description": "REQ-012",
+      "module": "CheckoutYourInformation",
+      "status": "passed",
+      "durationMs": 1152,
+      "retries": 0,
+      "timestamp": "06:16:48 pm"
+    },
+    {
+      "name": "CHK1_003",
+      "description": "REQ-013",
+      "module": "CheckoutYourInformation",
+      "status": "passed",
+      "durationMs": 7262,
+      "retries": 0,
+      "timestamp": "06:16:56 pm"
+    },
+    {
+      "name": "CHK2_001",
+      "description": "REQ-014",
+      "module": "CheckoutOverview",
+      "status": "passed",
+      "durationMs": 28,
+      "retries": 0,
+      "timestamp": "06:16:57 pm"
+    },
+    {
+      "name": "CHK2_002",
+      "description": "REQ-015",
+      "module": "CheckoutOverview",
+      "status": "passed",
+      "durationMs": 1050,
+      "retries": 0,
+      "timestamp": "06:16:58 pm"
+    },
+    {
+      "name": "CHKC_001",
+      "description": "REQ-016",
+      "module": "CheckoutComplete",
+      "status": "passed",
+      "durationMs": 13,
+      "retries": 0,
+      "timestamp": "06:16:59 pm"
+    },
+    {
+      "name": "CHKC_002",
+      "description": "REQ-017",
+      "module": "CheckoutComplete",
+      "status": "passed",
+      "durationMs": 1059,
+      "retries": 0,
+      "timestamp": "06:17:01 pm"
     }
   ]
 };
@@ -2241,7 +2459,7 @@ const DEFAULT_REPORT_DATA = {
                     <thead>
                     <tr>
                         <th>Test Name</th>
-                        <th style="padding-left: 21px;">Module</th>
+                        <th style="padding-left: 11px;">Module</th>
                         <th style="padding-left: 30px;">Status</th>
                         <th style="padding-left: 19px;">Severity</th>
                         <th style="padding-left: 30px;">Error</th>
