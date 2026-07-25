@@ -1,8 +1,9 @@
 package com.swaglabs.base;
 
 import com.microsoft.playwright.*;
+import com.swaglabs.constants.AppConstants;
+import com.swaglabs.utils.ConfigReader;
 import com.swaglabs.utils.Log;
-import com.swaglabs.utils.configReader;
 import org.slf4j.Logger;
 import org.testng.annotations.*;
 import org.testng.ITestResult;
@@ -22,14 +23,12 @@ public class BaseTest {
     protected static BrowserContext context;
     protected static Page page;
 
-    protected configReader cfgReader;
     BrowserType.LaunchOptions options;
     Logger logger;
 
     @BeforeSuite(alwaysRun = true)
     public void setUp() throws Exception {
         logger = Log.getLogger(BaseTest.class);
-        cfgReader = new configReader();
 
         options = new BrowserType.LaunchOptions()
                 .setHeadless(false)
@@ -38,7 +37,9 @@ public class BaseTest {
 
         playwright = Playwright.create();
 
-        switch (cfgReader.getBrowser().toLowerCase()) {
+        String browserName = ConfigReader.get(AppConstants.BROWSER);
+
+        switch (browserName.toLowerCase()) {
 
             case "chromium":
                 browser = playwright.chromium().launch(options);
@@ -72,7 +73,7 @@ public class BaseTest {
         );
 
         page = context.newPage();
-        page.navigate(cfgReader.getURL());
+        page.navigate(ConfigReader.get(AppConstants.URL));
     }
 
     @AfterSuite(alwaysRun = true)

@@ -2,8 +2,9 @@ package com.swaglabs.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.swaglabs.constants.AppConstants;
+import com.swaglabs.utils.ConfigReader;
 import com.swaglabs.utils.Log;
-import com.swaglabs.utils.configReader;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -11,7 +12,6 @@ import java.io.IOException;
 public class Checkout_YourInformationPage {
 
     protected Page page;
-    configReader cr;
     private static final Logger logger = Log.getLogger(Checkout_YourInformationPage.class);
 
     protected Locator expectedPage;
@@ -49,15 +49,14 @@ public class Checkout_YourInformationPage {
 
     /** Enters configured customer details and proceeds to overview. */
     public Checkout_OverviewPage enter_your_information() throws IOException {
-        cr = new configReader();
         firstNameInput.clear();
-        firstNameInput.fill(cr.getFirstName());
+        firstNameInput.fill(ConfigReader.get(AppConstants.FIRST_NAME));
         logger.info("Entered First Name on Information Page: {}", firstNameInput.inputValue());
         lastNameInput.clear();
-        lastNameInput.fill(cr.getLastName());
+        lastNameInput.fill(ConfigReader.get(AppConstants.LAST_NAME));
         logger.info("Entered Last Name on Information Page: {}", lastNameInput.inputValue());
         postalCodeInput.clear();
-        postalCodeInput.fill(cr.getPostalCode());
+        postalCodeInput.fill(ConfigReader.get(AppConstants.POSTAL_CODE));
         logger.info("Entered ZIP/Postal Code on Information Page: {}", postalCodeInput.inputValue());
         continueButton.click();
         logger.info("Clicked on Continue Button");

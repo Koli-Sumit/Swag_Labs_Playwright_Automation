@@ -2,8 +2,9 @@ package com.swaglabs.pages;
 
 import com.microsoft.playwright.Locator;
 import com.microsoft.playwright.Page;
+import com.swaglabs.constants.AppConstants;
+import com.swaglabs.utils.ConfigReader;
 import com.swaglabs.utils.Log;
-import com.swaglabs.utils.configReader;
 import org.slf4j.Logger;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class UserLoginPage {
 
     //Variables
     protected Page page;
-    configReader cr;
+    //configReader cr;
     private static final Logger logger = Log.getLogger(UserLoginPage.class);
 
     // Locators
@@ -36,10 +37,9 @@ public class UserLoginPage {
 
     /** Attempts login using the configured locked user. */
     public void lockedUser() throws IOException {
-        cr = new configReader();
-        usernameInput.fill(cr.getLockUser());
+        usernameInput.fill(ConfigReader.get(AppConstants.LOCKED_USER));
         logger.info("👤 Entered locked user username");
-        passwordInput.fill(cr.getPassword());
+        passwordInput.fill(ConfigReader.get(AppConstants.PASSWORD));
         logger.info("🔒 Entered password");
         loginButton.click();
         logger.info("🖱️ Clicked Login button with Locked credentials");
@@ -47,10 +47,9 @@ public class UserLoginPage {
 
     /** Attempts login using an invalid password. */
     public void invalidPassword() throws IOException {
-        cr = new configReader();
-        usernameInput.fill(cr.getUsername());
+        usernameInput.fill(ConfigReader.get(AppConstants.USERNAME));
         logger.info("❌ Entered invalid username");
-        passwordInput.fill(cr.getInvalidPassword());
+        passwordInput.fill(ConfigReader.get(AppConstants.INVALID_PASSWORD));
         logger.info("🔒 Entered password ");
         loginButton.click();
         logger.info("🖱️ Clicked Login button with invalid credentials");
@@ -59,10 +58,9 @@ public class UserLoginPage {
 
     /** Logs in using configured valid credentials. */
     public InventoryPage validLogin() throws IOException {
-        cr = new configReader();
-        usernameInput.fill(cr.getUsername());
+        usernameInput.fill(ConfigReader.get(AppConstants.USERNAME));
         logger.info("👤 Entered valid username");
-        passwordInput.fill(cr.getPassword());
+        passwordInput.fill(ConfigReader.get(AppConstants.PASSWORD));
         logger.info("🔒 Entered valid password");
         loginButton.click();
         logger.info("🖱️ Clicked Login button with valid credentials");

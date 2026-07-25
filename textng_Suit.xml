@@ -9,6 +9,7 @@
     -->
     <listeners>
         <listener class-name="com.swaglabs.report.DashboardReporter"/>
+<!--        <listener class-name="com.swaglabs.utils.TestListener"/>-->
     </listeners>
 
     <!-- Optional: override defaults via parameters -->
