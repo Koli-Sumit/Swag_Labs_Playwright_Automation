@@ -1,41 +1,42 @@
-24-07-2026 11:46:25 am INFO  Utils           - [TestNG] Running:
-  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
-
-24-07-2026 11:46:30 am INFO  BaseTest        - 🌐 Chromium browser launched
-24-07-2026 11:48:10 am INFO  Utils           - [TestNG] Running:
-  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
-
-24-07-2026 11:48:14 am INFO  BaseTest        - 🌐 Chromium browser launched
-24-07-2026 11:48:17 am INFO  UserLoginPage   - 👤 Entered locked user username
-24-07-2026 11:48:18 am INFO  UserLoginPage   - 🔒 Entered password
-24-07-2026 11:48:19 am INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
-24-07-2026 11:55:13 am INFO  Utils           - [TestNG] Running:
+28-07-2026 12:41:07 pm INFO  Utils           - [TestNG] Running:
   C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
 
-24-07-2026 11:55:17 am INFO  BaseTest        - 🌐 Chromium browser launched
-24-07-2026 11:55:19 am INFO  UserLoginPage   - 👤 Entered locked user username
-24-07-2026 11:55:21 am INFO  UserLoginPage   - 🔒 Entered password
-24-07-2026 11:55:22 am INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
-24-07-2026 11:55:24 am INFO  UserLoginPage   - ❌ Entered invalid username
-24-07-2026 11:55:25 am INFO  UserLoginPage   - 🔒 Entered password 
-24-07-2026 11:55:26 am INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
-24-07-2026 11:55:27 am INFO  UserLoginPage   - 👤 Entered valid username
-24-07-2026 11:55:28 am INFO  UserLoginPage   - 🔒 Entered valid password
-24-07-2026 11:55:29 am INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
-24-07-2026 11:55:32 am INFO  InventoryPage   - Sauce Labs Backpack product added to cart
-24-07-2026 11:55:33 am INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
-24-07-2026 11:55:35 am INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
-24-07-2026 11:55:36 am INFO  InventoryPage   - Product Name: Sauce Labs Backpack
-24-07-2026 11:55:36 am INFO  InventoryPage   - Product Price: $29.99
-24-07-2026 11:55:36 am INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
-24-07-2026 11:55:39 am INFO  InventoryPage   - Sorted products by price (low to high)
-24-07-2026 11:55:40 am INFO  InventoryPage   - Opened Product Cart
-24-07-2026 11:55:42 am INFO  CartPage        - 🛍️ Opened Product Cart
-24-07-2026 11:55:44 am INFO  CartPage        - 💳 Opened Checkout Page
-24-07-2026 11:55:49 am INFO  Checkout_YourInformationPage - Entered First Name on Information Page: John
-24-07-2026 11:55:51 am INFO  Checkout_YourInformationPage - Entered Last Name on Information Page: Test
-24-07-2026 11:55:53 am INFO  Checkout_YourInformationPage - Entered ZIP/Postal Code on Information Page: 123456
-24-07-2026 11:55:54 am INFO  Checkout_YourInformationPage - Clicked on Continue Button
-24-07-2026 11:55:54 am INFO  Checkout_OverviewPage - Product Verified
-24-07-2026 11:55:54 am INFO  Checkout_OverviewPage - Payment Info Label Verified
-24-07-2026 11:55:57 am INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!
+28-07-2026 12:41:12 pm INFO  BaseTest        - 🌐 Chromium browser launched
+28-07-2026 12:41:15 pm INFO  UserLoginPage   - 👤 Entered locked user username
+28-07-2026 12:41:16 pm INFO  UserLoginPage   - 🔒 Entered password
+28-07-2026 12:41:17 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+28-07-2026 12:41:18 pm INFO  UserLoginPage   - ❌ Entered invalid username
+28-07-2026 12:41:19 pm INFO  UserLoginPage   - 🔒 Entered password 
+28-07-2026 12:41:20 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+28-07-2026 12:41:22 pm INFO  UserLoginPage   - 👤 Entered valid username
+28-07-2026 12:41:23 pm INFO  UserLoginPage   - 🔒 Entered valid password
+28-07-2026 12:41:24 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+28-07-2026 12:41:27 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+28-07-2026 12:41:28 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+28-07-2026 12:41:29 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Price: $29.99
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+28-07-2026 12:41:34 pm INFO  InventoryPage   - Sorted products by price (low to high)
+28-07-2026 12:41:35 pm INFO  InventoryPage   - Opened Product Cart
+28-07-2026 12:41:37 pm INFO  CartPage        - 🛍️ Opened Product Cart
+28-07-2026 12:41:38 pm INFO  CartPage        - 💳 Opened Checkout Page
+28-07-2026 12:41:43 pm INFO  Checkout_YourInformationPage - Entered First Name on Information Page: John
+28-07-2026 12:41:46 pm INFO  Checkout_YourInformationPage - Entered Last Name on Information Page: Test
+28-07-2026 12:41:48 pm INFO  Checkout_YourInformationPage - Entered ZIP/Postal Code on Information Page: 123456
+28-07-2026 12:41:49 pm INFO  Checkout_YourInformationPage - Clicked on Continue Button
+28-07-2026 12:41:49 pm INFO  Checkout_OverviewPage - Product Verified
+28-07-2026 12:41:49 pm INFO  Checkout_OverviewPage - Payment Info Label Verified
+28-07-2026 12:41:52 pm INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!
+28-07-2026 01:16:40 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:28:47 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:46:42 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:50:53 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+

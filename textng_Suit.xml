@@ -10,11 +10,12 @@
     <listeners>
         <listener class-name="com.swaglabs.report.DashboardReporter"/>
 <!--        <listener class-name="com.swaglabs.utils.TestListener"/>-->
+        <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"></listener>
     </listeners>
 
-    <!-- Optional: override defaults via parameters -->
-    <parameter name="env" value="Production"/>
-    <parameter name="branch" value="Master"/>
+<!--    &lt;!&ndash; Optional: override defaults via parameters &ndash;&gt;-->
+<!--    <parameter name="env" value="Production"/>-->
+<!--    <parameter name="branch" value="Master"/>-->
 
     <test name="Login Test">
         <classes>

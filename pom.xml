@@ -89,6 +89,30 @@
             <scope>compile</scope>
         </dependency>
 
+        <!-- Source: https://mvnrepository.com/artifact/com.aventstack/chaintest-testng -->
+        <dependency>
+            <groupId>com.aventstack</groupId>
+            <artifactId>chaintest-testng</artifactId>
+            <version>1.0.12</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Source: https://mvnrepository.com/artifact/com.sun.mail/jakarta.mail -->
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>jakarta.mail</artifactId>
+            <version>2.0.2</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- Source: https://mvnrepository.com/artifact/com.sun.activation/jakarta.activation -->
+        <dependency>
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
+            <version>2.0.1</version>
+            <scope>compile</scope>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>

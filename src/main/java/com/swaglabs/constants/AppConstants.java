@@ -23,4 +23,14 @@ public class AppConstants {
     public static final String POSTAL_CODE = "POSTAL_CODE";
 
 
+    //Emails
+    public static final String EMAIL_USERNAME = "mail.username";
+    public static final String EMAIL_PASSWORD = "mail.password";
+    public static final String EMAIL_TO = "mail.to";
+    public static final String EMAIL_HOST = "mail.host";
+    public static final String EMAIL_PORT = "mail.port";
+    public static final String EMAIL_SUBJECT = "mail.subject";
+
+
+
 }

@@ -2,6 +2,7 @@ package com.swaglabs.report;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.swaglabs.utils.EmailUtil;
 import com.swaglabs.utils.RetryAnalyzer;
 import org.testng.*;
 import org.testng.xml.XmlSuite;
@@ -142,6 +143,37 @@ public class DashboardReporter implements IReporter {
         Collections.reverse(allTests);
         List<ReportData.TestResultData> recentTests = new ArrayList<>(allTests);
 
+        //Module Summery
+        Map<String, ReportData.ModuleData> moduleMap = new LinkedHashMap<>();
+
+        for (ReportData.TestResultData test : allTests) {
+
+            ReportData.ModuleData module = moduleMap.computeIfAbsent(test.module, key -> {
+                ReportData.ModuleData m = new ReportData.ModuleData();
+                m.module = key;
+                return m;
+            });
+
+            module.total++;
+
+            switch (test.status) {
+                case "passed":
+                    module.passed++;
+                    break;
+
+                case "failed":
+                    module.failed++;
+                    break;
+
+                case "skipped":
+                    module.skipped++;
+                    break;
+            }
+        }
+
+        List<ReportData.ModuleData> moduleSummary =
+                new ArrayList<>(moduleMap.values());
+
         // ── 3. Trend history ──
         // Calculate coverages for trend tracking
         int reqTotalTemp = totalPassed + totalFailed + totalSkipped;
@@ -215,6 +247,7 @@ public class DashboardReporter implements IReporter {
                         data.durationSeconds = totalDurationSec;
                         data.suites = suiteDataList;
                         data.recentTests = recentTests;
+                        data.moduleSummary = moduleSummary;
 
                         data.trendBuilds = trend.builds;
                         data.trendPassed = trend.passed;
@@ -225,6 +258,40 @@ public class DashboardReporter implements IReporter {
                         data.trendFailedDelta = trend.failedDelta;
                         data.trendSkippedDelta = trend.skippedDelta;
                         data.trendDurationDelta = trend.durationDelta;
+
+
+// ==========================
+// Execution Information
+// ==========================
+
+                        ReportData.ExecutionInfo executionInfo = new ReportData.ExecutionInfo();
+
+                        executionInfo.build = new ReportData.BuildInfo();
+                        executionInfo.environment = new ReportData.EnvironmentInfo();
+                        executionInfo.execution = new ReportData.ExecutionDetails();
+
+                        executionInfo.build.number = "#" + buildNumber;
+                        executionInfo.build.branch = data.branch;
+                        executionInfo.build.version = "1.0";
+
+                        executionInfo.environment.name = data.environment;
+                        executionInfo.environment.browser = System.getProperty("browser", "Chrome");
+                        executionInfo.environment.browserVersion = "";
+                        executionInfo.environment.os = System.getProperty("os.name");
+                        executionInfo.environment.java = System.getProperty("java.version");
+                        executionInfo.environment.playwright = "1.60.0";
+
+                        String executionMode =
+                                xmlSuites.get(0).getParallel() == XmlSuite.ParallelMode.NONE
+                                        ? "Sequential"
+                                        : "Parallel";
+
+                        executionInfo.execution.mode = executionMode;
+                        executionInfo.execution.startTime = buildStartTime;
+                        executionInfo.execution.endTime = LocalDateTime.now().format(formatter);
+                        executionInfo.execution.duration = formatDuration(totalDurationSec);
+
+                        data.executionInfo = executionInfo;
 
                         generateHtmlReport(data);
                     }
@@ -270,6 +337,15 @@ public class DashboardReporter implements IReporter {
         System.out.println("  Generated in: " + elapsed + "ms");
 
         System.out.println("=================================================================");
+
+        try {
+            EmailUtil.sendEmail();
+            System.out.println("Automation report email sent successfully.");
+        } catch (Exception e) {
+            System.err.println("Failed to send automation report email.");
+            e.printStackTrace();
+        }
+
     }
 
     // ═══════════════════════════════════════════════════════════

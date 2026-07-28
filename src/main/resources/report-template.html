@@ -470,7 +470,7 @@
         .chart-card-sub {
             font-size: 12px;
             color: var(--text-muted);
-            margin-bottom: 20px;
+            /*margin-bottom: 20px;*/
         }
 
         /**/
@@ -864,58 +864,6 @@
             }
         }
 
-        .pdf-export-mode {
-            overflow: visible !important;
-            height: auto !important;
-            min-height: auto !important;
-        }
-
-        .pdf-export-mode .main-content {
-            overflow: visible !important;
-            height: auto !important;
-            min-height: 100vh !important;
-            max-height: none !important;
-            position: relative !important;
-            transform: none !important;
-        }
-
-        .pdf-export-mode header,
-        .pdf-export-mode .header,
-        .pdf-export-mode .top-bar {
-            position: relative !important;
-            top: auto !important;
-            left: auto !important;
-            z-index: 1 !important;
-        }
-
-        .pdf-export-mode footer,
-        .pdf-export-mode .footer {
-            position: relative !important;
-            bottom: auto !important;
-            z-index: 1 !important;
-        }
-
-        .pdf-export-mode .sidebar,
-        .pdf-export-mode nav {
-            display: none !important;
-        }
-
-        .pdf-export-mode .sidebar-overlay {
-            display: none !important;
-        }
-
-        .pdf-export-mode * {
-            -webkit-transform: none !important;
-            transform: none !important;
-            animation: none !important;
-            transition: none !important;
-        }
-
-        .pdf-export-mode .main-content > * {
-            flex: none !important;
-            min-height: auto !important;
-        }
-
         .kpi-fixed {
             position: sticky;
             top: 100px;
@@ -1008,7 +956,7 @@
         }
 
         .dash-cell {
-            color: var(--text-muted);
+            color: var(--text-secondary);
             font-size: 12px;
             text-align: center;
             position: relative;
@@ -1399,70 +1347,65 @@
             white-space: nowrap;
         }
 
-        .pdf-export-mode .report-footer {
-            position: relative !important;
-        }
+        /*!*    trend chart*!*/
+        /*.trend-stat {*/
+        /*    background: var(--bg-secondary, rgba(255, 255, 255, 0.03));*/
+        /*    border: 1px solid var(--chart-grid, rgba(42, 54, 84, 0.3));*/
+        /*    border-radius: 10px;*/
+        /*    padding: 10px 12px;*/
+        /*    display: flex;*/
+        /*    flex-direction: column;*/
+        /*    gap: 2px;*/
+        /*}*/
 
-        /*    trend chart*/
-        /* Add these to your stylesheet */
-        .trend-stat {
-            background: var(--bg-secondary, rgba(255, 255, 255, 0.03));
-            border: 1px solid var(--chart-grid, rgba(42, 54, 84, 0.3));
-            border-radius: 10px;
-            padding: 10px 12px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
+        /*.trend-stat-label {*/
+        /*    font-size: 11px;*/
+        /*    color: var(--text-secondary, #8896b3);*/
+        /*    text-transform: uppercase;*/
+        /*    letter-spacing: 0.4px;*/
+        /*}*/
 
-        .trend-stat-label {
-            font-size: 11px;
-            color: var(--text-secondary, #8896b3);
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-        }
+        /*.trend-stat-value {*/
+        /*    font-family: 'JetBrains Mono', monospace;*/
+        /*    font-size: 18px;*/
+        /*    font-weight: 700;*/
+        /*    line-height: 1.2;*/
+        /*}*/
 
-        .trend-stat-value {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 18px;
-            font-weight: 700;
-            line-height: 1.2;
-        }
+        /*.trend-stat-sub {*/
+        /*    font-family: 'JetBrains Mono', monospace;*/
+        /*    font-size: 11px;*/
+        /*    color: var(--text-secondary, #8896b3);*/
+        /*}*/
 
-        .trend-stat-sub {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 11px;
-            color: var(--text-secondary, #8896b3);
-        }
+        /*.trend-legend-item {*/
+        /*    display: flex;*/
+        /*    align-items: center;*/
+        /*    gap: 6px;*/
+        /*    font-size: 12px;*/
+        /*    color: var(--text-secondary, #8896b3);*/
+        /*    cursor: pointer;*/
+        /*    padding: 3px 8px;*/
+        /*    border-radius: 6px;*/
+        /*    transition: background 0.2s;*/
+        /*    user-select: none;*/
+        /*}*/
 
-        .trend-legend-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 12px;
-            color: var(--text-secondary, #8896b3);
-            cursor: pointer;
-            padding: 3px 8px;
-            border-radius: 6px;
-            transition: background 0.2s;
-            user-select: none;
-        }
+        /*.trend-legend-item:hover {*/
+        /*    background: var(--bg-secondary, rgba(255, 255, 255, 0.04));*/
+        /*}*/
 
-        .trend-legend-item:hover {
-            background: var(--bg-secondary, rgba(255, 255, 255, 0.04));
-        }
+        /*.trend-legend-item.hidden-line {*/
+        /*    opacity: 0.35;*/
+        /*    text-decoration: line-through;*/
+        /*}*/
 
-        .trend-legend-item.hidden-line {
-            opacity: 0.35;
-            text-decoration: line-through;
-        }
-
-        .trend-legend-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
+        /*.trend-legend-dot {*/
+        /*    width: 8px;*/
+        /*    height: 8px;*/
+        /*    border-radius: 50%;*/
+        /*    flex-shrink: 0;*/
+        /*}*/
 
         /*    */
 
@@ -1546,6 +1489,125 @@
             color: #b45309 !important;
         }
 
+        .summary-container{
+            display:flex;
+            gap:24px;
+            margin-bottom:28px;
+            align-items:flex-start;
+        }
+
+        .summary-section{
+            flex:1;
+        }
+
+        .summary-section .chart-card{
+            width:100%;
+            height:100%;
+        }
+
+        /* ===========================
+   Module Summary Table
+=========================== */
+
+        .module-summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 8px;
+            font-size: 13px;
+        }
+
+        .module-summary-table thead th {
+            text-align: left;
+            padding: 12px 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        .module-summary-table tbody tr {
+            transition: all .25s ease;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+        }
+
+        .module-summary-table tbody tr:last-child {
+            border-bottom: none;
+        }
+
+        .module-summary-table tbody tr:hover {
+            background: rgba(255,255,255,.04);
+        }
+
+        .module-summary-table tbody td {
+            padding: 20px;
+            color: var(--text-primary);
+            vertical-align: middle;
+        }
+
+        /* Module Name */
+
+        .module-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Count Badges */
+
+        .module-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 34px;
+            height: 24px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 0 10px;
+        }
+
+        .module-badge.pass {
+            background: rgba(34,197,94,.15);
+            color: #22c55e;
+        }
+
+        .module-badge.fail {
+            background: rgba(239,68,68,.15);
+            color: #ef4444;
+        }
+
+        .module-badge.skip {
+            background: rgba(245,158,11,.15);
+            color: #f59e0b;
+        }
+
+        /* Total */
+
+        .module-total {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Pass Percentage */
+
+        .module-pass {
+            font-weight: 700;
+            color: #22c55e;
+        }
+
+        /* Responsive */
+
+        @media (max-width:1100px){
+
+            .module-summary-table{
+                font-size:12px;
+            }
+
+            .module-summary-table th,
+            .module-summary-table td{
+                padding:10px;
+            }
+
+        }
 
     </style>
 </head>
@@ -1740,7 +1802,7 @@
     const RD = Object.assign({}, DEFAULT_REPORT_DATA, window.REPORT_DATA || {});
 
     console.log("%c[REPORT DATA SOURCE]", "color:#00e5a0;font-weight:bold;font-size:14px;",
-        window.REPORT_DATA ? "✅ Using INJECTED data from test framework" : "❌ Using DEFAULT fallback data");
+        window.REPORT_DATA ? "✅ INJECTED data from test framework" : "❌ Using DEFAULT fallback data");
 
     const RD_TOTAL = RD.passed + RD.failed + RD.skipped;
 
@@ -1802,6 +1864,7 @@
         </div>
 
         <div class="nav-section-title">Settings</div>
+
         <div class="nav-item" data-page="config" tabindex="0" role="button">
             <i class="fas fa-cog"></i> Configuration
         </div>
@@ -1850,11 +1913,10 @@
                 <i class="fas fa-sun icon-sun"></i>
             </button>
 
-            <button id="exportBtn"
-                    style="padding:8px 16px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-primary);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:inherit;"
-                    aria-label="Export report">
+            <button id="exportBtn" style="padding:8px 16px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all 0.2s;font-family:inherit;" aria-label="Export report">
                 <i class="fas fa-download" style="font-size:12px;"></i> Export
             </button>
+
             <button id="refreshBtn"
                     style="padding:8px 12px;border-radius:8px;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;transition:all 0.2s;"
                     aria-label="Refresh data">
@@ -1957,17 +2019,17 @@
             </div>
         </section>
 
-        <section style="display:grid;grid-template-columns:2fr 1fr;gap:20px;margin-bottom:28px;"
+        <section style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:20px;margin-bottom:28px;"
                  aria-label="Charts row 1">
 
             <!--            Trend Chart -->
-            <div class="chart-card anim-fade-up anim-delay-6">
+            <div class="chart-card anim-fade-up anim-delay-6" style=height:413px;">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;">
                     <div>
                         <div class="chart-card-title">Test Execution Trend</div>
                         <div class="chart-card-sub">Last <span id="trendCount"></span> build runs</div>
                     </div>
-                    <div style="display:flex;gap:6px;" role="tablist" aria-label="Trend filter">
+                    <div style="display:flex;gap:6px; margin-left:61px; " role="tablist" aria-label="Trend filter">
                         <button class="filter-pill active" data-trend="all" role="tab" aria-selected="true">All</button>
                         <button class="filter-pill" data-trend="passed" role="tab" aria-selected="false">Passed</button>
                         <button class="filter-pill" data-trend="failed" role="tab" aria-selected="false">Failed</button>
@@ -1981,10 +2043,10 @@
             </div>
 
             <!--            Result distribution doughnut chart    -->
-            <div class="chart-card anim-fade-up anim-delay-7">
+            <div class="chart-card anim-fade-up anim-delay-7" style="width: 400px;">
                 <div class="chart-card-title">Result Distribution</div>
                 <div class="chart-card-sub" id="doughnutSub"></div>
-                <div style="position:relative;height:220px;display:flex;align-items:center;justify-content:center;">
+                <div style="position:relative;height:185px;display:flex;align-items:center;justify-content:center;">
                     <canvas id="doughnutChart"></canvas>
                     <!-- Center overlay -->
                     <div id="doughnutCenter"
@@ -2022,15 +2084,136 @@
                     </div>
                 </div>
             </div>
+
+            <!-- EXECUTION INFORMATION -->
+            <div class="chart-card anim-fade-up anim-delay-7" style="width:573px;height:412px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+                    <div>
+                        <div class="chart-card-title">Execution Information</div>
+                        <div class="chart-card-sub">Execution environment details</div>
+                    </div>
+                    <div class="status-badge success">Latest Run</div>
+                </div>
+                <!-- Information Cards -->
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <!-- Build Information -->
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:16px;">
+                        <div style="font-size:15px; font-weight:600; margin-bottom:14px; color:var(--text-primary); margin-left: 40px;">🏗 Build Information</div>
+                        <table style="width:100%;border-collapse:collapse;font-size:13px;margin-left: 23px">
+                            <tr>
+                                <td class="dash-cell">Build</td>
+                                <td class="dash-cell" id="buildNumber">#245</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Version</td>
+                                <td class="dash-cell" id="buildVersion">v2.8.1</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Branch</td>
+                                <td class="dash-cell" id="gitBranch">main</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Commit</td>
+                                <td class="dash-cell" id="gitCommit">a7b92fc</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Triggered By</td>
+                                <td class="dash-cell" id="triggeredBy">Jenkins</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Suite</td>
+                                <td class="dash-cell" id="suiteType">Regression</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <!-- Environment Information -->
+                    <div style="background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:16px;">
+                        <div style="font-size:15px; font-weight:600; margin-bottom:14px; color:var(--text-primary); margin-left: 40px;">💻 Environment</div>
+                        <table style="width:100%;border-collapse:collapse;font-size:13px;margin-left: 23px">
+                            <tr>
+                                <td class="dash-cell">Environment</td>
+                                <td class="dash-cell" id="environment">QA</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Browser</td>
+                                <td class="dash-cell" id="browserName">Chrome</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">OS</td>
+                                <td class="dash-cell" id="operatingSystem">Windows 11</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Java</td>
+                                <td class="dash-cell" id="javaVersion">21</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Playwright</td>
+                                <td class="dash-cell" id="playwrightVersion">1.60.0</td>
+                            </tr>
+                            <tr>
+                                <td class="dash-cell">Execution</td>
+                                <td class="dash-cell" id="executionMode">Parallel</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <!-- Footer Card -->
+                <div style="margin-top:16px; background:var(--bg-secondary); border:1px solid var(--border); border-radius:12px; padding:12px 16px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; text-align:center;">
+                    <div>
+                        <div style="font-size:11px;color:var(--text-secondary);">Start Time</div>
+                        <div id="startTime" style="font-weight:600;">09:00 AM</div>
+                    </div>
+                    <div>
+                        <div style="font-size:11px;color:var(--text-secondary);">End Time</div>
+                        <div id="endTime" style="font-weight:600;">09:14 AM</div>
+                    </div>
+                    <div>
+                        <div style="font-size:11px;color:var(--text-secondary);">Duration</div>
+                        <div id="duration" style="font-weight:600;">14m 20s</div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
-        <section style="margin-bottom:28px;" aria-label="Suite details">
-            <div class="chart-card anim-fade-up anim-delay-7">
-                <div class="chart-card-title">Test Suite Details</div>
-                <div class="chart-card-sub">Individual suite completion status</div>
-                <div style="margin-top:8px;" id="suiteList"></div>
-            </div>
-        </section>
+        <div class="summary-container">
+
+            <!-- Suite Details -->
+            <section class="summary-section" aria-label="Suite details">
+                <div class="chart-card anim-fade-up anim-delay-7">
+                    <div class="chart-card-title">Test Suite Details</div>
+                    <div class="chart-card-sub">Individual suite completion status</div>
+
+                    <div style="margin-top:8px;" id="suiteList"></div>
+                </div>
+            </section>
+
+            <!-- Module Summary -->
+            <section class="summary-section" aria-label="Module summary">
+                <div class="chart-card anim-fade-up anim-delay-9">
+                    <div class="chart-card-title">Module Summary</div>
+                    <div class="chart-card-sub">Module-wise execution statistics</div>
+
+                    <div style="margin-top:16px;">
+                        <table class="module-summary-table">
+                            <thead>
+                            <tr>
+                                <th>Module</th>
+                                <th>Total</th>
+                                <th>Passed</th>
+                                <th>Failed</th>
+                                <th>Skipped</th>
+                            </tr>
+                            </thead>
+
+                            <tbody id="moduleSummaryList">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </div>
 
         <!-- ===== MERGED: Recent Test Results + Failure Monitor ===== -->
         <section class="chart-card anim-fade-up anim-delay-8" style="margin-bottom:28px;"
@@ -2069,13 +2252,13 @@
                         <th>Test Name</th>
                         <th style="padding-left: 11px;">Module</th>
                         <th style="padding-left: 30px;">Status</th>
-                        <th style="padding-left: 19px;">Severity</th>
-                        <th style="padding-left: 30px;">Error</th>
-                        <th style="padding-left: 35px;">Type</th>
-                        <th style="padding-left: 00px;" >Duration</th>
-                        <th style="padding-left: 00px;" >Retries</th>
-                        <th>Timestamp</th>
-                        <th>View Fail</th>
+                        <th style="padding-left: 19px;width: 142px">Severity</th>
+                        <!--<th style="padding-left: 30px;">Error</th>-->
+                        <th style="padding-left: 35px;width: 190px">Error Type</th>
+                        <th style="padding-left: 00px;">Duration</th>
+                        <th style="padding-left: 00px;">Retries</th>
+                        <!--<th>Timestamp</th>-->
+                        <th style="width: 142px">View Failed</th>
                     </tr>
                     </thead>
                     <tbody id="tableBody"></tbody>
@@ -2211,7 +2394,6 @@
         });
     })();
 
-
     /* ================================================================
        POPULATE ALL DYNAMIC ELEMENTS FROM RD
        ================================================================ */
@@ -2222,7 +2404,7 @@
     document.getElementById('userRole').textContent = RD.userRole;
 
     document.getElementById('topbarMeta').innerHTML =
-        `Build  <span class="mono" style="color:var(--accent);">#${RD.buildNumber}</span> &middot; ${RD.branch} &middot; Run completed ${RD.runAgo}`;
+        `&middot<span class="mono" style="color:var(--accent);"></span> Run completed ${RD.runAgo}`;
 
     var pipelineBadge = document.getElementById('pipelineBadge');
     var pipelineDot = document.getElementById('pipelineDot');
@@ -2252,18 +2434,6 @@
             '<i class="fas ' + arrow + '" style="font-size:9px;"></i> ' +
             Math.abs(delta).toFixed(1) + suffix;
     }
-
-    // function setTrendBadge(elId, delta, invertColor) {
-    //     var el = document.getElementById(elId);
-    //     if (!el || delta == null) {
-    //         el.style.display = 'none';
-    //         return;
-    //     }
-    //     var isImprovement = invertColor ? delta < 0 : delta > 0;
-    //     el.className = 'kpi-trend ' + (isImprovement ? 'up' : 'down');
-    //     var arrow = delta >= 0 ? 'fa-arrow-up' : 'fa-arrow-down';
-    //     el.innerHTML = '<i class="fas ' + arrow + '" style="font-size:9px;"></i> ' + Math.abs(delta).toFixed(1) + '%';
-    // }
 
     setTrendBadge('trendPassedBadge', RD.trendPassedDelta, false);
     setTrendBadge('trendFailedBadge', RD.trendFailedDelta, true);
@@ -2350,7 +2520,6 @@
             requestAnimationFrame(step);
         });
     }
-
 
     /* ================================================================
        PROGRESS BAR ANIMATION
@@ -2688,6 +2857,67 @@
     }
 
     /* ================================================================
+       EXECUTION INFORMATION
+       ================================================================ */
+    function loadExecutionInfo() {
+
+        const info = REPORT_DATA.executionInfo;
+
+        if (!info) return;
+
+        // Build
+        document.getElementById("buildNumber").textContent =
+            info.build.number;
+
+        document.getElementById("buildVersion").textContent =
+            info.build.version;
+
+        document.getElementById("gitBranch").textContent =
+            info.build.branch;
+
+        // Optional if you haven't added these yet
+        document.getElementById("gitCommit").textContent =
+            info.build.commit ?? "-";
+
+        document.getElementById("triggeredBy").textContent =
+            info.build.triggeredBy ?? "Local";
+
+        document.getElementById("suiteType").textContent =
+            info.build.suite ?? "-";
+
+        // Environment
+        document.getElementById("environment").textContent =
+            info.environment.name;
+
+        document.getElementById("browserName").textContent =
+            info.environment.browser;
+
+        document.getElementById("operatingSystem").textContent =
+            info.environment.os;
+
+        document.getElementById("javaVersion").textContent =
+            info.environment.java;
+
+        document.getElementById("playwrightVersion").textContent =
+            info.environment.playwright;
+
+        // Execution
+        document.getElementById("executionMode").textContent =
+            info.execution.mode;
+
+        document.getElementById("startTime").textContent =
+            info.execution.startTime;
+
+        document.getElementById("endTime").textContent =
+            info.execution.endTime;
+
+        document.getElementById("duration").textContent =
+            info.execution.duration;
+    }
+
+    // console.log(RD.executionInfo);
+
+    /* ================================================================
        SUITE LIST
        ================================================================ */
     function renderSuites() {
@@ -2721,6 +2951,50 @@
         container.innerHTML = html;
     }
 
+    /* ================================================================
+      Module summery
+      ================================================================ */
+    function renderModuleSummary() {
+
+        const tbody = document.getElementById("moduleSummaryList");
+
+        if (!tbody) return;
+
+        tbody.innerHTML = "";
+
+        (RD.moduleSummary || []).forEach(module => {
+
+            tbody.innerHTML += `
+            <tr>
+                <td class="module-name">${module.module}</td>
+
+                <td class="module-total" style="padding-left: 25px">
+                    ${module.total}
+                </td>
+
+                <td>
+                    <span class="module-badge pass">
+                        ${module.passed}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="module-badge fail">
+                        ${module.failed}
+                    </span>
+                </td>
+
+                <td>
+                    <span class="module-badge skip">
+                        ${module.skipped}
+                    </span>
+                </td>
+            </tr>
+        `;
+        });
+    }
+
+    // console.log(REPORT_DATA.moduleSummary);
 
     /* ================================================================
        MERGED: RECENT TEST RESULTS TABLE WITH FAILURE DATA
@@ -2811,12 +3085,12 @@
                     html += '<td class="dash-cell">\u2014</td>';
                 }
 
-                // Error Message
-                if (isFailed && test.failure) {
-                    html += '<td><div class="error-msg-cell" title="' + test.failure.error.replace(/"/g, '&quot;') + '">' + test.failure.error + '</div></td>';
-                } else {
-                    html += '<td class="dash-cell">\u2014</td>';
-                }
+                // // Error Message
+                // if (isFailed && test.failure) {
+                //     html += '<td><div class="error-msg-cell" title="' + test.failure.error.replace(/"/g, '&quot;') + '">' + test.failure.error + '</div></td>';
+                // } else {
+                //     html += '<td class="dash-cell">\u2014</td>';
+                // }
 
                 // Error Type
                 if (isFailed && test.failure) {
@@ -2831,14 +3105,14 @@
                 // Retries
                 html += '<td class="mono" style="font-size:12px;">';
                 if (test.retries > 0) {
-                    html += '<i class="fas fa-rotate-right" style="font-size:10px;margin-right:3px;color:var(--text-muted);"></i>' + test.retries;
+                    html += '<i class="fas fa-rotate-right" style="font-size:10px;margin-right:3px;color:var(--warning);"></i>' + test.retries;
                 } else {
                     html += '0';
                 }
                 html += '</td>';
 
-                // Timestamp
-                html += '<td class="mono" style="font-size:12px;color:var(--text-muted);white-space:nowrap;">' + test.timestamp + '</td>';
+                // // Timestamp
+                // html += '<td class="mono" style="font-size:12px;color:var(--text-muted);white-space:nowrap;">' + test.timestamp + '</td>';
 
                 // Action
                 if (isFailed && test.failure) {
@@ -3086,47 +3360,33 @@
         }, 100);
     });
 
-
     /* ================================================================
-       EXPORT PDF
+       Export to html report
        ================================================================ */
-    document.getElementById('exportBtn').addEventListener('click', function () {
-        showToast('<i class="fas fa-download" style="color:var(--accent);"></i> Generating PDF report...');
 
-        var element = document.getElementById('mainContent');
-        document.body.classList.add('pdf-export-mode');
+    document.getElementById("exportBtn").addEventListener("click", function () {
 
-        var opt = {
-            margin: [10, 10, 10, 10],
-            filename: 'automation-report-' + RD.buildNumber + '.pdf',
-            image: {type: 'jpeg', quality: 0.95},
-            html2canvas: {scale: 2, useCORS: true, logging: false},
-            jsPDF: {unit: 'mm', format: 'a3', orientation: 'landscape'},
-            pagebreak: {mode: ['avoid-all', 'css', 'legacy']}
-        };
+        const link = document.createElement("a");
+        link.href = "chaintest/Index.html"; // Change to your report path
+        link.download = "Automation_Report.html";
+        link.click();
 
-        html2pdf().set(opt).from(element).save().then(function () {
-            document.body.classList.remove('pdf-export-mode');
-            showToast('<i class="fas fa-check" style="color:var(--accent);"></i> PDF exported successfully');
-        }).catch(function () {
-            document.body.classList.remove('pdf-export-mode');
-            showToast('<i class="fas fa-times" style="color:var(--danger);"></i> PDF export failed');
-        });
     });
-
 
     /* ================================================================
        REFRESH
        ================================================================ */
     document.getElementById('refreshBtn').addEventListener('click', function () {
         var icon = document.querySelector('#refreshBtn i');
+
         icon.style.transition = 'transform 0.6s ease';
         icon.style.transform = 'rotate(360deg)';
+
+        showToast('<i class="fas fa-sync-alt" style="color:var(--accent);"></i> Refreshing dashboard...');
+
         setTimeout(function () {
-            icon.style.transition = 'none';
-            icon.style.transform = 'rotate(0deg)';
-        }, 650);
-        showToast('<i class="fas fa-sync-alt" style="color:var(--accent);"></i> Data refreshed');
+            location.reload();
+        }, 800); // Reload after 0.8 second
     });
 
 
@@ -3138,7 +3398,9 @@
         animateProgress();
         buildTrendChart('all');
         buildDoughnutChart();
+        loadExecutionInfo();
         renderSuites();
+        renderModuleSummary();
         renderTable();
     }
 

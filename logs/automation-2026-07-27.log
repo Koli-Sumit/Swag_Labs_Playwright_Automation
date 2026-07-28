@@ -1,0 +1,39 @@
+27-07-2026 05:53:31 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+27-07-2026 05:53:37 pm INFO  BaseTest        - 🌐 Chromium browser launched
+27-07-2026 05:53:39 pm INFO  UserLoginPage   - 👤 Entered locked user username
+27-07-2026 05:53:40 pm INFO  UserLoginPage   - 🔒 Entered password
+27-07-2026 05:53:42 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+27-07-2026 05:53:43 pm INFO  UserLoginPage   - ❌ Entered invalid username
+27-07-2026 05:53:44 pm INFO  UserLoginPage   - 🔒 Entered password 
+27-07-2026 05:53:45 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+27-07-2026 05:53:47 pm INFO  UserLoginPage   - 👤 Entered valid username
+27-07-2026 05:53:48 pm INFO  UserLoginPage   - 🔒 Entered valid password
+27-07-2026 05:53:49 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+27-07-2026 06:16:09 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+27-07-2026 06:16:14 pm INFO  BaseTest        - 🌐 Chromium browser launched
+27-07-2026 06:16:18 pm INFO  UserLoginPage   - 👤 Entered locked user username
+27-07-2026 06:16:19 pm INFO  UserLoginPage   - 🔒 Entered password
+27-07-2026 06:16:20 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+27-07-2026 06:16:21 pm INFO  UserLoginPage   - ❌ Entered invalid username
+27-07-2026 06:16:22 pm INFO  UserLoginPage   - 🔒 Entered password 
+27-07-2026 06:16:23 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+27-07-2026 06:16:25 pm INFO  UserLoginPage   - 👤 Entered valid username
+27-07-2026 06:16:26 pm INFO  UserLoginPage   - 🔒 Entered valid password
+27-07-2026 06:16:27 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+27-07-2026 06:33:05 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+27-07-2026 06:33:10 pm INFO  BaseTest        - 🌐 Chromium browser launched
+27-07-2026 06:33:13 pm INFO  UserLoginPage   - 👤 Entered locked user username
+27-07-2026 06:33:14 pm INFO  UserLoginPage   - 🔒 Entered password
+27-07-2026 06:33:15 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+27-07-2026 06:33:17 pm INFO  UserLoginPage   - ❌ Entered invalid username
+27-07-2026 06:33:18 pm INFO  UserLoginPage   - 🔒 Entered password 
+27-07-2026 06:33:19 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+27-07-2026 06:33:20 pm INFO  UserLoginPage   - 👤 Entered valid username
+27-07-2026 06:33:21 pm INFO  UserLoginPage   - 🔒 Entered valid password
+27-07-2026 06:33:23 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials

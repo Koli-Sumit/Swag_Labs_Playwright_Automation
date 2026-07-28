@@ -84,6 +84,10 @@ public class ReportData {
     @SerializedName("durationSeconds")
     public int durationSeconds;
 
+    //Execution info
+    @SerializedName("executionInfo")
+    public ExecutionInfo executionInfo;
+
     // ── Suites ──
     @SerializedName("suites")
     public List<SuiteData> suites;
@@ -91,6 +95,9 @@ public class ReportData {
     // ── Recent tests ──
     @SerializedName("recentTests")
     public List<TestResultData> recentTests;
+
+    // ── Module Summery ──
+    public List<ModuleData> moduleSummary;
 
     // ── Inner classes ──
 
@@ -107,6 +114,25 @@ public class ReportData {
         public int skipped;
         @SerializedName("durationSeconds")
         public int durationSeconds;
+    }
+
+    public static class ModuleData {
+
+        @SerializedName("module")
+        public String module;
+
+        @SerializedName("total")
+        public int total;
+
+        @SerializedName("passed")
+        public int passed;
+
+        @SerializedName("failed")
+        public int failed;
+
+        @SerializedName("skipped")
+        public int skipped;
+
     }
 
     public static class TestResultData {
@@ -171,5 +197,68 @@ public class ReportData {
         @SerializedName("fail")
         public boolean fail;           // true = red dot, false = grey dot
     }
+
+    //Execution info
+
+    public static class ExecutionInfo {
+
+        @SerializedName("build")
+        public BuildInfo build;
+
+        @SerializedName("environment")
+        public EnvironmentInfo environment;
+
+        @SerializedName("execution")
+        public ExecutionDetails execution;
+    }
+
+    public static class BuildInfo {
+
+        @SerializedName("number")
+        public String number;
+
+        @SerializedName("branch")
+        public String branch;
+
+        @SerializedName("version")
+        public String version;
+    }
+
+    public static class EnvironmentInfo {
+
+        @SerializedName("name")
+        public String name;
+
+        @SerializedName("browser")
+        public String browser;
+
+        @SerializedName("browserVersion")
+        public String browserVersion;
+
+        @SerializedName("os")
+        public String os;
+
+        @SerializedName("java")
+        public String java;
+
+        @SerializedName("playwright")
+        public String playwright;
+    }
+
+    public static class ExecutionDetails {
+
+        @SerializedName("mode")
+        public String mode;
+
+        @SerializedName("startTime")
+        public String startTime;
+
+        @SerializedName("endTime")
+        public String endTime;
+
+        @SerializedName("duration")
+        public String duration;
+    }
+
 
 }
