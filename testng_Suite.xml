@@ -10,7 +10,7 @@
     <listeners>
         <listener class-name="com.swaglabs.report.DashboardReporter"/>
 <!--        <listener class-name="com.swaglabs.utils.TestListener"/>-->
-        <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"></listener>
+        <listener class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
     </listeners>
 
 <!--    &lt;!&ndash; Optional: override defaults via parameters &ndash;&gt;-->
@@ -37,19 +37,19 @@
 
     <test name="Checkout Your Information Test">
         <classes>
-            <class name="com.swaglabs.tests.TestCheckoutYourInformation"/>
+            <class name="com.swaglabs.tests.TestCheckout_Your_Information"/>
         </classes>
     </test>
 
     <test name="Checkout Overview Test">
         <classes>
-            <class name="com.swaglabs.tests.TestCheckoutOverview"/>
+            <class name="com.swaglabs.tests.TestCheckout_Overview"/>
         </classes>
     </test>
 
     <test name="Checkout Complete Test">
         <classes>
-            <class name="com.swaglabs.tests.TestCheckoutComplete"/>
+            <class name="com.swaglabs.tests.TestCheckout_Complete"/>
         </classes>
     </test>
 </suite>

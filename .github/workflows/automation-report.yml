@@ -1,0 +1,50 @@
+name: Automation Report
+
+on:
+  push:
+    branches:
+      - master_html_report
+
+permissions:
+  contents: write
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Install Playwright Browsers
+        run: |
+          mvn exec:java \
+          -Dexec.mainClass=com.microsoft.playwright.CLI \
+          -Dexec.args="install --with-deps"
+
+      - name: Run Automation Tests
+        run: mvn clean test
+
+      - name: Copy reports to repository root
+        run: |
+          cp test-output/dashboard-report.html dashboard-report.html
+          cp test-output/coverage-report.html coverage-report.html
+
+      - name: Commit updated reports
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add dashboard-report.html coverage-report.html
+
+          git diff --cached --quiet || git commit -m "Update automation reports"
+
+      - name: Push changes
+        run: git push
