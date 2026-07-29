@@ -2877,13 +2877,13 @@
 
         // Optional if you haven't added these yet
         document.getElementById("gitCommit").textContent =
-            info.build.commit ?? "-";
+            info.executionInfo.build.commit ?? "-";
 
         document.getElementById("triggeredBy").textContent =
-            info.build.triggeredBy ?? "Local";
+            info.executionInfo.build.triggeredBy ?? "Local";
 
         document.getElementById("suiteType").textContent =
-            info.build.suite ?? "-";
+            info.executionInfo.build.suite ?? "-";
 
         // Environment
         document.getElementById("environment").textContent =

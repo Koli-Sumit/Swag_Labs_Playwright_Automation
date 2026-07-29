@@ -73,3 +73,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Set timezone to Asia/Kolkata
+        run: |
+          sudo timedatectl set-timezone Asia/Kolkata || true
+          echo "TZ=Asia/Kolkata" >> $GITHUB_ENV

@@ -228,7 +228,7 @@ public class DashboardReporter implements IReporter {
                     if (html.contains("const DEFAULT_REPORT_DATA = {")) {
                         ReportData data = new ReportData();
                         data.buildNumber = Integer.parseInt(buildNumber);
-                        data.branch = System.getProperty("branch", System.getenv("BRANCH") != null ? System.getenv("BRANCH") : "Master Branch");
+                        data.branch = System.getProperty("branch", System.getenv("BRANCH") != null ? System.getenv("BRANCH") : "Master");
 
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss a");
                         String buildStartTime = LocalDateTime.now().format(formatter);
@@ -271,15 +271,18 @@ public class DashboardReporter implements IReporter {
                         executionInfo.execution = new ReportData.ExecutionDetails();
 
                         executionInfo.build.number = "#" + buildNumber;
-                        executionInfo.build.branch = data.branch;
-                        executionInfo.build.version = "1.0";
+                        executionInfo.build.branch = getGitBranch();
+                        executionInfo.build.version = System.getProperty("version", "1.0");
+                        executionInfo.build.commit = getGitCommit();
+                        executionInfo.build.triggeredBy = getTriggeredBy();
+                        executionInfo.build.suite = xmlSuites.isEmpty() ? "-" : xmlSuites.get(0).getName();
 
                         executionInfo.environment.name = data.environment;
-                        executionInfo.environment.browser = System.getProperty("browser", "Chrome");
+                        executionInfo.environment.browser = getBrowserName();
                         executionInfo.environment.browserVersion = "";
                         executionInfo.environment.os = System.getProperty("os.name");
                         executionInfo.environment.java = System.getProperty("java.version");
-                        executionInfo.environment.playwright = "1.60.0";
+                        executionInfo.environment.playwright = getPlaywrightVersion();
 
                         String executionMode =
                                 xmlSuites.get(0).getParallel() == XmlSuite.ParallelMode.NONE
@@ -868,6 +871,85 @@ public class DashboardReporter implements IReporter {
         } catch (Exception e) {
             return "1";
         }
+    }
+
+    private String getGitCommit() {
+        try {
+            Process process = new ProcessBuilder(
+                    "git", "rev-parse", "--short", "HEAD")
+                    .redirectErrorStream(true)
+                    .start();
+
+            BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(process.getInputStream()));
+
+            String commit = reader.readLine();
+            process.waitFor();
+
+            return commit != null ? commit : "-";
+
+        } catch (Exception e) {
+            return "-";
+        }
+    }
+
+    private String getTriggeredBy() {
+
+        String actor = System.getenv("GITHUB_ACTOR");
+
+        if (actor != null && !actor.isBlank()) {
+            return actor;
+        }
+
+        return System.getProperty("user.name");
+    }
+
+    private String getGitBranch() {
+
+        String githubBranch = System.getenv("GITHUB_REF_NAME");
+
+        if (githubBranch != null && !githubBranch.isBlank()) {
+            return githubBranch;
+        }
+
+        try {
+            Process process = new ProcessBuilder(
+                    "git", "branch", "--show-current")
+                    .redirectErrorStream(true)
+                    .start();
+
+            BufferedReader reader =
+                    new BufferedReader(
+                            new InputStreamReader(process.getInputStream()));
+
+            String branch = reader.readLine();
+
+            process.waitFor();
+
+            return branch != null ? branch : "master";
+
+        } catch (Exception e) {
+            return "master";
+        }
+    }
+
+    private String getBrowserName() {
+
+        return System.getProperty(
+                "browser",
+                System.getenv("BROWSER") != null
+                        ? System.getenv("BROWSER")
+                        : "Chrome");
+    }
+
+    private String getPlaywrightVersion() {
+
+        Package pkg =
+                com.microsoft.playwright.Playwright.class.getPackage();
+
+        return pkg.getImplementationVersion() != null
+                ? pkg.getImplementationVersion()
+                : "Unknown";
     }
 
     private String randomHex(int digits) {

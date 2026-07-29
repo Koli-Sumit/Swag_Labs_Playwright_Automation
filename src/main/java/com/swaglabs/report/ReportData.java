@@ -26,23 +26,23 @@ public class ReportData {
     @SerializedName("reportId")
     public String reportId;
 
-    @SerializedName("frameworkVersion")
-    public String frameworkVersion = "v1.0.0";
-
-    @SerializedName("frameworkName")
-    public String frameworkName = "Playwright-TestNG Automation";
-
-    @SerializedName("projectName")
-    public String projectName = "Swag Labs";
-
-    @SerializedName("userName")
-    public String userName = "QA Team";
-
-    @SerializedName("userRole")
-    public String userRole = "Automation";
-
-    @SerializedName("userInitials")
-    public String userInitials = "QA";
+//    @SerializedName("frameworkVersion")
+//    public String frameworkVersion = "v1.0.0";
+//
+//    @SerializedName("frameworkName")
+//    public String frameworkName = "Playwright-TestNG Automation";
+//
+//    @SerializedName("projectName")
+//    public String projectName = "Swag Labs";
+//
+//    @SerializedName("userName")
+//    public String userName = "QA Team";
+//
+//    @SerializedName("userRole")
+//    public String userRole = "Automation";
+//
+//    @SerializedName("userInitials")
+//    public String userInitials = "QA";
 
     // ── Current build totals ──
     @SerializedName("passed")
@@ -222,6 +222,15 @@ public class ReportData {
 
         @SerializedName("version")
         public String version;
+
+        @SerializedName("commit")
+        public String commit;
+
+        @SerializedName("triggeredBy")
+        public String triggeredBy;
+
+        @SerializedName("suite")
+        public String suite;
     }
 
     public static class EnvironmentInfo {
