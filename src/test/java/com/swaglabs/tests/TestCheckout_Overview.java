@@ -12,7 +12,7 @@ import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertTha
 
 @Listeners(com.swaglabs.report.DashboardReporter.class)
 //@Listeners(com.swaglabs.utils.TestListener.class)
-public class TestCheckoutOverview extends BaseTest {
+public class TestCheckout_Overview extends BaseTest {
 
     Checkout_OverviewPage checkout_OverviewPage;
 

@@ -1,0 +1,102 @@
+28-07-2026 12:41:07 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+28-07-2026 12:41:12 pm INFO  BaseTest        - 🌐 Chromium browser launched
+28-07-2026 12:41:15 pm INFO  UserLoginPage   - 👤 Entered locked user username
+28-07-2026 12:41:16 pm INFO  UserLoginPage   - 🔒 Entered password
+28-07-2026 12:41:17 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+28-07-2026 12:41:18 pm INFO  UserLoginPage   - ❌ Entered invalid username
+28-07-2026 12:41:19 pm INFO  UserLoginPage   - 🔒 Entered password 
+28-07-2026 12:41:20 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+28-07-2026 12:41:22 pm INFO  UserLoginPage   - 👤 Entered valid username
+28-07-2026 12:41:23 pm INFO  UserLoginPage   - 🔒 Entered valid password
+28-07-2026 12:41:24 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+28-07-2026 12:41:27 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+28-07-2026 12:41:28 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+28-07-2026 12:41:29 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Price: $29.99
+28-07-2026 12:41:31 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+28-07-2026 12:41:34 pm INFO  InventoryPage   - Sorted products by price (low to high)
+28-07-2026 12:41:35 pm INFO  InventoryPage   - Opened Product Cart
+28-07-2026 12:41:37 pm INFO  CartPage        - 🛍️ Opened Product Cart
+28-07-2026 12:41:38 pm INFO  CartPage        - 💳 Opened Checkout Page
+28-07-2026 12:41:43 pm INFO  Checkout_YourInformationPage - Entered First Name on Information Page: John
+28-07-2026 12:41:46 pm INFO  Checkout_YourInformationPage - Entered Last Name on Information Page: Test
+28-07-2026 12:41:48 pm INFO  Checkout_YourInformationPage - Entered ZIP/Postal Code on Information Page: 123456
+28-07-2026 12:41:49 pm INFO  Checkout_YourInformationPage - Clicked on Continue Button
+28-07-2026 12:41:49 pm INFO  Checkout_OverviewPage - Product Verified
+28-07-2026 12:41:49 pm INFO  Checkout_OverviewPage - Payment Info Label Verified
+28-07-2026 12:41:52 pm INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!
+28-07-2026 01:16:40 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:28:47 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:46:42 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 01:50:53 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+28-07-2026 04:57:42 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+28-07-2026 04:57:47 pm INFO  BaseTest        - 🌐 Chromium browser launched
+28-07-2026 04:57:51 pm INFO  UserLoginPage   - 👤 Entered locked user username
+28-07-2026 04:57:52 pm INFO  UserLoginPage   - 🔒 Entered password
+28-07-2026 04:57:53 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+28-07-2026 04:57:55 pm INFO  UserLoginPage   - ❌ Entered invalid username
+28-07-2026 04:57:56 pm INFO  UserLoginPage   - 🔒 Entered password 
+28-07-2026 04:57:57 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+28-07-2026 04:57:58 pm INFO  UserLoginPage   - 👤 Entered valid username
+28-07-2026 04:57:59 pm INFO  UserLoginPage   - 🔒 Entered valid password
+28-07-2026 04:58:01 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+28-07-2026 04:58:03 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+28-07-2026 04:58:04 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+28-07-2026 04:58:06 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+28-07-2026 04:58:07 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+28-07-2026 04:58:07 pm INFO  InventoryPage   - Product Price: $29.99
+28-07-2026 04:58:07 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+28-07-2026 04:58:10 pm INFO  InventoryPage   - Sorted products by price (low to high)
+28-07-2026 04:58:11 pm INFO  InventoryPage   - Opened Product Cart
+28-07-2026 04:58:13 pm INFO  CartPage        - 🛍️ Opened Product Cart
+28-07-2026 04:58:15 pm INFO  CartPage        - 💳 Opened Checkout Page
+28-07-2026 04:58:20 pm INFO  Checkout_YourInformationPage - Entered First Name on Information Page: John
+28-07-2026 04:58:22 pm INFO  Checkout_YourInformationPage - Entered Last Name on Information Page: Test
+28-07-2026 04:58:24 pm INFO  Checkout_YourInformationPage - Entered ZIP/Postal Code on Information Page: 123456
+28-07-2026 04:58:25 pm INFO  Checkout_YourInformationPage - Clicked on Continue Button
+28-07-2026 04:58:25 pm INFO  Checkout_OverviewPage - Product Verified
+28-07-2026 04:58:25 pm INFO  Checkout_OverviewPage - Payment Info Label Verified
+28-07-2026 04:58:28 pm INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!
+28-07-2026 05:47:23 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\IdeaProjects\Swag_Labs_Playwright\textng_Suit.xml
+
+28-07-2026 05:47:28 pm INFO  BaseTest        - 🌐 Chromium browser launched
+28-07-2026 05:47:31 pm INFO  UserLoginPage   - 👤 Entered locked user username
+28-07-2026 05:47:32 pm INFO  UserLoginPage   - 🔒 Entered password
+28-07-2026 05:47:33 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+28-07-2026 05:47:35 pm INFO  UserLoginPage   - ❌ Entered invalid username
+28-07-2026 05:47:36 pm INFO  UserLoginPage   - 🔒 Entered password 
+28-07-2026 05:47:37 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+28-07-2026 05:47:38 pm INFO  UserLoginPage   - 👤 Entered valid username
+28-07-2026 05:47:39 pm INFO  UserLoginPage   - 🔒 Entered valid password
+28-07-2026 05:47:41 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials
+28-07-2026 05:47:43 pm INFO  InventoryPage   - Sauce Labs Backpack product added to cart
+28-07-2026 05:47:44 pm INFO  InventoryPage   - Sauce Labs Bike Light product added to cart
+28-07-2026 05:47:46 pm INFO  InventoryPage   - Removed product from cart: Sauce Labs Bike Light
+28-07-2026 05:47:47 pm INFO  InventoryPage   - Product Name: Sauce Labs Backpack
+28-07-2026 05:47:47 pm INFO  InventoryPage   - Product Price: $29.99
+28-07-2026 05:47:47 pm INFO  InventoryPage   - Product Description: carry.allTheThings() with the sleek, streamlined Sly Pack that melds uncompromising style with unequaled laptop and tablet protection.
+28-07-2026 05:47:50 pm INFO  InventoryPage   - Sorted products by price (low to high)
+28-07-2026 05:47:51 pm INFO  InventoryPage   - Opened Product Cart
+28-07-2026 05:47:53 pm INFO  CartPage        - 🛍️ Opened Product Cart
+28-07-2026 05:47:54 pm INFO  CartPage        - 💳 Opened Checkout Page
+28-07-2026 05:48:00 pm INFO  Checkout_YourInformationPage - Entered First Name on Information Page: John
+28-07-2026 05:48:02 pm INFO  Checkout_YourInformationPage - Entered Last Name on Information Page: Test
+28-07-2026 05:48:04 pm INFO  Checkout_YourInformationPage - Entered ZIP/Postal Code on Information Page: 123456
+28-07-2026 05:48:05 pm INFO  Checkout_YourInformationPage - Clicked on Continue Button
+28-07-2026 05:48:05 pm INFO  Checkout_OverviewPage - Product Verified
+28-07-2026 05:48:05 pm INFO  Checkout_OverviewPage - Payment Info Label Verified
+28-07-2026 05:48:08 pm INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!

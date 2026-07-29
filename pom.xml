@@ -137,7 +137,7 @@
 
                     <!-- TestNG Suite -->
                     <suiteXmlFiles>
-                        <suiteXmlFile>testng_Suit.xml</suiteXmlFile>
+                        <suiteXmlFile>testng_Suite.xml</suiteXmlFile>
                     </suiteXmlFiles>
 
 <!--                    &lt;!&ndash; Allure Listener &ndash;&gt;-->

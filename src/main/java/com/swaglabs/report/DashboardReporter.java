@@ -341,6 +341,7 @@ public class DashboardReporter implements IReporter {
         try {
             EmailUtil.sendEmail();
             System.out.println("Automation report email sent successfully.");
+            System.out.println("=================================================================");
         } catch (Exception e) {
             System.err.println("Failed to send automation report email.");
             e.printStackTrace();
