@@ -1,27 +1,5 @@
 [
   {
-    "build": "#353",
-    "passed": 1,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 3,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
-    "build": "#356",
-    "passed": 17,
-    "failed": 0,
-    "skipped": 0,
-    "duration": 29,
-    "reqCoverage": 100,
-    "tcCoverage": 100,
-    "featCoverage": 100,
-    "browserCoverage": 100
-  },
-  {
     "build": "#359",
     "passed": 1,
     "failed": 0,
@@ -214,6 +192,28 @@
     "failed": 0,
     "skipped": 0,
     "duration": 29,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#413",
+    "passed": 1,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 3,
+    "reqCoverage": 100,
+    "tcCoverage": 100,
+    "featCoverage": 100,
+    "browserCoverage": 100
+  },
+  {
+    "build": "#416",
+    "passed": 3,
+    "failed": 0,
+    "skipped": 0,
+    "duration": 9,
     "reqCoverage": 100,
     "tcCoverage": 100,
     "featCoverage": 100,

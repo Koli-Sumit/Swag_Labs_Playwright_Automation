@@ -25,3 +25,23 @@
 29-07-2026 12:52:04 pm INFO  Checkout_OverviewPage - Product Verified
 29-07-2026 12:52:04 pm INFO  Checkout_OverviewPage - Payment Info Label Verified
 29-07-2026 12:52:07 pm INFO  Checkout_CompletePage - Order Placed Successfully : Thank you for your order!
+29-07-2026 06:15:55 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+29-07-2026 06:16:03 pm INFO  BaseTest        - 🌐 Chromium browser launched
+29-07-2026 06:16:05 pm INFO  UserLoginPage   - 👤 Entered locked user username
+29-07-2026 06:16:06 pm INFO  UserLoginPage   - 🔒 Entered password
+29-07-2026 06:16:07 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+29-07-2026 06:31:05 pm INFO  Utils           - [TestNG] Running:
+  C:\Users\1064921\AppData\Local\JetBrains\IntelliJIdea2026.2\temp-testng-customsuite.xml
+
+29-07-2026 06:31:11 pm INFO  BaseTest        - 🌐 Chromium browser launched
+29-07-2026 06:31:14 pm INFO  UserLoginPage   - 👤 Entered locked user username
+29-07-2026 06:31:15 pm INFO  UserLoginPage   - 🔒 Entered password
+29-07-2026 06:31:16 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with Locked credentials
+29-07-2026 06:31:18 pm INFO  UserLoginPage   - ❌ Entered invalid username
+29-07-2026 06:31:19 pm INFO  UserLoginPage   - 🔒 Entered password 
+29-07-2026 06:31:20 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with invalid credentials
+29-07-2026 06:31:21 pm INFO  UserLoginPage   - 👤 Entered valid username
+29-07-2026 06:31:22 pm INFO  UserLoginPage   - 🔒 Entered valid password
+29-07-2026 06:31:24 pm INFO  UserLoginPage   - 🖱️ Clicked Login button with valid credentials

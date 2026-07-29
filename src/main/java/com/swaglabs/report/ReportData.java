@@ -88,6 +88,10 @@ public class ReportData {
     @SerializedName("executionInfo")
     public ExecutionInfo executionInfo;
 
+    //Build
+    @SerializedName("build")
+    public BuildInfo build;
+
     // ── Suites ──
     @SerializedName("suites")
     public List<SuiteData> suites;

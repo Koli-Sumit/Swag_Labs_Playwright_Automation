@@ -267,6 +267,7 @@ public class DashboardReporter implements IReporter {
                         ReportData.ExecutionInfo executionInfo = new ReportData.ExecutionInfo();
 
                         executionInfo.build = new ReportData.BuildInfo();
+                        data.build = executionInfo.build;
                         executionInfo.environment = new ReportData.EnvironmentInfo();
                         executionInfo.execution = new ReportData.ExecutionDetails();
 
