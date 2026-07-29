@@ -18,7 +18,7 @@ public class TestLogin extends BaseTest {
 
     UserLoginPage ul;
 
-    /** Verifies locked-user login displays the expected error. */
+    /** Verifies locked-user login displays the expected error.! */
     @Test(groups = {"Smoke"}, retryAnalyzer = RetryAnalyzer.class, description = "REQ-001")
     public void LOGIN_001() throws IOException {
         ul = new UserLoginPage(page);
