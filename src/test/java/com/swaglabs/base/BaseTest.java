@@ -31,7 +31,7 @@ public class BaseTest {
         logger = Log.getLogger(BaseTest.class);
 
         options = new BrowserType.LaunchOptions()
-                .setHeadless(false)
+                .setHeadless(true)
                 .setArgs(List.of("--start-maximized"))
                 .setSlowMo(1000);
 
@@ -86,9 +86,17 @@ public class BaseTest {
             );
         } finally {
 
-            context.close();
-            browser.close();
-            playwright.close();
+            if (context != null) {
+                context.close();
+            }
+
+            if (browser != null) {
+                browser.close();
+            }
+
+            if (playwright != null) {
+                playwright.close();
+            }
         }
     }
 
@@ -102,7 +110,9 @@ public class BaseTest {
             result.setAttribute("screenshot", screenshot);
         }
 
-        page.waitForTimeout(600);
+        if (page != null) {
+            page.waitForTimeout(600);
+        }
     }
 
     public static String screenShot(Page page, ITestResult result) {
