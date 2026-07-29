@@ -6,11 +6,21 @@ on:
       - master
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   automation:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout Repository
@@ -26,8 +36,8 @@ jobs:
       - name: Install Playwright Browsers
         run: |
           mvn exec:java \
-          -Dexec.mainClass=com.microsoft.playwright.CLI \
-          -Dexec.args="install --with-deps"
+            -Dexec.mainClass=com.microsoft.playwright.CLI \
+            -Dexec.args="install --with-deps"
 
       - name: Run Automation Tests
         run: mvn clean test
@@ -37,14 +47,29 @@ jobs:
           cp test-output/dashboard-report.html dashboard-report.html
           cp test-output/coverage-report.html coverage-report.html
 
-      - name: Commit updated reports
+      - name: Verify generated reports
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          echo "Repository Root:"
+          ls -la
+          echo ""
+          echo "Test Output:"
+          ls -la test-output
 
-          git add dashboard-report.html coverage-report.html
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
 
-          git diff --cached --quiet || git commit -m "Update automation reports"
+      - name: Prepare GitHub Pages content
+        run: |
+          mkdir pages
+          cp index.html pages/
+          cp dashboard-report.html pages/
+          cp coverage-report.html pages/
 
-      - name: Push changes
-        run: git push
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: pages
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
