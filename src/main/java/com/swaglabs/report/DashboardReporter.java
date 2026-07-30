@@ -231,13 +231,14 @@ public class DashboardReporter implements IReporter {
                         data.branch = System.getProperty("branch", System.getenv("BRANCH") != null ? System.getenv("BRANCH") : "Master");
 
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss a");
-                        String buildStartTime = LocalDateTime.now().format(formatter);
+                        //String buildStartTime = LocalDateTime.now().format(formatter);
+                        String buildStartTime = ZonedDateTime.now(ZoneId.of("Asia/Kolkata")).format(formatter);
                         data.runAgo = buildStartTime;
 
                         data.environment = System.getProperty("env", System.getenv("ENV") != null ? System.getenv("ENV") : "Production");
                         data.reportId = "RPT-" +
                                 Instant.now()
-                                        .atZone(ZoneOffset.UTC)
+                                        .atZone(ZoneId.of("Asia/Kolkata"))
                                         .format(DateTimeFormatter.ofPattern("yyyy-MMdd-HHmmss"))
                                         .replace("-", "") +
                                 "-" + randomHex(4);
@@ -292,7 +293,7 @@ public class DashboardReporter implements IReporter {
 
                         executionInfo.execution.mode = executionMode;
                         executionInfo.execution.startTime = buildStartTime;
-                        executionInfo.execution.endTime = LocalDateTime.now().format(formatter);
+                        executionInfo.execution.endTime = ZonedDateTime.now(ZoneId.of("Asia/Kolkata")).format(formatter);
                         executionInfo.execution.duration = formatDuration(totalDurationSec);
 
                         data.executionInfo = executionInfo;
@@ -587,7 +588,7 @@ public class DashboardReporter implements IReporter {
 
 // Last Run
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd-MMM-yyyy hh:mm:ss a");
-        String nowStr = LocalDateTime.now().format(fmt);
+        String nowStr = ZonedDateTime.now(ZoneId.of("Asia/Kolkata")).format(fmt);
         html = html.replace("{{LAST_RUN_SUMMARY}}", "Last run: " + nowStr);
 
 // Sprint/Release

@@ -33,6 +33,11 @@ jobs:
           java-version: '21'
           cache: maven
 
+      - name: Set timezone to Asia/Kolkata
+        run: |
+          sudo timedatectl set-timezone Asia/Kolkata || true
+          echo "TZ=Asia/Kolkata" >> $GITHUB_ENV    
+
       - name: Install Playwright Browsers
         run: |
           mvn exec:java \
@@ -59,7 +64,3 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-      - name: Set timezone to Asia/Kolkata
-        run: |
-          sudo timedatectl set-timezone Asia/Kolkata || true
-          echo "TZ=Asia/Kolkata" >> $GITHUB_ENV
