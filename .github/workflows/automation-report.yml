@@ -42,33 +42,18 @@ jobs:
       - name: Run Automation Tests
         run: mvn clean test
 
-      - name: Copy reports to repository root
+      - name: Verify Generated Reports
         run: |
-          cp test-output/dashboard-report.html dashboard-report.html
-          cp test-output/coverage-report.html coverage-report.html
-
-      - name: Verify generated reports
-        run: |
-          echo "Repository Root:"
-          ls -la
-          echo ""
-          echo "Test Output:"
-          ls -la test-output
+          echo "===== Generated Reports ====="
+          find test-output -type f
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Prepare GitHub Pages content
-        run: |
-          mkdir pages
-          cp index.html pages/
-          cp dashboard-report.html pages/
-          cp coverage-report.html pages/
-
       - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: pages
+          path: test-output
 
       - name: Deploy to GitHub Pages
         id: deployment

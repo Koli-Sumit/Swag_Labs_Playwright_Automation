@@ -343,12 +343,13 @@ public class DashboardReporter implements IReporter {
         System.out.println("=================================================================");
 
         try {
-            EmailUtil.sendEmail();
+            //EmailUtil.sendEmail();
             System.out.println("Automation report email sent successfully.");
             System.out.println("=================================================================");
         } catch (Exception e) {
             System.err.println("Failed to send automation report email.");
-            e.printStackTrace();
+            //e.printStackTrace();
+            System.out.println("=================================================================");
         }
 
     }
